@@ -1,8 +1,7 @@
 export const KEYS = {
-  // AUTH: {
-  //   SIGNIN: "admin-signin",
-  //   CHANGE_PASSWORD: "change-password",
-  // },
+  AUTH: {
+    SIGNIN: "admin-signin",
+  },
 
   DASHBOARD: {
     BASE: "dashboard",
