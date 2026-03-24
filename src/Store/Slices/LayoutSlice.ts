@@ -16,6 +16,11 @@ type LayoutState = {
 };
 
 const StoredPermission = JSON.parse(Storage.getItem(STORAGE_KEYS.PERMISSION) || "null");
+const storedTheme = Storage.getItem(STORAGE_KEYS.THEME) || "light";
+
+// Apply the initial theme class immediately
+if (storedTheme === "dark") document.documentElement.classList.add("dark");
+else document.documentElement.classList.remove("dark");
 
 const initialState: LayoutState = {
   isExpanded: true,
@@ -24,7 +29,7 @@ const initialState: LayoutState = {
   isHovered: false,
   isApplicationMenuOpen: false,
   openSubmenu: null,
-  isToggleTheme: "light",
+  isToggleTheme: storedTheme,
   permission: StoredPermission,
   adminSetting: null,
 };
@@ -69,6 +74,7 @@ const layoutSlice = createSlice({
     },
     setToggleTheme: (state, action) => {
       state.isToggleTheme = action.payload;
+      Storage.setItem(STORAGE_KEYS.THEME, action.payload);
       if (action.payload === "dark") document.documentElement.classList.add("dark");
       else document.documentElement.classList.remove("dark");
     },

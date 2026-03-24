@@ -61,7 +61,7 @@ const SignInForm = () => {
         </div>
 
         <div className="absolute overflow-hidden top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center text-center">
-          <img src={`${ImagePath}logo/logo-dark.png`} alt="Ai Setu Logo" className="w-39 h-11" />
+          <img src={`${ImagePath}logo/logo-dark.png`} alt="Portfolio Logo" className="w-39 h-11" />
           <p className="text-gray-300 text-sm flex pt-3">{ThemeTitle}</p>
         </div>
       </div>
