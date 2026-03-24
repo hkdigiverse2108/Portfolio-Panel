@@ -8,16 +8,16 @@ export const getTheme = (mode: "light" | "dark") =>
       primary:
         mode === "light"
           ? {
-              light: "#9cb9ff",
-              main: "#465fff",
-              dark: "#252dae",
-              contrastText: "#fff",
+              light: "#444444",
+              main: "#000000",
+              dark: "#000000",
+              contrastText: "#FFFFFF",
             }
           : {
-              light: "#9cb9ff",
-              main: "#465fff",
-              dark: "#344054",
-              contrastText: "#fff",
+              light: "#dfba45",
+              main: "#D4AF37",
+              dark: "#B89326",
+              contrastText: "#000000",
             },
     },
     breakpoints: {

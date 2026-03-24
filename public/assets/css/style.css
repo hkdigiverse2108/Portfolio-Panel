@@ -1,9 +1,9 @@
-
 @custom-variant dark (&:where(.dark, .dark *));
 
 @import "./variables.css";
 
 @layer base {
+
   *,
   ::after,
   ::before,
@@ -11,10 +11,12 @@
   ::file-selector-button {
     border-color: var(--color-gray-200, currentColor);
   }
+
   button:not(:disabled),
   [role="button"]:not(:disabled) {
     cursor: pointer;
   }
+
   body {
     @apply relative font-normal font-outfit z-1 bg-gray-50 text-gray-800 dark:bg-gray-dark dark:text-gray-300;
   }
@@ -26,3 +28,16 @@
 @import "./layout.css";
 @import "./update.css";
 
+@layer utilities {
+  .golden-ray-static {
+    position: absolute;
+    width: 150%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, #8C6E37 50%, transparent 100%);
+    box-shadow: 0 0 25px 3px rgba(140, 110, 55, 0.4);
+    pointer-events: none;
+    z-index: 0;
+    transform: rotate(-15deg);
+    opacity: 0.6;
+  }
+}

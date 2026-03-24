@@ -16,7 +16,7 @@ type LayoutState = {
 };
 
 const StoredPermission = JSON.parse(Storage.getItem(STORAGE_KEYS.PERMISSION) || "null");
-const storedTheme = Storage.getItem(STORAGE_KEYS.THEME) || "light";
+const storedTheme = Storage.getItem(STORAGE_KEYS.THEME) || "dark";
 
 // Apply the initial theme class immediately
 if (storedTheme === "dark") document.documentElement.classList.add("dark");
