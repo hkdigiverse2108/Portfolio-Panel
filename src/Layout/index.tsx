@@ -2,12 +2,9 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Outlet } from "react-router-dom";
 import { useAppSelector } from "../Store/hooks";
-import { setAdminSetting, setIsMobile, setPermission } from "../Store/Slices/LayoutSlice";;
+import { setIsMobile } from "../Store/Slices/LayoutSlice";
 import { Queries } from "../Api";
-import { setUser } from "../Store/Slices/AuthSlice";
-import { setCompany, setFinancialYear } from "../Store/Slices/CompanySlice";
 import Loader from "./Loader";
-import { useCompanyFinancialYears } from "../Utils/Hooks";
 
 
 const Layout = () => {
@@ -15,38 +12,10 @@ const Layout = () => {
   const dispatch = useDispatch();
 
   const { user } = useAppSelector((state) => state.auth);
-  const { data: userData, isLoading: userLoading } = Queries.useGetSingleUser(user?._id);
-  const { data: companyData, isLoading: companyLoading, isFetching: companyFetching } = Queries.useGetSingleCompany(user?.companyId?._id);
-  const { data: permissionData, isLoading: permissionLoading } = Queries.useGetPermissionChildDetails({ userId: user?._id }, Boolean(user?._id));
-  const { data: adminSettingData, isLoading: adminSettingLoading } = Queries.useGetAdminSetting();
-  const isAppLoading = userLoading || permissionLoading || companyLoading || companyFetching || adminSettingLoading;
+  const {  } = Queries.useGetPermissionChildDetails({ userId: user?._id }, Boolean(user?._id));
+  // const isAppLoading = userLoading || permissionLoading || companyLoading || companyFetching || adminSettingLoading;
 
- 
-  useEffect(() => {
-    if (userData) {
-      dispatch(setUser(userData?.data));
-    }
-  }, [dispatch, userData]);
 
-  useEffect(() => {
-    if (adminSettingData) {
-      dispatch(setAdminSetting(adminSettingData?.data));
-    }
-  }, [dispatch, adminSettingData]);
-
-  const financialYear = useCompanyFinancialYears(companyData?.data?.createdAt || "");
-  useEffect(() => {
-    if (companyData) {
-      dispatch(setCompany(companyData?.data));
-      dispatch(setFinancialYear(financialYear));
-    }
-  }, [companyData, financialYear, dispatch]);
-
-  useEffect(() => {
-    if (permissionData) {
-      dispatch(setPermission(permissionData?.data));
-    }
-  }, [dispatch, permissionData]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -61,7 +30,7 @@ const Layout = () => {
 
   return (
     <>
-      <Loader loading={isAppLoading} />
+      <Loader loading={true} />
       <div className="min-h-screen xl:flex overflow-hidden">
         <div className={`flex-1 transition-all duration-300 ease-linear ${isApplicationMenuOpen ? "pt-30 xsm:pt-35" : "pt-16"} lg:pt-[78px] ${isExpanded ? "lg:ml-[290px]" : "lg:ml-[90px]"} ${isMobileOpen ? "ml-0" : ""}`}>
           <div className="mx-auto">

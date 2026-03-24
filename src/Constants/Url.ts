@@ -5,4 +5,11 @@ export const URL_KEYS = {
   DASHBOARD: {
     BASE: "/dashboard",
   },
+  PERMISSION: {
+    BASE: "/permission",
+    DETAILS: "/permission/details",
+    CHILD: "/permission/child/details",
+    ALL: "/permission/all",
+    EDIT: "/permission/edit",
+  },
 } as const;
