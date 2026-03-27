@@ -1,7 +1,7 @@
 import { Grid } from "@mui/material";
 import { Form, Formik, type FormikHelpers } from "formik";
 import { CommonButton, CommonValidationTextField } from "../../Attribute";
-import { ImagePath, LoginSource, ROUTES, ThemeTitle } from "../../Constants";
+import { ImagePath, ROUTES, ThemeTitle } from "../../Constants";
 import ThemeToggler from "../../Layout/ThemeToggler";
 import { SigninSchema } from "../../Utils/ValidationSchemas";
 import { Mutations } from "../../Api";
@@ -17,7 +17,7 @@ const SignInForm = () => {
 
   const handleSubmit = async (values: LoginPayload, { resetForm }: FormikHelpers<LoginPayload>) => {
     Signin(
-      { ...values, email: values.email.toLowerCase(), loginSource: LoginSource },
+      { ...values, email: values.email.toLowerCase() },
       {
         onSuccess: (response) => {
           dispatch(setSignin(response?.data));
@@ -59,7 +59,7 @@ const SignInForm = () => {
 
         {/* FORM */}
         <div className="w-full">
-          <Formik initialValues={{ email: "", password: "", loginSource: LoginSource }} validationSchema={SigninSchema} onSubmit={handleSubmit}>
+          <Formik initialValues={{ email: "", password: "" }} validationSchema={SigninSchema} onSubmit={handleSubmit}>
             <Form>
               <Grid container spacing={2.5}>
                 <CommonValidationTextField name="email" label="Email Address" placeholder="Enter your email" required isFormLabel grid={{ xs: 12 }} />
