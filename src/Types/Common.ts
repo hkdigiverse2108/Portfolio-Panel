@@ -1,5 +1,6 @@
 import type { Breakpoint, ButtonProps, DrawerProps, PaperProps as MuiPaperProps, SxProps, TextFieldProps, Theme } from "@mui/material";
 import type { GridColDef, GridFilterModel, GridPaginationModel, GridRowsProp, GridSlotsComponentsProps, GridSortModel, GridValidRowModel } from "@mui/x-data-grid";
+import type { LineChartProps } from "@mui/x-charts/LineChart";
 import type { Dayjs } from "dayjs";
 import type { FocusEvent, ReactNode } from "react";
 export type GridType = number | object | "auto" | "grow";
@@ -669,3 +670,12 @@ export interface CommonStatsCardProps {
   paperSx?: SxProps<Theme>;
   variant?: "default" | "radio";
 }
+
+// ************ Line Chart Start ***********
+
+export interface CommonLineChartProps extends LineChartProps {
+  height?: number;
+  BoxClass?: string;
+}
+
+// ************ Line Chart End ***********

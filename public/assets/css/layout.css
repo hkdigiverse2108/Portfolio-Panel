@@ -3,6 +3,7 @@
 @utility menu-item {
   @apply relative flex items-center w-full gap-3 px-3 py-2 font-medium rounded-lg text-theme-sm;
 }
+
 @utility menu-item-text {
   @apply capitalize;
 }
@@ -70,13 +71,18 @@
 }
 
 @utility no-scrollbar {
+
   /* Chrome, Safari and Opera */
   &::-webkit-scrollbar {
     display: none;
   }
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
+
 @utility custom-scrollbar {
   &::-webkit-scrollbar {
     @apply size-1.5;
@@ -91,9 +97,10 @@
   }
 }
 
-.MuiPaper-root.MuiPaper-elevation .MuiBox-root{
+.MuiPaper-root.MuiPaper-elevation .MuiBox-root {
   @apply custom-scrollbar;
 }
+
 .dark .MuiDataGrid-scrollbar::-webkit-scrollbar-thumb,
 .dark .MuiTelInput-Menu .MuiPaper-root.MuiPopover-paper::-webkit-scrollbar-thumb,
 .dark .custom-scrollbar::-webkit-scrollbar-thumb {
@@ -104,7 +111,7 @@
 .MuiDataGrid-scrollbar,
 .MuiDataGrid-scrollbar::-webkit-scrollbar,
 .MuiTelInput-Menu .MuiPaper-root.MuiPopover-paper::-webkit-scrollbar {
-  @apply size-1.5 hidden! h-0!;
+  @apply size-1.5 hidden!  h-0!;
 }
 
 .MuiTelInput-Menu .MuiPaper-root.MuiPopover-paper::-webkit-scrollbar-thumb,
@@ -175,7 +182,7 @@
 }
 
 /* cube faces */
-.boxes .box > div {
+.boxes .box>div {
   --translateZ: calc(var(--size) / 2);
   position: absolute;
   width: 100%;
@@ -185,26 +192,26 @@
 }
 
 /* front */
-.boxes .box > div:nth-child(1) {
+.boxes .box>div:nth-child(1) {
   top: 0;
   left: 0;
 }
 
 /* right */
-.boxes .box > div:nth-child(2) {
+.boxes .box>div:nth-child(2) {
   background: var(--box-dark);
   right: 0;
   --rotateY: 90deg;
 }
 
 /* top */
-.boxes .box > div:nth-child(3) {
+.boxes .box>div:nth-child(3) {
   background: var(--box-mid);
   --rotateX: -90deg;
 }
 
 /* back / shadow */
-.boxes .box > div:nth-child(4) {
+.boxes .box>div:nth-child(4) {
   background: var(--box-light);
   top: 0;
   left: 0;
@@ -213,10 +220,12 @@
 
 /* animations */
 @keyframes box1 {
+
   0%,
   50% {
     transform: translate(100%, 0);
   }
+
   100% {
     transform: translate(200%, 0);
   }
@@ -226,19 +235,23 @@
   0% {
     transform: translate(0, 100%);
   }
+
   50% {
     transform: translate(0, 0);
   }
+
   100% {
     transform: translate(100%, 0);
   }
 }
 
 @keyframes box3 {
+
   0%,
   50% {
     transform: translate(100%, 100%);
   }
+
   100% {
     transform: translate(0, 100%);
   }
@@ -248,13 +261,16 @@
   0% {
     transform: translate(200%, 0);
   }
+
   50% {
     transform: translate(200%, 100%);
   }
+
   100% {
     transform: translate(100%, 100%);
   }
 }
+
 .dark .boxes {
   --box-main: var(--color-brand-400);
   --box-dark: var(--color-brand-800);

@@ -1,6 +1,6 @@
 /* ************ Date Range Calendar Start *********** */
 
-.MuiDateRangeCalendar-root > div:first-child {
+.MuiDateRangeCalendar-root>div:first-child {
   display: none !important;
 }
 
@@ -8,9 +8,10 @@
   @apply m-0!;
 }
 
-.dark .MuiPopper-root > div {
+.dark .MuiPopper-root>div {
   @apply dark:bg-gray-800!;
 }
+
 .dark .MuiPopover-root.MuiModal-root .MuiPaper-root {
   @apply dark:bg-gray-800!;
   --Paper-overlay: none !important;
@@ -26,6 +27,7 @@
 .MuiDataGrid-columnHeader {
   @apply bg-gray-50! dark:bg-gray-900! dark:border-gray-700! capitalize!;
 }
+
 .MuiDataGrid-toolbar {
   @apply min-h-auto!;
 }
@@ -133,6 +135,7 @@ input[type="number"] {
 .advanced-search.MuiPaper-elevation {
   @apply bg-white! dark:bg-gray-900! shadow-theme-sm;
 }
+
 .advanced-search .MuiAccordion-heading {
   @apply text-gray-700 dark:text-gray-300;
 }
@@ -144,12 +147,14 @@ input[type="number"] {
 .currency-btn.Mui-disabled {
   @apply bg-gray-200! text-gray-400! dark:bg-gray-700! dark:text-gray-400!;
 }
+
 .status-partial,
 .status-partial_invoice_created,
 .status-partial_delivery_challan_created,
 .status-pending {
   @apply text-white capitalize text-center w-full bg-amber-500 dark:bg-amber-600 h-6 leading-6 rounded-sm;
 }
+
 .status-cleared,
 .status-active,
 .status-completed,
@@ -160,6 +165,7 @@ input[type="number"] {
 .status-approved {
   @apply text-white capitalize text-center w-full bg-green-500 dark:bg-green-600 h-6 leading-6 rounded-sm;
 }
+
 .status-unclear,
 .status-inactive,
 .status-returned,
@@ -173,7 +179,7 @@ input[type="number"] {
 }
 
 .status-open {
-  @apply text-white capitalize text-center w-full bg-cyan-400  dark:bg-cyan-500  h-6 leading-6 rounded-sm;
+  @apply text-white capitalize text-center w-full bg-cyan-400 dark:bg-cyan-500 h-6 leading-6 rounded-sm;
 }
 
 .status-in_progress {
@@ -186,12 +192,15 @@ input[type="number"] {
 .status-invoice-created {
   @apply text-white capitalize text-center w-full bg-blue-500 dark:bg-blue-600 h-6 leading-6 rounded-sm px-2;
 }
+
 .status-partially_cancelled {
   @apply text-white capitalize text-center w-full bg-gray-500 dark:bg-gray-600 h-6 leading-6 rounded-sm px-2;
 }
+
 .status-order-created {
   @apply text-white capitalize text-center w-full bg-cyan-500 dark:bg-cyan-600 h-6 leading-6 rounded-sm px-2;
 }
+
 .iconButtonStyle {
   @apply w-11 h-8.5 rounded-md! border! border-gray-200! dark:border-gray-600!;
 }

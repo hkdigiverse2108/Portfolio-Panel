@@ -13,5 +13,6 @@ import CommonDeleteModal from "./Modal/CommonDeleteModal";
 import CommonModal from "./Modal/CommonModal";
 import CommonProfileAvatar from "./CommonProfileAvatar";
 import CommonBgEffect from "./CommonBgEffect";
+import CommonLineChart from "./CommonLineChart";
 
-export { CalculateGridSummary, CommonActionColumn, CommonBottomActionBar, CommonBreadcrumbs, CommonCard, CommonDataGrid, CommonDataGridSummaryFooter, CommonDeleteModal, CommonDrawer, CommonImageBox, CommonModal, CommonProfileAvatar, CommonTabPanel, CommonTable, CommonUpload, CommonBgEffect };
+export { CalculateGridSummary, CommonActionColumn, CommonBottomActionBar, CommonBreadcrumbs, CommonCard, CommonDataGrid, CommonDataGridSummaryFooter, CommonDeleteModal, CommonDrawer, CommonImageBox, CommonLineChart, CommonModal, CommonProfileAvatar, CommonTabPanel, CommonTable, CommonUpload, CommonBgEffect };

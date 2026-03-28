@@ -1,9 +1,9 @@
-import { Box, Grid } from "@mui/material";
-import { LineChart } from "@mui/x-charts/LineChart";
+import { Grid } from "@mui/material";
 import { useState } from "react";
 import { CommonDateRangeSelector } from "../../Attribute";
 import { DateConfig } from "../../Utils";
-import { CommonCard } from "../Common";
+import { CommonCard, CommonLineChart } from "../Common";
+
 
 const VisitorsAnalytics = () => {
   const currentYear = new Date().getFullYear();
@@ -27,33 +27,23 @@ const VisitorsAnalytics = () => {
 
   return (
     <CommonCard title="Visitors Analytics" topContent={topContent} grid={{ xs: 12 }} paperProps={{ className: "!rounded-2xl shadow-sm dark:shadow-none bg-white! dark:bg-[#111111]!" }}>
-      <Box className="w-full h-[400px] p-2 sm:p-4">
-        <LineChart
-          xAxis={[
-            {
-              data: !isMonthView ? ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"] : ["Week 1", "Week 2", "Week 3", "Week 4"],
-              scaleType: "point",
-            },
-          ]}
-          series={[
-            {
-              data: !isMonthView ? [120, 180, 150, 300, 250, 400, 350] : [1000, 1200, 1500, 2300],
-              area: true,
-              color: "#3b82f6",
-              label: "Visitors",
-              showMark: true,
-            },
-          ]}
-          margin={{ top: 30, bottom: 50, left: 50, right: 30 }}
-          sx={{
-            ".MuiLineElement-root": { strokeWidth: 3 },
-            ".MuiAreaElement-root": { fillOpacity: 0.15 },
-            ".MuiChartsAxis-line": { stroke: "#9ca3af" },
-            ".MuiChartsAxis-tick": { stroke: "#9ca3af" },
-            ".MuiChartsAxis-tickLabel": { fill: "#6b7280" },
-          }}
-        />
-      </Box>
+      <CommonLineChart
+        xAxis={[
+          {
+            data: !isMonthView ? ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"] : ["Week 1", "Week 2", "Week 3", "Week 4"],
+            scaleType: "point",
+          },
+        ]}
+        series={[
+          {
+            data: !isMonthView ? [120, 180, 150, 300, 250, 400, 350] : [1000, 1200, 1500, 2300],
+            area: true,
+            color: "#3b82f6",
+            label: "Visitors",
+            showMark: true,
+          },
+        ]}
+      />
     </CommonCard>
   );
 };
