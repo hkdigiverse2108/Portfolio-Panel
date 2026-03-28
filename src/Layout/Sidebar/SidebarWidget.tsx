@@ -18,12 +18,22 @@ const SidebarWidget = () => {
     youtube: YouTubeIcon,
     whatsapp: WhatsAppIcon,
   };
+  // Default links in case adminSetting is empty or null
+  const defaultLinks = [
+    { icon: "facebook", link: "https://facebook.com", isActive: true },
+    { icon: "twitter", link: "https://twitter.com", isActive: true },
+    { icon: "linkedin", link: "https://linkedin.com", isActive: true },
+    { icon: "instagram", link: "https://instagram.com", isActive: true },
+  ];
+
+  const socialLinks = adminSetting?.links?.length ? adminSetting.links : defaultLinks;
+
   return (
     <div className="mx-auto mb-10 w-full max-w-60 rounded-2xl bg-gray-50 px-4 py-5 text-center dark:bg-gray-dark">
       <p className="mb-4 text-gray-700 text-theme-sm dark:text-gray-400">Want insider tips & updates? Follow us:</p>
 
       <div className="flex flex-wrap justify-center items-center gap-2">
-        {adminSetting?.links?.map((item, index) => {
+        {socialLinks.map((item, index) => {
           const IconComponent = iconMap[item?.icon?.toLowerCase() as keyof typeof iconMap];
 
           if (!IconComponent) return null;
