@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { STORAGE_KEYS } from "../../Constants";
 import { Storage, Stringify } from "../../Utils";
+import type { LoginResponse } from "../../Types";
 
 const StoredUser = JSON.parse(Storage.getItem(STORAGE_KEYS.USER) || "null");
 const StoredToken = Storage.getItem(STORAGE_KEYS.TOKEN) || null;
@@ -9,7 +10,7 @@ const initialState = {
   token: StoredToken,
   user: StoredUser,
   isAuthenticated: !!StoredToken,
-  signinResponse: null as { email: string; otp?: string } | null,
+  signinResponse: null as { email: string; otp?: string; type?: "signin" | "forgot-password"; responseData?: LoginResponse["data"] } | null,
 };
 
 const authSlice = createSlice({

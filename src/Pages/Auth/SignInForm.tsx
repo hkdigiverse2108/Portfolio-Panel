@@ -8,21 +8,30 @@ import { Mutations } from "../../Api";
 import type { LoginPayload } from "../../Types";
 import { useAppDispatch } from "../../Store/hooks";
 import { Link, useNavigate } from "react-router-dom";
-import { setSignin } from "../../Store/Slices/AuthSlice";
+import { setSigninResponse } from "../../Store/Slices/AuthSlice";
 
 const SignInForm = () => {
   const { mutate: Signin, isPending: isSigninPending } = Mutations.useSignin();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
+  const { mutate: ResendOtp, isPending: isResendOtpPending } = Mutations.useResendOtp();
+
   const handleSubmit = async (values: LoginPayload, { resetForm }: FormikHelpers<LoginPayload>) => {
     Signin(
       { ...values, email: values.email.toLowerCase() },
       {
         onSuccess: (response) => {
-          dispatch(setSignin(response?.data));
-          navigate(ROUTES.DASHBOARD);
-          resetForm();
+          ResendOtp(
+            { email: values.email.toLowerCase() },
+            {
+              onSuccess: () => {
+                dispatch(setSigninResponse({ email: values.email.toLowerCase(), type: "signin", responseData: response?.data }));
+                navigate(ROUTES.AUTH.VERIFY_OTP);
+                resetForm();
+              },
+            }
+          );
         },
       },
     );
@@ -68,7 +77,7 @@ const SignInForm = () => {
                     Forgot Password?
                   </Link>
                 </div>
-                <CommonButton loading={isSigninPending} type="submit" variant="contained" title="Login" size="large" fullWidth grid={{ xs: 12 }} />
+                <CommonButton loading={isSigninPending || isResendOtpPending} type="submit" variant="contained" title="Login" size="large" fullWidth grid={{ xs: 12 }} />
               </Grid>
             </Form>
           </Formik>
