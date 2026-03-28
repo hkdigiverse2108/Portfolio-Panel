@@ -110,7 +110,7 @@ const Sidebar = () => {
             <button onClick={() => handleSubmenuToggle(index, menuType)} className={`menu-item w-full group ${openSubmenu?.type === menuType && openSubmenu?.index === index ? "menu-item-active" : "menu-item-inactive"} cursor-pointer ${!isExpanded && !isHovered ? "lg:justify-center" : "lg:justify-start"}`}>
               <span className={`menu-item-icon-size  ${openSubmenu?.type === menuType && openSubmenu?.index === index ? "menu-item-icon-active" : "menu-item-icon-inactive"}`}>{nav.icon}</span>
               {(isExpanded || isHovered || isMobileOpen) && <span className="menu-item-text">{nav.name}</span>}
-              {(isExpanded || isHovered || isMobileOpen) && <KeyboardArrowDownRoundedIcon className={`ml-auto w-5 h-5 transition-transform duration-200 ${openSubmenu?.type === menuType && openSubmenu?.index === index ? "rotate-180 text-brand-500" : ""}`} />}
+              {(isExpanded || isHovered || isMobileOpen) && <KeyboardArrowDownRoundedIcon className={`ml-auto w-5 h-5 transition-transform duration-200 ${openSubmenu?.type === menuType && openSubmenu?.index === index ? "rotate-180 text-gray-900 dark:text-brand-400" : ""}`} />}
             </button>
           ) : (
             nav.path && (
@@ -152,7 +152,7 @@ const Sidebar = () => {
 
   return (
     <aside
-      className={`fixed mt-16 flex flex-col lg:mt-0 top-0 px-5 left-0 bg-white dark:bg-gray-900 dark:border-gray-800 text-gray-900 h-screen transition-all duration-300 ease-in-out z-50 border-r border-gray-200 
+      className={`fixed mt-16 flex flex-col lg:mt-0 top-0 px-5 left-0 bg-gray-50 dark:bg-gray-dark dark:border-gray-800 text-gray-900 h-screen transition-all duration-300 ease-in-out z-50 border-r border-gray-200 
         ${isExpanded || isMobileOpen ? "w-[290px]" : isHovered ? "w-[290px]" : "w-[90px]"}
         ${isMobileOpen ? "translate-x-0" : "-translate-x-full"}
         lg:translate-x-0 overflow-hidden`}
@@ -166,11 +166,11 @@ const Sidebar = () => {
         <Link to="/" className="text-xl font-bold text-gray-800 dark:text-gray-100 flex items-center gap-2 ml-1">
           {isExpanded || isHovered || isMobileOpen ? (
             <>
-              <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold text-sm">PA</div>
+              <div className="w-8 h-8 rounded-lg bg-gray-800 dark:bg-brand-500 flex items-center justify-center text-white font-bold text-sm">PA</div>
               <span className="hidden sm:block">{ThemeTitle}</span>
             </>
           ) : (
-            <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold text-sm">PA</div>
+            <div className="w-8 h-8 rounded-lg bg-gray-800 dark:bg-brand-500 flex items-center justify-center text-white font-bold text-sm">PA</div>
           )}
         </Link>
         {width >= 1024 && (isMobileOpen || isExpanded) && (

@@ -47,6 +47,17 @@
   --color-brand-900: #664E1C;
   --color-brand-950: #3d2d0c;
 
+  --color-blue-50: var(--blue-50);
+  --color-blue-100: var(--blue-100);
+  --color-blue-200: var(--blue-200);
+  --color-blue-300: var(--blue-300);
+  --color-blue-400: var(--blue-400);
+  --color-blue-500: var(--blue-500);
+  --color-blue-600: var(--blue-600);
+  --color-blue-700: var(--blue-700);
+  --color-blue-800: var(--blue-800);
+  --color-blue-900: var(--blue-900);
+
   --color-blue-light-25: #f5fbff;
   --color-blue-light-50: #f0f9ff;
   --color-blue-light-100: #e0f2fe;
@@ -162,11 +173,33 @@
 }
 
 .dark {
+  --blue-50: #664E1C1A; /* brand-900 at 10% opacity roughly */
+  --blue-100: #f7eab7;
+  --blue-200: #f0d68a;
+  --blue-300: #e6c55c;
+  --blue-400: #dfba45;
+  --blue-500: #D4AF37;
+  --blue-600: #B89326;
+  --blue-700: #96751A;
+  --blue-800: #7A5E19;
+  --blue-900: #664E1C;
+
   --ray-color: #D4AF37;
   --ray-shadow: rgba(212, 175, 55, 0.6);
 }
 
 :root:not(.dark) {
+  --blue-50: #F9FAFB;
+  --blue-100: #F3F4F6;
+  --blue-200: #E5E7EB;
+  --blue-300: #D1D5DB;
+  --blue-400: #9CA3AF;
+  --blue-500: #101828;
+  --blue-600: #101828;
+  --blue-700: #101828;
+  --blue-800: #101828;
+  --blue-900: #101828;
+
   --ray-color: #000000;
   --ray-shadow: rgba(0, 0, 0, 0.4);
 }

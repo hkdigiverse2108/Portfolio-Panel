@@ -3,9 +3,11 @@ import { useState } from "react";
 import { CommonDateRangeSelector } from "../../Attribute";
 import { DateConfig } from "../../Utils";
 import { CommonCard, CommonLineChart } from "../Common";
+import { useAppSelector } from "../../Store/hooks";
 
 
 const VisitorsAnalytics = () => {
+  const { isToggleTheme } = useAppSelector((state) => state.layout);
   const currentYear = new Date().getFullYear();
   const currentMonth = new Date().getMonth();
   const fyStart = currentMonth < 3 ? `${currentYear - 1}-04-01` : `${currentYear}-04-01`;
@@ -38,7 +40,7 @@ const VisitorsAnalytics = () => {
           {
             data: !isMonthView ? [120, 180, 150, 300, 250, 400, 350] : [1000, 1200, 1500, 2300],
             area: true,
-            color: "#3b82f6",
+            color: isToggleTheme === "dark" ? "#D4AF37" : "#101828",
             label: "Visitors",
             showMark: true,
           },
