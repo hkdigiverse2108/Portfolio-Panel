@@ -1,32 +1,41 @@
 import { Grid } from "@mui/material";
 import { Form, Formik, type FormikHelpers } from "formik";
+import { useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { Mutations } from "../../Api";
 import { CommonButton, CommonValidationTextField } from "../../Attribute";
 import { ImagePath, ROUTES, ThemeTitle } from "../../Constants";
 import ThemeToggler from "../../Layout/ThemeToggler";
-import { SigninSchema } from "../../Utils/ValidationSchemas";
-import { Mutations } from "../../Api";
-import type { LoginPayload } from "../../Types";
-import { useAppDispatch } from "../../Store/hooks";
-import { Link, useNavigate } from "react-router-dom";
-import { setSignin } from "../../Store/Slices/AuthSlice";
+import { useAppSelector } from "../../Store/hooks";
+import { ResetPasswordSchema } from "../../Utils/ValidationSchemas";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import type { UpdatePasswordFormValues, UpdatePasswordPayload } from "../../Types";
 
-const SignInForm = () => {
-  const { mutate: Signin, isPending: isSigninPending } = Mutations.useSignin();
-  const dispatch = useAppDispatch();
+const UpdatePassword = () => {
   const navigate = useNavigate();
+  const { signinResponse } = useAppSelector((state) => state.auth);
+  const { mutate: resetPassword, isPending: isLoading } = Mutations.useUpdatePassword();
 
-  const handleSubmit = async (values: LoginPayload, { resetForm }: FormikHelpers<LoginPayload>) => {
-    Signin(
-      { ...values, email: values.email.toLowerCase() },
-      {
-        onSuccess: (response) => {
-          dispatch(setSignin(response?.data));
-          navigate(ROUTES.DASHBOARD);
-          resetForm();
-        },
-      },
-    );
+  const handleSubmit = async (values: UpdatePasswordFormValues, { resetForm }: FormikHelpers<UpdatePasswordFormValues>) => {
+    const payload: UpdatePasswordPayload = {
+      email: signinResponse?.email || "",
+      newPassword: values.newPassword,
+      confirmPassword: values.confirmPassword,
+    };
+
+    resetPassword(payload, {
+      onSuccess: () => {
+        resetForm();
+        navigate(ROUTES.AUTH.SIGNIN);
+      }, 
+    });
   };
+
+  useEffect(() => {
+    if (!signinResponse?.email) {
+      navigate(ROUTES.AUTH.SIGNIN);
+    }
+  }, [navigate, signinResponse]);
 
   return (
     <div className="flex items-center justify-center w-full h-screen relative px-4 overflow-hidden bg-gray-50 dark:bg-gray-dark">
@@ -52,23 +61,24 @@ const SignInForm = () => {
 
         {/* WELCOME TEXT */}
         <div className="mb-6 w-full text-center">
-          <h1 className="mb-2 font-semibold text-gray-800 text-title-sm dark:text-white/90">Welcome Back</h1>
-          <p className="text-sm text-gray-500 dark:text-gray-400">Enter your email and password to sign in</p>
+          <h1 className="mb-2 font-semibold text-gray-800 text-title-sm dark:text-white/90">Reset Password</h1>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Please enter your new password to reset.</p>
         </div>
 
         {/* FORM */}
         <div className="w-full">
-          <Formik initialValues={{ email: "", password: "" }} validationSchema={SigninSchema} onSubmit={handleSubmit}>
+          <Formik initialValues={{ newPassword: "", confirmPassword: "" }} validationSchema={ResetPasswordSchema} onSubmit={handleSubmit}>
             <Form>
               <Grid container spacing={2.5}>
-                <CommonValidationTextField name="email" label="Email Address" placeholder="Enter your email" required isFormLabel grid={{ xs: 12 }} />
-                <CommonValidationTextField name="password" label="Password" type="password" placeholder="Enter your password" required isFormLabel showPasswordToggle grid={{ xs: 12 }} />
+                <CommonValidationTextField name="newPassword" label="New Password" placeholder="Enter new password" type="password" required isFormLabel showPasswordToggle grid={{ xs: 12 }} />
+                <CommonValidationTextField name="confirmPassword" label="Confirm Password" placeholder="Confirm your new password" type="password" required isFormLabel showPasswordToggle grid={{ xs: 12 }} />
                 <div className="flex justify-end w-full">
-                  <Link to={ROUTES.FORGOT_PASSWORD.BASE} className="text-xs font-medium text-brand-950 dark:text-white/90 hover:underline">
-                    Forgot Password?
+                  <Link to={ROUTES.AUTH.SIGNIN} className="flex items-center text-xs font-medium text-brand-950 dark:text-white/90 hover:underline">
+                    <ArrowBackIosIcon sx={{ fontSize: 12, mr: 0.5 }} />
+                    Back to Sign In
                   </Link>
                 </div>
-                <CommonButton loading={isSigninPending} type="submit" variant="contained" title="Login" size="large" fullWidth grid={{ xs: 12 }} />
+                <CommonButton loading={isLoading} type="submit" variant="contained" title="Reset Password" size="large" fullWidth grid={{ xs: 12 }} />
               </Grid>
             </Form>
           </Formik>
@@ -83,4 +93,4 @@ const SignInForm = () => {
   );
 };
 
-export default SignInForm;
+export default UpdatePassword;

@@ -4,5 +4,10 @@ export const ROUTES = {
   ACCESS_DENIED: "/access-denied",
   AUTH: {
     SIGNIN: "/auth/signin",
+    VERIFY_OTP: "/auth/verify-otp",
+    RESET_PASSWORD: "/auth/reset-password",
+  },
+  FORGOT_PASSWORD: {
+    BASE: "/auth/forgot-password",
   },
 } as const;

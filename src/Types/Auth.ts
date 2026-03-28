@@ -25,3 +25,27 @@ export interface LoginResponse extends MessageStatus {
     user: User;
   };
 }
+
+export interface ForgotPasswordPayload {
+  email: string;
+}
+
+export interface VerifyOtpPayload {
+  email: string;
+  otp: string;
+}
+
+export interface UpdatePasswordPayload {
+  email: string;
+  newPassword: string;
+  confirmPassword: string;
+}
+
+export interface UpdatePasswordFormValues {
+  newPassword: string;
+  confirmPassword: string;
+}
+
+export interface ResendOtpPayload {
+  email: string;
+}

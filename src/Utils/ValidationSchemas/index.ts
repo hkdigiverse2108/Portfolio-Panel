@@ -43,10 +43,7 @@ export const RequiredWhen = (dependentField: string, requiredValues: Primitive[]
 // ---------- Reusable helpers ----------
 
 // const ImageSchema = (label: string, required = true) => Validation("array", label, required ? { minItems: 1 } : { required: false });
-export const PhoneValidation = (
-  label = "Phone No",
-  options?: { requiredCountryCode?: boolean; requiredNumber?: boolean },
-) =>
+export const PhoneValidation = (label = "Phone No", options?: { requiredCountryCode?: boolean; requiredNumber?: boolean }) =>
   Yup.object({
     countryCode: Validation("string", "Country code", {
       required: options?.requiredCountryCode ?? true,
@@ -54,8 +51,7 @@ export const PhoneValidation = (
 
     phoneNo: Validation("string", label, {
       required: options?.requiredNumber ?? true,
-      extraRules: (s) =>
-        s.trim().matches(/^[0-9]{10}$/, "Phone number must be 10 digits"),
+      extraRules: (s) => s.trim().matches(/^[0-9]{10}$/, "Phone number must be 10 digits"),
     }),
   });
 
@@ -65,11 +61,27 @@ export const SigninSchema = Yup.object({
     extraRules: (s) => s.email("Invalid email address"),
   }),
   password: Validation("string", "Password", {
-    extraRules: (s) =>
-      s.matches(
-        /[!@#$%^&*()_+={}:;"'<>,.?/-]/,
-        "Password must include at least one special character",
-      ),
+    extraRules: (s) => s.matches(/[!@#$%^&*()_+={}:;"'<>,.?/-]/, "Password must include at least one special character"),
   }),
 });
 
+export const ForgotPasswordSchema = Yup.object({
+  email: Validation("string", "Email", {
+    extraRules: (s) => s.email("Invalid email address"),
+  }),
+});
+
+export const VerifyOtpSchema = Yup.object({
+  otp: Validation("string", "OTP", {
+    extraRules: (s) => s.trim().length(6, "OTP must be 6 digits"),
+  }),
+});
+
+export const ResetPasswordSchema = Yup.object({
+  newPassword: Validation("string", "New Password", {
+    extraRules: (s) => s.matches(/[!@#$%^&*()_+={}:;"'<>,.?/-]/, "Password must include at least one special character"),
+  }),
+  confirmPassword: Validation("string", "Confirm Password")
+    .oneOf([Yup.ref("newPassword")], "Passwords must match")
+    .required("Confirm Password is required"),
+});
