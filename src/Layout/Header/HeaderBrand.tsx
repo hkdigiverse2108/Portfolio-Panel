@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-import { ThemeTitle } from "../../Constants";
 import { useAppDispatch, useAppSelector } from "../../Store/hooks";
 import { setToggleMobileSidebar, setToggleSidebar } from "../../Store/Slices/LayoutSlice";
 import { Menu as MenuIcon } from "@mui/icons-material";
@@ -28,12 +26,12 @@ const HeaderBrand = () => {
       </IconButton>
 
       
-      <Link to="/" className="text-xl font-bold text-gray-800 dark:text-gray-100 flex items-center gap-2 ml-1">
+      {/* <Link to="/" className="text-xl font-bold text-gray-800 dark:text-gray-100 flex items-center gap-2 ml-1">
         <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold text-sm">
           PA
         </div>
         <span className="hidden sm:block">{ThemeTitle}</span>
-      </Link>
+      </Link> */}
     </div>
   );
 };

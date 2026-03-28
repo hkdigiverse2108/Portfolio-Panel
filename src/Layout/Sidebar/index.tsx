@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from "../../Store/hooks";
 import { setIsHovered, setToggleMobileSidebar, setToggleSidebar } from "../../Store/Slices/LayoutSlice";
 import type { ChildDetailsApiResponse, NavItem } from "../../Types";
 import SidebarWidget from "./SidebarWidget";
-import { ImagePath } from "../../Constants";
+import { ThemeTitle } from "../../Constants";
 import { useWindowWidth } from "../../Utils/Hooks";
 import { CommonBgEffect } from "../../Components/Common";
 
@@ -47,7 +47,6 @@ const filterNavItems = (navItems: NavItem[], permissions: ChildDetailsApiRespons
     })
     .filter(Boolean) as NavItem[];
 };
-
 
 const Sidebar = () => {
   const { isExpanded, isMobileOpen, isHovered, permission } = useAppSelector((state) => state.layout);
@@ -164,14 +163,14 @@ const Sidebar = () => {
       <CommonBgEffect />
 
       <div className={`relative z-10 py-4 flex ${!isExpanded && !isHovered ? "lg:justify-center" : "justify-between"}`}>
-        <Link to="/" className="flex items-center">
+        <Link to="/" className="text-xl font-bold text-gray-800 dark:text-gray-100 flex items-center gap-2 ml-1">
           {isExpanded || isHovered || isMobileOpen ? (
             <>
-              <img className="dark:hidden" src={`${ImagePath}logo/logo.png`} alt="Logo" />
-              <img className="hidden dark:block" src={`${ImagePath}logo/logo-dark.png`} alt="Logo" />
+              <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold text-sm">PA</div>
+              <span className="hidden sm:block">{ThemeTitle}</span>
             </>
           ) : (
-            <img src={`${ImagePath}logo/logo-icon.png`} alt="Logo" />
+            <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold text-sm">PA</div>
           )}
         </Link>
         {width >= 1024 && (isMobileOpen || isExpanded) && (
@@ -198,4 +197,3 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
-
