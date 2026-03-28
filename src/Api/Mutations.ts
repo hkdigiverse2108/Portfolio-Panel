@@ -1,8 +1,8 @@
 import { KEYS, URL_KEYS } from "../Constants";
 import type { ForgotPasswordPayload, LoginPayload, LoginResponse, ResendOtpPayload, UpdatePasswordPayload, VerifyOtpPayload } from "../Types";
-import { Post } from "./Methods";
+import { Delete, Post } from "./Methods";
 import { useMutations } from "./ReactQuery";
-import type { MessageStatus } from "../Types/Common";
+import type { MessageStatus, UploadResponse } from "../Types/Common";
 
 export const Mutations = {
   // ************ Auth ***********
@@ -15,4 +15,8 @@ export const Mutations = {
   useUpdatePassword: () => useMutations<UpdatePasswordPayload, MessageStatus>([KEYS.AUTH.RESET_PASSWORD], (input) => Post(URL_KEYS.AUTH.UPDATE_PASSWORD, input, false)),
 
   useResendOtp: () => useMutations<ResendOtpPayload, MessageStatus>([KEYS.AUTH.RESEND_OTP], (input) => Post(URL_KEYS.AUTH.RESEND_OTP, input, false)),
+
+   // ************ Upload ***********
+  useUpload: () => useMutations<FormData, UploadResponse>([KEYS.UPLOAD.ADD, KEYS.UPLOAD.ALL_IMAGE, KEYS.UPLOAD.ALL_PDF], (input) => Post(URL_KEYS.UPLOAD.ADD, input)),
+  useDeleteUpload: () => useMutations<{ fileUrl: string }, void>([KEYS.UPLOAD.DELETE, KEYS.UPLOAD.ALL_IMAGE, KEYS.UPLOAD.ALL_PDF], (id) => Delete(`${URL_KEYS.UPLOAD.DELETE}`, id)),
 };

@@ -4,6 +4,7 @@ import { Outlet } from "react-router-dom";
 import { setIsMobile } from "../Store/Slices/LayoutSlice";
 
 
+import Header from "./Header/index";
 
 const Layout = () => {
   const dispatch = useDispatch();
@@ -27,8 +28,9 @@ const Layout = () => {
 
   return (
     <>
-      <div className="min-h-screen overflow-hidden bg-white dark:bg-gray-dark transition-colors duration-300">
-        <div className="w-full h-full">
+      <div className="flex flex-col min-h-screen bg-white dark:bg-gray-dark transition-colors duration-300">
+        <Header />
+        <div className="w-full h-full flex-grow">
           <Outlet />
         </div>
       </div>

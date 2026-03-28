@@ -20,6 +20,6 @@ const ModalSlice = createSlice({
   },
 });
 
-export const { } = ModalSlice.actions;
+export const {setSelectedFiles, setUploadModal } = ModalSlice.actions;
 
 export default ModalSlice.reducer;

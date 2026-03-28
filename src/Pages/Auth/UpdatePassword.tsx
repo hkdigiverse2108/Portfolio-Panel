@@ -10,6 +10,7 @@ import { useAppSelector } from "../../Store/hooks";
 import { ResetPasswordSchema } from "../../Utils/ValidationSchemas";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import type { UpdatePasswordFormValues, UpdatePasswordPayload } from "../../Types";
+import { CommonBgEffect } from "../../Components/Common";
 
 const UpdatePassword = () => {
   const navigate = useNavigate();
@@ -40,15 +41,7 @@ const UpdatePassword = () => {
   return (
     <div className="flex items-center justify-center w-full h-screen relative px-4 overflow-hidden bg-gray-50 dark:bg-gray-dark">
       {/* BACKGROUND EFFECTS */}
-      <div className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden">
-        {/* GOLDEN RAYS */}
-        <div className="golden-ray-static top-[40%] left-[-25%]"></div>
-        <div className="golden-ray-static top-[60%] left-[-25%] opacity-40"></div>
-
-        {/* PATTERNS */}
-        <img src={`${ImagePath}logo/grid-01.svg`} alt="pattern" className="absolute right-0 top-0 w-full max-w-[300px] xl:max-w-[500px] opacity-20 dark:opacity-10" />
-        <img src={`${ImagePath}logo/grid-01.svg`} alt="pattern" className="absolute bottom-0 left-0 w-full max-w-[300px] rotate-180 xl:max-w-[500px] opacity-20 dark:opacity-10" />
-      </div>
+      <CommonBgEffect />
 
       {/* CENTERED CARD */}
       <div className="relative z-10 w-full max-w-[420px] p-8 sm:p-10 bg-white dark:bg-[#171717] border border-gray-200 dark:border-[#333333] rounded-2xl shadow-theme-lg dark:shadow-theme-dark-lg flex flex-col items-center">

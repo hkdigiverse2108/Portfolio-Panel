@@ -1,35 +1,39 @@
-import { ImagePath, ThemeTitle } from "../../Constants";
+import { Grid, Typography, Box } from "@mui/material";
+import { CommonBgEffect } from "../../Components/Common";
+import { StatsCards, VisitorsAnalytics, RecentMessages, QuickActions, RecentActivity } from "../../Components/Dashboard";
 
 const Dashboard = () => {
   return (
-    <div className="flex items-center justify-center w-full min-h-screen relative px-4 overflow-hidden bg-gray-50 dark:bg-gray-dark">
+    <Box className="w-full min-h-screen relative p-4 sm:p-6 lg:p-8 bg-gray-50/50 dark:bg-transparent overflow-x-clip">
       {/* BACKGROUND EFFECTS */}
-      <div className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden">
-        {/* GOLDEN RAYS */}
-        <div className="golden-ray-static top-[40%] left-[-25%]"></div>
-        <div className="golden-ray-static top-[60%] left-[-25%] opacity-40"></div>
+      <CommonBgEffect />
 
-        {/* PATTERNS */}
-        <img src={`${ImagePath}logo/grid-01.svg`} alt="pattern" className="absolute right-0 top-0 w-full max-w-[300px] xl:max-w-[500px] opacity-20 dark:opacity-10" />
-        <img src={`${ImagePath}logo/grid-01.svg`} alt="pattern" className="absolute bottom-0 left-0 w-full max-w-[300px] rotate-180 xl:max-w-[500px] opacity-20 dark:opacity-10" />
-      </div>
+      <Box className="relative z-10 max-w-7xl mx-auto flex flex-col gap-6">
+        {/* Header */}
+        <Box className="mb-2">
+          <Typography className="text-2xl font-bold text-gray-800! dark:text-white! mb-1">Overview</Typography>
+          <Typography className="text-sm text-gray-500! dark:text-gray-400!">Monitor your portfolio performance and activities.</Typography>
+        </Box>
 
-      {/* CENTERED CARD */}
-      <div className="relative z-10 w-full max-w-[600px] p-8 sm:p-10 bg-white dark:bg-[#171717] border border-gray-200 dark:border-[#333333] rounded-2xl shadow-theme-lg dark:shadow-theme-dark-lg flex flex-col items-center">
-        {/* LOGO SECTION */}
-        <div className="flex flex-col items-center mb-6 text-center">
-          <img src={`${ImagePath}logo/logo.png`} alt="Portfolio Logo" className="w-auto h-11 object-contain block dark:hidden" />
-          <img src={`${ImagePath}logo/logo-dark.png`} alt="Portfolio Logo" className="w-auto h-11 object-contain hidden dark:block" />
-          <p className="text-gray-500 text-xs sm:text-sm font-medium mt-2">{ThemeTitle}</p>
-        </div>
+        {/* Top Section - Stats Cards */}
+        <StatsCards />
 
-        {/* WELCOME TEXT */}
-        <div className="mb-6 w-full text-center">
-          <h1 className="mb-2 font-semibold text-gray-800 text-title-sm dark:text-white/90">Welcome to Dashboard</h1>
-          <p className="text-sm text-gray-500 dark:text-gray-400">Manage your portfolio and track your progress!</p>
-        </div>
-      </div>
-    </div>
+        {/* Main Section - Visitors Analytics Graph */}
+        <VisitorsAnalytics />
+
+        {/* Secondary Section - Recent Messages vs Quick Actions */}
+        <Grid container spacing={3}>
+          {/* Left Column - Recent Messages */}
+          <RecentMessages />
+
+          {/* Right Column - Quick Actions */}
+          <QuickActions />
+        </Grid>
+
+        {/* Bottom Section - Recent Activity Feed */}
+        <RecentActivity />
+      </Box>
+    </Box>
   );
 };
 

@@ -9,4 +9,11 @@ export const URL_KEYS = {
   DASHBOARD: {
     BASE: "/dashboard",
   },
+
+  UPLOAD: {
+    ADD: "/upload",
+    DELETE: "/delete",
+    ALL_IMAGE: "/all-image",
+    ALL_PDF: "/all-pdf",
+  },
 } as const;
