@@ -1,7 +1,8 @@
 export const PAGE_TITLE = {
   DASHBOARD: "Dashboard",
-  SETTING: {
-    BASE: "Setting",
+  SETTINGS: {
+    BASE: "Settings",
     CHANGE_PASSWORD: "Change Password",
+    ADMIN: "Admin Settings",
   },
 } as const;

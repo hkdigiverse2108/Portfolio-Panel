@@ -7,6 +7,9 @@ export const URL_KEYS = {
     RESEND_OTP: "/auth/resend-otp",
     RESET_PASSWORD: "/auth/reset-password",
   },
+  USER: {
+    UPDATE_PROFILE: "/user/profile",
+  },
   DASHBOARD: {
     BASE: "/dashboard",
   },

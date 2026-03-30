@@ -19,6 +19,11 @@ export interface CompanyDetails {
     value: string | number;
   }[];
 }
+export interface CommonProfileImageUploadProps {
+  fullName?: string;
+  profileImage?: string;
+  className?: string;
+}
 
 export interface PhoneNumberType {
   countryCode?: string;

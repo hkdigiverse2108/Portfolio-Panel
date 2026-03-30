@@ -22,7 +22,7 @@ const HeaderActions = () => {
   };
  const handleChangePassword = () => {
     handleClose();
-    navigate(ROUTES.SETTING.CHANGE_PASSWORD, { replace: true });
+    navigate(ROUTES.SETTINGS.CHANGE_PASSWORD, { replace: true });
   };
   const handleLogout = () => {
     handleClose();

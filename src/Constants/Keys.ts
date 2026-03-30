@@ -7,7 +7,9 @@ export const KEYS = {
     RESET_PASSWORD: "reset-password",
     RESEND_OTP: "resend-otp",
   },
-
+  USER: {
+    UPDATE_PROFILE: "update-profile",
+  },
   DASHBOARD: {
     BASE: "dashboard",
   },
