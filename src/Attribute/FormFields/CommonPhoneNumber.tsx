@@ -11,6 +11,13 @@ export const CommonPhoneNumber: FC<CommonPhoneNumberProps> = ({ countryCodeName,
 
   const [isFocused, setFocused] = useState(false);
 
+/**
+ * Handles change event of MuiTelInput component.
+ * Sets the countryCallingCode and nationalNumber of the formik field.
+ * If the country code is provided, updates the country state.
+ * @param {string} _ - Event string (not used)
+ * @param {MuiTelInputInfo} info - MuiTelInputInfo object containing countryCallingCode, nationalNumber and countryCode
+ */
   const handleChange = (_: string, info: MuiTelInputInfo) => {
     codeHelpers.setValue(info.countryCallingCode);
     numberHelpers.setValue(info.nationalNumber);

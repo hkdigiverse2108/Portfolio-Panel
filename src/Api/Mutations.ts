@@ -3,7 +3,7 @@ import type { ForgotPasswordPayload, LoginPayload, LoginResponse, ResendOtpPaylo
 import { Delete, Post, Put } from "./Methods";
 import { useMutations } from "./ReactQuery";
 import type { MessageStatus, UploadResponse } from "../Types/Common";
-import type { EditUserPayload, UserApiResponse } from "../Types/User";
+import type { UpdateUserPayload, UserApiResponse } from "../Types/User";
 
 export const Mutations = {
   // ************ Auth ***********
@@ -20,7 +20,8 @@ export const Mutations = {
   useResendOtp: () => useMutations<ResendOtpPayload, MessageStatus>([KEYS.AUTH.RESEND_OTP], (input) => Post(URL_KEYS.AUTH.RESEND_OTP, input, false)),
 
   // ************ User ***********
-  useEditUser: () => useMutations<EditUserPayload, UserApiResponse>([KEYS.USER.EDIT, KEYS.USER.BASE], (input) => Put(URL_KEYS.USER.EDIT, input)),
+  // useUpdateUser: () => useMutations<UpdateUserPayload, UserApiResponse>([KEYS.USER.UPDATE, KEYS.USER.BASE], (input) => Put(URL_KEYS.USER.UPDATE, input)),
+  useUpdateUser: () => useMutations<UpdateUserPayload, UserApiResponse>([KEYS.USER.UPDATE, KEYS.USER.BASE], (input) => Put(URL_KEYS.USER.UPDATE, input)),
   // ************ User ***********
   useUpdateProfile: () => useMutations<{ profileImage?: string }, MessageStatus>([KEYS.USER.UPDATE_PROFILE], (input) => Put(URL_KEYS.USER.UPDATE_PROFILE, input)),
 

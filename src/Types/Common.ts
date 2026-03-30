@@ -28,7 +28,7 @@ export interface CommonProfileImageUploadProps {
 
 export interface PhoneNumberType {
   countryCode?: string;
-  phoneNo?: string;
+  number?: string;
 }
 
 export type AppGridColDef<T extends GridValidRowModel> = GridColDef<T> & {
