@@ -9,6 +9,8 @@ export const URL_KEYS = {
   },
   USER: {
     UPDATE_PROFILE: "/user/profile",
+    EDIT: "/user/edit",
+    BASE: "/user",
   },
   DASHBOARD: {
     BASE: "/dashboard",

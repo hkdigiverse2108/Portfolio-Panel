@@ -4,7 +4,7 @@ export const BREADCRUMBS = {
   CHANGE_PASSWORD: {
     BASE: [{ label: PAGE_TITLE.SETTINGS.CHANGE_PASSWORD }],
   },
-  ADMIN_SETTING: {
-    BASE: [{ label: PAGE_TITLE.SETTINGS.ADMIN }],
+  PROFILE: {
+    BASE: [{ label: PAGE_TITLE.PROFILE.BASE }],
   },
 };

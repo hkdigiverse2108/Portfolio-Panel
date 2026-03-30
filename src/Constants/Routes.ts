@@ -15,4 +15,7 @@ export const ROUTES = {
     CHANGE_PASSWORD: "/settings/change-password",
     ADMIN: "/settings/admin",
   },
+  PROFILE: {
+    BASE: "/profile",
+  },
 } as const;

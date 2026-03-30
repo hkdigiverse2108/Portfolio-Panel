@@ -6,7 +6,7 @@ import ForgotPassword from "../Pages/Auth/ForgotPassword";
 import VerifyOtp from "../Pages/Auth/VerifyOtp";
 import UpdatePassword from "../Pages/Auth/UpdatePassword";
 import ChangePassword from "../Pages/Auth/ChangePassword";
-import AdminSettings from "../Pages/Settings/AdminSettings";
+import Profile from "../Pages/Profile";
 
 export const PageRoutes = [
   { path: ROUTES.HOME, name: PAGE_TITLE.DASHBOARD, element: <Navigate to={ROUTES.DASHBOARD} replace /> },
@@ -14,7 +14,7 @@ export const PageRoutes = [
   { path: ROUTES.DASHBOARD, name: PAGE_TITLE.DASHBOARD, element: <Dashboard /> },
 
   { path: ROUTES.SETTINGS.CHANGE_PASSWORD, name: PAGE_TITLE.SETTINGS.CHANGE_PASSWORD, element: <ChangePassword /> },
- { path: ROUTES.SETTINGS.ADMIN, name: PAGE_TITLE.SETTINGS.ADMIN, element: <AdminSettings /> },
+ { path: ROUTES.PROFILE.BASE, name: PAGE_TITLE.PROFILE.BASE, element: <Profile /> },
 ];
 export const AuthRoutes = [
   { path: ROUTES.HOME, element: <Navigate to={ROUTES.AUTH.SIGNIN} replace /> },

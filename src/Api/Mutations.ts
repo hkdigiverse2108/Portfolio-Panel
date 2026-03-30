@@ -3,6 +3,7 @@ import type { ForgotPasswordPayload, LoginPayload, LoginResponse, ResendOtpPaylo
 import { Delete, Post, Put } from "./Methods";
 import { useMutations } from "./ReactQuery";
 import type { MessageStatus, UploadResponse } from "../Types/Common";
+import type { EditUserPayload, UserApiResponse } from "../Types/User";
 
 export const Mutations = {
   // ************ Auth ***********
@@ -19,9 +20,11 @@ export const Mutations = {
   useResendOtp: () => useMutations<ResendOtpPayload, MessageStatus>([KEYS.AUTH.RESEND_OTP], (input) => Post(URL_KEYS.AUTH.RESEND_OTP, input, false)),
 
   // ************ User ***********
+  useEditUser: () => useMutations<EditUserPayload, UserApiResponse>([KEYS.USER.EDIT, KEYS.USER.BASE], (input) => Put(URL_KEYS.USER.EDIT, input)),
+  // ************ User ***********
   useUpdateProfile: () => useMutations<{ profileImage?: string }, MessageStatus>([KEYS.USER.UPDATE_PROFILE], (input) => Put(URL_KEYS.USER.UPDATE_PROFILE, input)),
 
-   // ************ Upload ***********
+  // ************ Upload ***********
   useUpload: () => useMutations<FormData, UploadResponse>([KEYS.UPLOAD.ADD, KEYS.UPLOAD.ALL_IMAGE, KEYS.UPLOAD.ALL_PDF], (input) => Post(URL_KEYS.UPLOAD.ADD, input)),
   useDeleteUpload: () => useMutations<{ fileUrl: string }, void>([KEYS.UPLOAD.DELETE, KEYS.UPLOAD.ALL_IMAGE, KEYS.UPLOAD.ALL_PDF], (id) => Delete(`${URL_KEYS.UPLOAD.DELETE}`, id)),
 };

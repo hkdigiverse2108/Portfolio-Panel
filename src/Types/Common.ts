@@ -5,6 +5,7 @@ import type { Dayjs } from "dayjs";
 import type { FocusEvent, ReactNode } from "react";
 export type GridType = number | object | "auto" | "grow";
 import * as Yup from "yup";
+import type { MuiTelInputProps } from "mui-tel-input";
 
 export interface CommonProfileAvatarProps {
   fullName?: string;
@@ -113,6 +114,15 @@ export interface CommonDateRangeSelectorProps {
   onChange: (range: { start: Dayjs; end: Dayjs }) => void;
   BoxClassName?: string;
   active?: string;
+}
+
+export interface CommonPhoneNumberProps extends Omit<MuiTelInputProps, "value" | "onChange" | "name" | "forceCallingCode"> {
+  countryCodeName: string; // Formik field
+  numberName: string; // Formik field
+  label?: string;
+  required?: boolean;
+  isFormLabel?: boolean;
+  grid?: object | number;
 }
 
 export type DatePickerOption = {

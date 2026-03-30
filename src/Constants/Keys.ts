@@ -9,6 +9,8 @@ export const KEYS = {
   },
   USER: {
     UPDATE_PROFILE: "update-profile",
+    EDIT: "edit-user",
+    BASE: "user",
   },
   DASHBOARD: {
     BASE: "dashboard",
