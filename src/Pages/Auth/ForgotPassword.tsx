@@ -1,7 +1,7 @@
 import { Grid } from "@mui/material";
 import { Form, Formik, type FormikHelpers } from "formik";
 import { CommonButton, CommonValidationTextField } from "../../Attribute";
-import { ImagePath, ROUTES, ThemeTitle } from "../../Constants";
+import {  ROUTES, ThemeTitle } from "../../Constants";
 import ThemeToggler from "../../Layout/ThemeToggler";
 import { ForgotPasswordSchema } from "../../Utils/ValidationSchemas";
 import { Mutations } from "../../Api";
@@ -10,7 +10,6 @@ import { useNavigate, Link } from "react-router-dom";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { useAppDispatch } from "../../Store/hooks";
 import { setSigninResponse } from "../../Store/Slices/AuthSlice";
-import { CommonBgEffect } from "../../Components/Common";
 
 const ForgotPassword = () => {
   const { mutate: forgotPassword, isPending: isForgotPasswordPending } = Mutations.useForgotPassword();
@@ -33,15 +32,14 @@ const ForgotPassword = () => {
   return (
     <div className="flex items-center justify-center w-full h-screen relative px-4 overflow-hidden bg-gray-50 dark:bg-gray-dark">
       {/* BACKGROUND EFFECTS */}
-      <CommonBgEffect />
+      {/* <CommonBgEffect /> */}
 
       {/* CENTERED CARD */}
       <div className="relative z-10 w-full max-w-[420px] p-8 sm:p-10 bg-white dark:bg-[#171717] border border-gray-200 dark:border-[#333333] rounded-2xl shadow-theme-lg dark:shadow-theme-dark-lg flex flex-col items-center">
         {/* LOGO SECTION */}
-        <div className="flex flex-col items-center mb-6 text-center">
-          <img src={`${ImagePath}logo/logo.png`} alt="Portfolio Logo" className="w-auto h-11 object-contain block dark:hidden" />
-          <img src={`${ImagePath}logo/logo-dark.png`} alt="Portfolio Logo" className="w-auto h-11 object-contain hidden dark:block" />
-          <p className="text-gray-500 text-xs sm:text-sm font-medium mt-2">{ThemeTitle}</p>
+        <div className="flex flex-col items-center mb-8 text-center">
+          <div className="w-14 h-14 rounded-2xl bg-gray-900 dark:bg-brand-500 shadow-md flex items-center justify-center text-white font-extrabold text-xl mb-2 transition-transform hover:scale-105">PA</div>
+          <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm font-semibold tracking-wide uppercase">{ThemeTitle}</p>
         </div>
 
         {/* WELCOME TEXT */}

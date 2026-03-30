@@ -4,7 +4,6 @@ import { CommonButton, CommonValidationTextField } from "../../Attribute";
 import { ROUTES, ThemeTitle } from "../../Constants";
 import ThemeToggler from "../../Layout/ThemeToggler";
 import { SigninSchema } from "../../Utils/ValidationSchemas";
-import { CommonBgEffect } from "../../Components/Common";
 import { Mutations } from "../../Api";
 import type { LoginPayload } from "../../Types";
 import { useAppDispatch } from "../../Store/hooks";
@@ -34,7 +33,7 @@ const SignInForm = () => {
   return (
     <div className="flex items-center justify-center w-full h-screen relative px-4 overflow-hidden bg-gray-50 dark:bg-gray-dark">
       {/* BACKGROUND EFFECTS */}
-      <CommonBgEffect />
+      {/* <CommonBgEffect /> */}
 
       {/* CENTERED CARD */}
       <div className="relative z-10 w-full max-w-[420px] p-8 sm:p-10 bg-white dark:bg-[#171717] border border-gray-200 dark:border-[#333333] rounded-2xl shadow-theme-lg dark:shadow-theme-dark-lg flex flex-col items-center">

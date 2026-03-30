@@ -9,7 +9,7 @@ import type { ChildDetailsApiResponse, NavItem } from "../../Types";
 import SidebarWidget from "./SidebarWidget";
 import { ThemeTitle } from "../../Constants";
 import { useWindowWidth } from "../../Utils/Hooks";
-import { CommonBgEffect } from "../../Components/Common";
+
 
 const filterNavItems = (navItems: NavItem[], permissions: ChildDetailsApiResponse[]): NavItem[] => {
   if (!permissions || permissions.length === 0) return navItems; // If no permissions, show all items (e.g., development or first load)
@@ -160,7 +160,7 @@ const Sidebar = () => {
       onMouseLeave={() => dispatch(setIsHovered(false))}
     >
       {/* Background with common effects to match page */}
-      <CommonBgEffect />
+      {/* <CommonBgEffect /> */}
 
       <div className={`relative z-10 py-4 flex ${!isExpanded && !isHovered ? "lg:justify-center" : "justify-between"}`}>
         <Link to="/" className="text-xl font-bold text-gray-800 dark:text-gray-100 flex items-center gap-2 ml-1">

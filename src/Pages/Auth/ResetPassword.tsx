@@ -4,7 +4,7 @@ import { Form, Formik } from "formik";
 import { useNavigate } from "react-router-dom";
 import { Mutations } from "../../Api";
 import { CommonButton, CommonValidationTextField } from "../../Attribute";
-import { CommonBgEffect, CommonBottomActionBar, CommonBreadcrumbs, CommonCard } from "../../Components/Common";
+import { CommonBottomActionBar, CommonBreadcrumbs, CommonCard } from "../../Components/Common";
 import { BREADCRUMBS } from "../../Data/Breadcrumbs";
 import { useAppSelector } from "../../Store/hooks";
 import type { ResetPasswordPayload } from "../../Types";

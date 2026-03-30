@@ -1,12 +1,11 @@
 import { Grid, Typography, Box } from "@mui/material";
-import { CommonBgEffect } from "../../Components/Common";
 import { StatsCards, VisitorsAnalytics, RecentMessages, QuickActions, RecentActivity } from "../../Components/Dashboard";
 
 const Dashboard = () => {
   return (
     <Box className="w-full min-h-screen relative p-4 sm:p-6 lg:p-8 bg-gray-50/50 dark:bg-transparent overflow-x-clip">
       {/* BACKGROUND EFFECTS */}
-      <CommonBgEffect />
+      {/* <CommonBgEffect /> */}
 
       <Box className="relative z-10 w-full flex flex-col gap-6">
         {/* Header */}
