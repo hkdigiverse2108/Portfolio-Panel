@@ -20,7 +20,7 @@ const CommonBottomActionBar: FC<CommonBottomActionBarProps> = ({ children, isLoa
   const navigate = useNavigate();
 
   return (
-    <div className={`fixed bottom-0 left-0 right-0 z-50 flex bg-white dark:bg-gray-900 lg:border-t border-gray-200 dark:border-gray-800 transition-all duration-300 ${isExpanded || isHovered ? "lg:ml-[290px] lg:w-[calc(100%-290px)]" : "lg:ml-[90px] lg:w-[calc(100%-90px)]"}`}>
+    <div className={`fixed bottom-0 left-0 right-0 z-50 flex bg-white dark:bg-gray-dark lg:border-t border-gray-200 dark:border-gray-800 transition-all duration-300 ${isExpanded || isHovered ? "lg:ml-[290px] lg:w-[calc(100%-290px)]" : "lg:ml-[90px] lg:w-[calc(100%-90px)]"}`}>
       <Grid container spacing={2} className="w-full! flex items-center justify-between mx-5 my-4">
         {children}
         {clear && (

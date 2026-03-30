@@ -9,7 +9,7 @@ const CommonBreadcrumbs: FC<BreadcrumbHeaderProps> = ({ title, maxItems = 3, bre
   const validMaxItems = Math.max(maxItems, 2);
   
   return (
-    <div className="relative flex w-full flex-wrap items-center justify-between gap-3 border-b border-gray-200 bg-white px-6 py-5 dark:border-gray-800 dark:bg-gray-900">
+    <div className="relative flex w-full flex-wrap items-center justify-between gap-3 border-b border-gray-200 bg-white px-6 py-5 dark:border-gray-800 dark:bg-gray-dark">
       <h2 className="text-xl font-semibold text-gray-800 dark:text-white/90 capitalize">{title}</h2>
       <nav>
         <Breadcrumbs maxItems={validMaxItems} aria-label="breadcrumb">

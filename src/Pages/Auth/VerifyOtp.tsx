@@ -10,7 +10,6 @@ import { useAppDispatch, useAppSelector } from "../../Store/hooks";
 import { setSignin, setSigninResponse } from "../../Store/Slices/AuthSlice";
 import { Storage } from "../../Utils";
 import { VerifyOtpSchema } from "../../Utils/ValidationSchemas";
-import { CommonBgEffect } from "../../Components/Common";
 
 const OTP_DURATION = 600;
 
@@ -97,7 +96,7 @@ const VerifyOtp = () => {
   return (
     <div className="flex items-center justify-center w-full h-screen relative px-4 overflow-hidden bg-gray-50 dark:bg-gray-dark">
       {/* BACKGROUND EFFECTS */}
-      <CommonBgEffect />
+      {/* <CommonBgEffect /> */}
 
       {/* CENTERED CARD */}
       <div className="relative z-10 w-full max-w-[420px] p-8 sm:p-10 bg-white dark:bg-[#171717] border border-gray-200 dark:border-[#333333] rounded-2xl shadow-theme-lg dark:shadow-theme-dark-lg flex flex-col items-center">

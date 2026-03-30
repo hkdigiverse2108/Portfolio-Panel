@@ -17,7 +17,7 @@ interface CommonCardProps {
 const CommonCard: FC<CommonCardProps> = ({ title, children, grid = { xs: 12 }, paperProps, hideDivider = false, topContent, btnHref ,gridClass}) => {
   return (
     <Grid size={grid}>
-      <Paper elevation={0} className="rounded-lg! border! border-gray-200! bg-white! dark:border-gray-800! dark:bg-gray-dark!" {...paperProps}>
+      <Paper elevation={0} className="rounded-lg! border! border-gray-200! bg-white! dark:border-gray-800! dark:bg-gray-900!" {...paperProps}>
         {(topContent || title) && (
           <Grid container spacing={1.5} className={`flex! max-xsm:flex-col! items-center justify-between p-3 ${gridClass}`}>
             {title && (

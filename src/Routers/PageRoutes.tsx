@@ -5,7 +5,7 @@ import SignInForm from "../Pages/Auth/SignInForm";
 import ForgotPassword from "../Pages/Auth/ForgotPassword";
 import VerifyOtp from "../Pages/Auth/VerifyOtp";
 import UpdatePassword from "../Pages/Auth/UpdatePassword";
-import ChangePassword from "../Pages/Auth/ResetPassword";
+import ChangePassword from "../Pages/Auth/ChangePassword";
 
 export const PageRoutes = [
   { path: ROUTES.HOME, name: PAGE_TITLE.DASHBOARD, element: <Navigate to={ROUTES.DASHBOARD} replace /> },
