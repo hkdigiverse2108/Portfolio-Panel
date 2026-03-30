@@ -7,25 +7,21 @@ import type { UserFormValues } from "../../Types";
 import { PAGE_TITLE } from "../../Constants";
 import { BREADCRUMBS } from "../../Data/Breadcrumbs";
 import { CommonPhoneNumber } from "../../Attribute/FormFields/CommonPhoneNumber";
-import { useMemo } from "react";
 
 const Profile = () => {
   const { data, refetch } = Queries.useGetUser();
   const user = data?.data;
   const { mutate: editUser, isPending: isEditLoading } = Mutations.useUpdateUser();
 
-  const initialValues: UserFormValues = useMemo(() => {
-    return {
-      firstName: user?.firstName || "",
-      lastName: user?.lastName || "",
-      phoneNo: {
-        countryCode: user?.phoneNo?.countryCode || "",
-        number: user?.phoneNo?.number || "",
-      },
-      email: user?.email || "",
-    };
-  }, [user]);
-  console.log("USER DATA:", user?.phoneNo);
+  const initialValues: UserFormValues = {
+    firstName: user?.firstName || "",
+    lastName: user?.lastName || "",
+    phoneNo: {
+      countryCode: user?.phoneNo?.countryCode || "",
+      number: user?.phoneNo?.number || "",
+    },
+    email: user?.email || "",
+  };
 
   const handleSubmit = async (values: UserFormValues, { resetForm }: FormikHelpers<UserFormValues>) => {
     const payload = { ...values };
