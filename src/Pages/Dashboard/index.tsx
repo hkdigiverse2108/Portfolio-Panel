@@ -8,7 +8,7 @@ const Dashboard = () => {
       {/* BACKGROUND EFFECTS */}
       <CommonBgEffect />
 
-      <Box className="relative z-10 max-w-7xl mx-auto flex flex-col gap-6">
+      <Box className="relative z-10 w-full flex flex-col gap-6">
         {/* Header */}
         <Box className="mb-2">
           <Typography className="text-2xl font-bold text-gray-800! dark:text-white! mb-1">Overview</Typography>

@@ -3,6 +3,7 @@ export const KEYS = {
     SIGNIN: "admin-signin",
     FORGOT_PASSWORD: "forgot-password",
     VERIFY_OTP: "verify-otp",
+    UPDATE_PASSWORD: "update-password",
     RESET_PASSWORD: "reset-password",
     RESEND_OTP: "resend-otp",
   },

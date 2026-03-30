@@ -5,6 +5,7 @@ export const URL_KEYS = {
     VERIFY_OTP: "/auth/verify-otp",
     UPDATE_PASSWORD: "/auth/update-password",
     RESEND_OTP: "/auth/resend-otp",
+    RESET_PASSWORD: "/auth/reset-password",
   },
   DASHBOARD: {
     BASE: "/dashboard",

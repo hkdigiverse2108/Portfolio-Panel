@@ -85,3 +85,19 @@ export const ResetPasswordSchema = Yup.object({
     .oneOf([Yup.ref("newPassword")], "Passwords must match")
     .required("Confirm Password is required"),
 });
+
+export const ChangePasswordSchema = Yup.object({
+  email: Validation("string", "Email", {
+    required: true,
+    extraRules: (s) => s.trim().email("Invalid email address"),
+  }),
+  oldPassword: Validation("string", "Old Password", {
+    extraRules: (s) => s.matches(/[!@#$%^&*()_+={}:;"'<>,.?/-]/, "Password must include at least one special character"),
+  }),
+  newPassword: Validation("string", "New Password", {
+    extraRules: (s) => s.matches(/[!@#$%^&*()_+={}:;"'<>,.?/-]/, "Password must include at least one special character"),
+  }),
+  confirmPassword: Validation("string", "Confirm Password", {
+    extraRules: (s) => s.oneOf([Yup.ref("newPassword")], "Passwords must match").required("Confirm Password is required"),
+  }),
+});

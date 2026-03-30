@@ -5,13 +5,14 @@ import SignInForm from "../Pages/Auth/SignInForm";
 import ForgotPassword from "../Pages/Auth/ForgotPassword";
 import VerifyOtp from "../Pages/Auth/VerifyOtp";
 import UpdatePassword from "../Pages/Auth/UpdatePassword";
-
+import ChangePassword from "../Pages/Auth/ResetPassword";
 
 export const PageRoutes = [
   { path: ROUTES.HOME, name: PAGE_TITLE.DASHBOARD, element: <Navigate to={ROUTES.DASHBOARD} replace /> },
 
   { path: ROUTES.DASHBOARD, name: PAGE_TITLE.DASHBOARD, element: <Dashboard /> },
 
+  { path: ROUTES.SETTING.CHANGE_PASSWORD, name: PAGE_TITLE.SETTING.CHANGE_PASSWORD, element: <ChangePassword /> },
 ];
 export const AuthRoutes = [
   { path: ROUTES.HOME, element: <Navigate to={ROUTES.AUTH.SIGNIN} replace /> },

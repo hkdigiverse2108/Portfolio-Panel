@@ -49,3 +49,10 @@ export interface UpdatePasswordFormValues {
 export interface ResendOtpPayload {
   email: string;
 }
+
+export interface ResetPasswordPayload {
+  email: string;
+  oldPassword: string;
+  newPassword: string;
+  confirmPassword: string;
+}

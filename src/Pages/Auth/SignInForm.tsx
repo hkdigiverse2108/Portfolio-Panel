@@ -16,23 +16,16 @@ const SignInForm = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const { mutate: ResendOtp, isPending: isResendOtpPending } = Mutations.useResendOtp();
+  // const { mutate: ResendOtp, isPending: isResendOtpPending } = Mutations.useResendOtp();
 
   const handleSubmit = async (values: LoginPayload, { resetForm }: FormikHelpers<LoginPayload>) => {
     Signin(
       { ...values, email: values.email.toLowerCase() },
       {
         onSuccess: (response) => {
-          ResendOtp(
-            { email: values.email.toLowerCase() },
-            {
-              onSuccess: () => {
-                dispatch(setSigninResponse({ email: values.email.toLowerCase(), type: "signin", responseData: response?.data }));
-                navigate(ROUTES.AUTH.VERIFY_OTP);
-                resetForm();
-              },
-            },
-          );
+          dispatch(setSigninResponse({ email: values.email.toLowerCase(), type: "signin", responseData: response?.data }));
+          navigate(ROUTES.AUTH.VERIFY_OTP);
+          resetForm();
         },
       },
     );
@@ -69,7 +62,7 @@ const SignInForm = () => {
                     Forgot Password?
                   </Link>
                 </div>
-                <CommonButton loading={isSigninPending || isResendOtpPending} type="submit" variant="contained" title="Login" size="large" fullWidth grid={{ xs: 12 }} />
+                <CommonButton loading={isSigninPending} type="submit" variant="contained" title="Login" size="large" fullWidth grid={{ xs: 12 }} />
               </Grid>
             </Form>
           </Formik>

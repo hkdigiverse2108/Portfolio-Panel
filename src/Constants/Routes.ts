@@ -10,4 +10,8 @@ export const ROUTES = {
   FORGOT_PASSWORD: {
     BASE: "/auth/forgot-password",
   },
+  SETTING: {
+    BASE: "/setting",
+    CHANGE_PASSWORD: "/setting/change-password",
+  },
 } as const;
