@@ -1,55 +1,17 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Link, useLocation } from "react-router";
 import KeyboardArrowDownRoundedIcon from "@mui/icons-material/KeyboardArrowDownRounded";
 import MoreHorizRoundedIcon from "@mui/icons-material/MoreHorizRounded";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { Link, useLocation } from "react-router";
+import { ThemeTitle } from "../../Constants";
 import { NavItems } from "../../Data";
 import { useAppDispatch, useAppSelector } from "../../Store/hooks";
 import { setIsHovered, setToggleMobileSidebar, setToggleSidebar } from "../../Store/Slices/LayoutSlice";
-import type { ChildDetailsApiResponse, NavItem } from "../../Types";
-import SidebarWidget from "./SidebarWidget";
-import { ThemeTitle } from "../../Constants";
+import type { NavItem } from "../../Types";
 import { useWindowWidth } from "../../Utils/Hooks";
-
-
-const filterNavItems = (navItems: NavItem[], permissions: ChildDetailsApiResponse[]): NavItem[] => {
-  if (!permissions || permissions.length === 0) return navItems; // If no permissions, show all items (e.g., development or first load)
-
-  const permissionMap = new Map<string, ChildDetailsApiResponse>();
-
-  permissions?.forEach((p) => permissionMap.set(p?.tabName?.toLowerCase() || "", p as ChildDetailsApiResponse));
-
-  return navItems
-    .map((item) => {
-      const parentPerm = permissionMap.get(item.name.toLowerCase());
-
-      // ❌ Parent no view permission → parent + children both hide
-      if (!parentPerm?.view) return null;
-
-      // ✅ Parent allowed
-      if (item.children?.length) {
-        const allowedChildren = item.children
-          .map((child) => {
-            const childPerm = parentPerm.children?.find((c) => c?.tabName?.toLowerCase() === child.name.toLowerCase());
-
-            if (!childPerm?.view) return null;
-
-            // 🔥 Override child label
-            return { ...child, name: childPerm.displayName };
-          })
-          .filter(Boolean);
-
-        if (allowedChildren.length === 0) return null;
-
-        return { ...item, name: parentPerm.displayName, number: parentPerm.number, children: allowedChildren as NavItem[] };
-      }
-
-      return { ...item, name: parentPerm.displayName, number: parentPerm.number };
-    })
-    .filter(Boolean) as NavItem[];
-};
+import SidebarWidget from "./SidebarWidget";
 
 const Sidebar = () => {
-  const { isExpanded, isMobileOpen, isHovered, permission } = useAppSelector((state) => state.layout);
+  const { isExpanded, isMobileOpen, isHovered } = useAppSelector((state) => state.layout);
   const dispatch = useAppDispatch();
   const width = useWindowWidth();
 
@@ -58,20 +20,16 @@ const Sidebar = () => {
   const [openSubmenu, setOpenSubmenu] = useState<{ type: "main" | "others"; index: number } | null>(null);
   const [subMenuHeight, setSubMenuHeight] = useState<Record<string, number>>({});
   const subMenuRefs = useRef<Record<string, HTMLDivElement | null>>({});
-  const allowedNavItems = useMemo(() => {
-    const items = filterNavItems(NavItems, permission);
 
-    return items.sort((a, b) => (a.number || 0) - (b.number || 0));
-  }, [permission]);
   const isActive = useCallback((path: string) => location.pathname === path || location.pathname.startsWith(path + "/"), [location.pathname]);
 
   useEffect(() => {
-    allowedNavItems.forEach((menu, index) => {
+    NavItems.forEach((menu, index) => {
       if (menu.children?.some((sub) => location.pathname === sub.path || location.pathname.startsWith(sub.path + "/"))) {
         setOpenSubmenu({ type: "main", index });
       }
     });
-  }, [location.pathname, allowedNavItems]);
+  }, [location.pathname]);
 
   const handleToggle = () => {
     if (window.innerWidth >= 1024) {
@@ -186,7 +144,7 @@ const Sidebar = () => {
           <div className="flex flex-col gap-4">
             <div>
               <h2 className={`mb-4 text-xs uppercase flex text-gray-400 ${!isExpanded && !isHovered ? "lg:justify-center" : "justify-start"}`}>{isExpanded || isHovered || isMobileOpen ? "Menu" : <MoreHorizRoundedIcon className="size-6" />}</h2>
-              {renderMenuItems(allowedNavItems, "main")}
+              {renderMenuItems(NavItems, "main")}
             </div>
           </div>
         </nav>

@@ -1,7 +1,31 @@
-import { defineConfig } from "vite";
+import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 // https://vite.dev/config/
-export default defineConfig({
-  plugins: [react(), tailwindcss()],
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), "");
+  const PORT = Number(env.VITE_PORT);
+  const API_BASE_URL = env.VITE_API_BASE_URL;
+  return {
+    plugins: [react(), tailwindcss()],
+    server: {
+      host: true,
+      allowedHosts: true,
+      port: PORT,
+      proxy: {
+        "/api": {
+          target: API_BASE_URL,
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api/, ""),
+        },
+      },
+    },
+    preview: {
+      port: PORT,
+      strictPort: true,
+    },
+    define: {
+      "process.env.VITE_API_BASE_URL": JSON.stringify(API_BASE_URL),
+    },
+  };
 });
