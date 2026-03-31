@@ -1,6 +1,6 @@
 import { Grid, Box, Typography } from "@mui/material";
 import { FieldArray, Form, Formik, useFormikContext, type FormikHelpers, type FormikValues } from "formik";
-import { CommonBottomActionBar, CommonBreadcrumbs, CommonCard } from "../../Components/Common";
+import { CommonBottomActionBar, CommonBreadcrumbs, CommonCard, CommonProfileAvatar } from "../../Components/Common";
 import { Mutations, Queries } from "../../Api";
 import { CommonButton, CommonValidationSwitch, CommonValidationTextField } from "../../Attribute";
 import type { ImageSyncProps, UserFormValues } from "../../Types";
@@ -13,6 +13,10 @@ import { setSelectedFiles, setUploadModal } from "../../Store/Slices/ModalSlice"
 import { CommonFormImageBox } from "../../Components/Common/CommonUploadImage/CommonImageBox";
 import { GridCloseIcon } from "@mui/x-data-grid";
 import { Add } from "@mui/icons-material";
+import { UserSchema } from "../../Utils/ValidationSchemas";
+import { CommonValidationCreatableSelect } from "../../Attribute/FormFields/CommonSelectTab";
+import { CommonValidationSelect } from "../../Attribute/FormFields/CommonSelect";
+import { SOCIAL_MEDIA_TYPE } from "../../Data/Enum";
 
 const Profile = () => {
   const { data, refetch } = Queries.useGetUser();
@@ -27,12 +31,14 @@ const Profile = () => {
     lastName: user?.lastName || "",
     phoneNo: {
       countryCode: user?.phoneNo?.countryCode || "",
-      number: user?.phoneNo?.number || "",
+      number: user?.phoneNo?.number?.toString() || "",
     },
     email: user?.email || "",
     profileImage: user?.profileImage || null,
     socialMediaLinks: user?.socialMediaLinks || [],
+    offers: user?.offers || [],
   };
+  console.log("value:", initialValues);
 
   const FormikImageSync = <T extends FormikValues>({ activeKey, clearActiveKey }: ImageSyncProps) => {
     const { selectedFiles } = useAppSelector((state) => state.modal);
@@ -70,7 +76,7 @@ const Profile = () => {
     <>
       <CommonBreadcrumbs title={PAGE_TITLE.PROFILE.BASE} maxItems={3} breadcrumbs={BREADCRUMBS.PROFILE.BASE} />
       <Box sx={{ p: { xs: 2, md: 3 }, mb: 8 }}>
-        <Formik<UserFormValues> enableReinitialize initialValues={initialValues} onSubmit={handleSubmit}>
+        <Formik<UserFormValues> enableReinitialize initialValues={initialValues} validationSchema={UserSchema} onSubmit={handleSubmit}>
           {({ dirty, values }) => (
             <Form noValidate>
               <FormikImageSync activeKey={activeImageKey} clearActiveKey={() => setActiveImageKey(null)} />
@@ -81,8 +87,11 @@ const Profile = () => {
                     <div className="flex flex-col gap-5 xl:flex-row xl:items-center xl:justify-between">
                       <div className="flex flex-col items-center w-full gap-6 xl:flex-row">
                         <div className="flex items-center bg-black dark:bg-brand-500 text-white rounded-full border border-black dark:border-brand-500 p-1">
-                          <div className="relative flex items-center justify-center w-24 h-24 rounded-full overflow-hidden">
-                            <CommonFormImageBox name="profileImage" type="image" label="Profile Image" grid={{ xs: 12 }} multiple={false} onUpload={handleUpload} />
+                          <div className="relative flex items-center justify-center w-24 h-24 rounded-full overflow-hidden cursor-pointer" onClick={handleUpload}>
+                            <CommonProfileAvatar fullName={`${values?.firstName || ""} ${values?.lastName || ""}`} profileImage={values?.profileImage || ""} className="w-full h-full text-3xl" />
+                            <div className="absolute inset-0 opacity-0 pointer-events-none">
+                              <CommonFormImageBox name="profileImage" type="image" label="" grid={{ xs: 12 }} multiple={false} onUpload={handleUpload} />
+                            </div>
                           </div>
                         </div>
 
@@ -104,6 +113,7 @@ const Profile = () => {
                   <CommonValidationTextField name="lastName" label="Last Name" required grid={{ xs: 12, md: 6 }} />
                   <CommonPhoneNumber label="Phone No." countryCodeName="phoneNo.countryCode" numberName="phoneNo.number" grid={{ xs: 12, md: 6 }} />
                   <CommonValidationTextField name="email" label="Email" required grid={{ xs: 12, md: 6 }} />
+                  <CommonValidationCreatableSelect name="offers" label="Offers" options={[]} grid={{ xs: 12 }} />
                   <Grid size={12}>
                     <Typography component="div">Social Media Links</Typography>
                   </Grid>
@@ -113,7 +123,7 @@ const Profile = () => {
                         <>
                           {values?.socialMediaLinks?.map((_, index) => (
                             <Grid container spacing={2} key={index} sx={{ mb: 2, alignItems: "center" }}>
-                              <CommonValidationTextField name={`socialMediaLinks.${index}.title`} label="title" required grid={{ xs: 12, md: 3 }} />
+                              <CommonValidationSelect name={`socialMediaLinks.${index}.title`} label="title" options={SOCIAL_MEDIA_TYPE}  grid={{ xs: 12, md: 3 }} />
                               <CommonValidationTextField name={`socialMediaLinks.${index}.link`} label="link" required grid={{ xs: 12, md: 3 }} />
                               <CommonValidationTextField name={`socialMediaLinks.${index}.icon`} label="icon" grid={{ xs: 12, md: 2 }} />
                               <CommonValidationSwitch name={`socialMediaLinks.${index}.isActive`} label="Active" grid={{ xs: 12, md: 2 }} />

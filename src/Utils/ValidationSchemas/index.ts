@@ -49,7 +49,7 @@ export const PhoneValidation = (label = "Phone No", options?: { requiredCountryC
       required: options?.requiredCountryCode ?? true,
     }),
 
-    phoneNo: Validation("string", label, {
+    number: Validation("string", label, {
       required: options?.requiredNumber ?? true,
       extraRules: (s) => s.trim().matches(/^[0-9]{10}$/, "Phone number must be 10 digits"),
     }),
@@ -100,4 +100,26 @@ export const ChangePasswordSchema = Yup.object({
   confirmPassword: Validation("string", "Confirm Password", {
     extraRules: (s) => s.oneOf([Yup.ref("newPassword")], "Passwords must match").required("Confirm Password is required"),
   }),
+});
+
+export const UserSchema = Yup.object({
+  firstName: Validation("string", "First Name", { required: false }),
+  lastName: Validation("string", "Last Name", { required: false }),
+  phoneNo: PhoneValidation(),
+  profileImage: Validation("string", "Profile Image", { required: false }),
+  email: Validation("string", "Email", {
+    required: true,
+    extraRules: (s) => s.trim().email("Invalid email address"),
+  }),
+  socialMediaLinks: Yup.array()
+    .of(
+      Yup.object({
+        title: Validation("string", "Title", { required: false }),
+        link: Validation("string", "Link", { required: false }),
+        icon: Validation("string", "Icon", { required: false }),
+        isActive: Yup.boolean().nullable(),
+      }),
+    )
+    .nullable(),
+  offers: Validation("array", "Offers", { required: false }),
 });
