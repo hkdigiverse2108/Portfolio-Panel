@@ -19,8 +19,8 @@ export const URL_KEYS = {
 
   UPLOAD: {
     ADD: "/upload",
-    DELETE: "/delete",
-    ALL_IMAGE: "/all-image",
-    ALL_PDF: "/all-pdf",
+    DELETE: "/upload/delete",
+    IMAGES: "/upload/images",
+    PDFS: "/upload/pdfs",
   },
 } as const;

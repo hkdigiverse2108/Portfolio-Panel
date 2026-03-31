@@ -1,17 +1,24 @@
 import { Grid, Box } from "@mui/material";
-import { Form, Formik, type FormikHelpers } from "formik";
-import { CommonBottomActionBar, CommonBreadcrumbs, CommonCard, CommonProfileImageUpload } from "../../Components/Common";
+import { Form, Formik, useFormikContext, type FormikHelpers, type FormikValues } from "formik";
+import { CommonBottomActionBar, CommonBreadcrumbs, CommonCard } from "../../Components/Common";
 import { Mutations, Queries } from "../../Api";
 import { CommonValidationTextField } from "../../Attribute";
-import type { UserFormValues } from "../../Types";
+import type { ImageSyncProps, UserFormValues } from "../../Types";
 import { PAGE_TITLE } from "../../Constants";
 import { BREADCRUMBS } from "../../Data/Breadcrumbs";
 import { CommonPhoneNumber } from "../../Attribute/FormFields/CommonPhoneNumber";
+import { useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../Store/hooks";
+import { setSelectedFiles, setUploadModal } from "../../Store/Slices/ModalSlice";
+import { CommonFormImageBox } from "../../Components/Common/CommonUploadImage/CommonImageBox";
 
 const Profile = () => {
   const { data, refetch } = Queries.useGetUser();
   const user = data?.data;
+  const dispatch = useAppDispatch();
+
   const { mutate: editUser, isPending: isEditLoading } = Mutations.useUpdateUser();
+  const [activeImageKey, setActiveImageKey] = useState<"profileImage" | null>(null);
 
   const initialValues: UserFormValues = {
     firstName: user?.firstName || "",
@@ -21,6 +28,29 @@ const Profile = () => {
       number: user?.phoneNo?.number || "",
     },
     email: user?.email || "",
+    profileImage: user?.profileImage || null,
+  };
+  
+  const FormikImageSync = <T extends FormikValues>({ activeKey, clearActiveKey }: ImageSyncProps) => {
+    const { selectedFiles } = useAppSelector((state) => state.modal);
+    const { setFieldValue } = useFormikContext<T>();
+
+    useEffect(() => {
+      console.log("Selected File:", selectedFiles[0]);
+      if (!selectedFiles[0] || !activeKey) return;
+
+      setFieldValue(activeKey, selectedFiles[0]);
+
+      dispatch(setSelectedFiles([]));
+      clearActiveKey();
+    }, [selectedFiles, activeKey, setFieldValue, clearActiveKey, dispatch]);
+
+    return null;
+  };
+
+  const handleUpload = () => {
+    setActiveImageKey("profileImage");
+    dispatch(setUploadModal({ open: true, type: "image", multiple: false }));
   };
 
   const handleSubmit = async (values: UserFormValues, { resetForm }: FormikHelpers<UserFormValues>) => {
@@ -40,14 +70,15 @@ const Profile = () => {
         <Formik<UserFormValues> enableReinitialize initialValues={initialValues} onSubmit={handleSubmit}>
           {({ dirty }) => (
             <Form noValidate>
+              <FormikImageSync activeKey={activeImageKey} clearActiveKey={() => setActiveImageKey(null)} />
               <CommonCard grid={{ xs: 12 }} hideDivider>
                 <Grid container spacing={2} sx={{ p: 2 }}>
                   {/* Profile Section */}
                   <div className="flex flex-col gap-5 xl:flex-row xl:items-center xl:justify-between">
                     <div className="flex flex-col items-center w-full gap-6 xl:flex-row">
-                      <div className="flex items-center bg-brand-500 text-white rounded-full border border-gray-200">
-                        <div className="relative flex items-center justify-center w-20 h-20">
-                          <CommonProfileImageUpload className="w-full h-full" />
+                      <div className="flex items-center bg-brand-500 text-white rounded-full border border-gray-200 p-1">
+                        <div className="relative flex items-center justify-center w-24 h-24 rounded-full overflow-hidden">
+                          <CommonFormImageBox name="profileImage" type="image" label="Profile Image" grid={{ xs: 12 }} multiple={false} onUpload={handleUpload} />
                         </div>
                       </div>
 

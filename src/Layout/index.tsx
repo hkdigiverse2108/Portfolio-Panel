@@ -6,6 +6,7 @@ import { useAppSelector } from "../Store/hooks";
 
 import Header from "./Header/index";
 import Sidebar from "./Sidebar/index";
+import { CommonUpload } from "../Components/Common";
 
 const Layout = () => {
   const dispatch = useDispatch();
@@ -39,6 +40,7 @@ const Layout = () => {
           <Outlet />
         </main>
       </div>
+      <CommonUpload />
     </div>
   );
 };

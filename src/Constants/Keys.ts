@@ -19,7 +19,7 @@ export const KEYS = {
   UPLOAD: {
     ADD: "upload",
     DELETE: "delete",
-    ALL_IMAGE: "all-image",
-    ALL_PDF: "all-pdf",
+    IMAGES: "images",
+    PDFS: "pdfs",
   },
 };
