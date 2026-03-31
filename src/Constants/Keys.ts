@@ -28,4 +28,10 @@ export const KEYS = {
     UPDATE: "update-hero-section",
     DELETE: "delete-hero-section",
   },
+  WORK_COUNT:{
+    BASE: "work-count",
+    ADD: "add-work-count",
+    EDIT: "edit-work-count",
+    DELETE: "delete-work-count",
+  }
 };

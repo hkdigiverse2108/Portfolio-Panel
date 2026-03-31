@@ -110,3 +110,10 @@ export const UserSchema = Yup.object({
     .nullable(),
   offers: Validation("array", "Offers", { required: false }),
 });
+
+// WorkCount
+export const WorkCountSchema = Yup.object({
+  title: Validation("string", "Title"),
+  number: Validation("string", "Count"),
+  isActive: Yup.boolean().nullable(),
+});

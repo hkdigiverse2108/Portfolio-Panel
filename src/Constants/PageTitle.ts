@@ -7,9 +7,14 @@ export const PAGE_TITLE = {
   PROFILE: {
     BASE: "Profile",
   },
-  HERO_SECTION:{
+  HERO_SECTION: {
     BASE: "Hero Section",
     ADD: "Add Hero Section",
     EDIT: "Edit Hero Section",
-  }
+  },
+  WORK_COUNT: {
+    BASE: "Work Count",
+    ADD: "Add Work Count",
+    EDIT: "Edit Work Count",
+  },
 } as const;

@@ -1,10 +1,9 @@
 import { KEYS, URL_KEYS } from "../Constants";
-import type { ForgotPasswordPayload, LoginPayload, LoginResponse, ResendOtpPayload, ResetPasswordPayload, UpdatePasswordPayload, VerifyOtpPayload } from "../Types";
+import type { AddWorkCountPayload, EditWorkCountPayload, ForgotPasswordPayload, LoginPayload, LoginResponse, MessageStatus, ResendOtpPayload, ResetPasswordPayload, UpdatePasswordPayload, UploadResponse, VerifyOtpPayload } from "../Types";
+import type { AddHeroSectionPayload, EditHeroSectionPayload } from "../Types/HeroSection";
+import type { UpdateUserPayload, UserApiResponse } from "../Types/User";
 import { Delete, Post, Put } from "./Methods";
 import { useMutations } from "./ReactQuery";
-import type { MessageStatus, UploadResponse } from "../Types/Common";
-import type { UpdateUserPayload, UserApiResponse } from "../Types/User";
-import type { AddHeroSectionPayload, EditHeroSectionPayload } from "../Types/HeroSection";
 
 export const Mutations = {
   // ************ Auth ***********
@@ -34,4 +33,9 @@ export const Mutations = {
   useAddHeroSection: () => useMutations<AddHeroSectionPayload, void>([KEYS.HERO_SECTION.ADD, KEYS.HERO_SECTION.BASE], (input) => Post(URL_KEYS.HERO_SECTION.UPDATE, input)),
   useEditHeroSection: () => useMutations<EditHeroSectionPayload, void>([KEYS.HERO_SECTION.UPDATE, KEYS.HERO_SECTION.BASE], (input) => Put(URL_KEYS.HERO_SECTION.UPDATE, input)),
   useDeleteHeroSection: () => useMutations<string, void>([KEYS.HERO_SECTION.DELETE, KEYS.HERO_SECTION.BASE], (id) => Delete(`${URL_KEYS.HERO_SECTION.BASE}/${id}`)),
+
+  //*************** Work Count *********
+  useAddWorkCount: () => useMutations<AddWorkCountPayload, void>([KEYS.WORK_COUNT.ADD, KEYS.WORK_COUNT.BASE], (input) => Post(URL_KEYS.WORK_COUNT.ADD, input)),
+  useEditWorkCount: () => useMutations<EditWorkCountPayload, void>([KEYS.WORK_COUNT.EDIT, KEYS.WORK_COUNT.BASE], (input) => Put(URL_KEYS.WORK_COUNT.EDIT, input)),
+  useDeleteWorkCount: () => useMutations<string, void>([KEYS.WORK_COUNT.DELETE, KEYS.WORK_COUNT.BASE], (id) => Delete(`${URL_KEYS.WORK_COUNT.BASE}/${id}`)),
 };
