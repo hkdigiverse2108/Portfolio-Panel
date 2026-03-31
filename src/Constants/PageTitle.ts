@@ -15,4 +15,14 @@ export const PAGE_TITLE = {
     ADD: "Add Work Count",
     EDIT: "Edit Work Count",
   },
+  BLOG: {
+    BASE: "Blog",
+    ADD: "Add Blog",
+    EDIT: "Edit Blog",
+  },
+  SERVICE: {
+    BASE: "Service",
+    ADD: "Add Service",
+    EDIT: "Edit Service",
+  },
 } as const;

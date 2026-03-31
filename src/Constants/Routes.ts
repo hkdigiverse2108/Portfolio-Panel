@@ -25,4 +25,12 @@ export const ROUTES = {
     BASE: "/work-count",
     ADD_EDIT: "/work-count/add-edit",
   },
+  BLOG: {
+    BASE: "/blog",
+    ADD_EDIT: "/blog/add-edit",
+  },
+  SERVICE: {
+    BASE: "/service",
+    ADD_EDIT: "/service/add-edit",
+  },
 } as const;

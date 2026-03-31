@@ -35,4 +35,18 @@ export const URL_KEYS = {
     EDIT: "/work-count/edit",
     DELETE: "/work-count/delete",
   },
+  BLOG: {
+    BASE: "/blog",
+    ALL: "/blog/all",
+    ADD: "/blog/add",
+    EDIT: "/blog/edit",
+    DELETE: "/blog/delete",
+  },
+  SERVICE: {
+    BASE: "/service",
+    ALL: "/service/all",
+    ADD: "/service/add",
+    EDIT: "/service/edit",
+    DELETE: "/service/delete",
+  },
 } as const;
