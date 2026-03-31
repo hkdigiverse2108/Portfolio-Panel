@@ -30,7 +30,7 @@ const Profile = () => {
     email: user?.email || "",
     profileImage: user?.profileImage || null,
   };
-  
+
   const FormikImageSync = <T extends FormikValues>({ activeKey, clearActiveKey }: ImageSyncProps) => {
     const { selectedFiles } = useAppSelector((state) => state.modal);
     const { setFieldValue } = useFormikContext<T>();
@@ -74,28 +74,30 @@ const Profile = () => {
               <CommonCard grid={{ xs: 12 }} hideDivider>
                 <Grid container spacing={2} sx={{ p: 2 }}>
                   {/* Profile Section */}
-                  <div className="flex flex-col gap-5 xl:flex-row xl:items-center xl:justify-between">
-                    <div className="flex flex-col items-center w-full gap-6 xl:flex-row">
-                      <div className="flex items-center bg-brand-500 text-white rounded-full border border-gray-200 p-1">
-                        <div className="relative flex items-center justify-center w-24 h-24 rounded-full overflow-hidden">
-                          <CommonFormImageBox name="profileImage" type="image" label="Profile Image" grid={{ xs: 12 }} multiple={false} onUpload={handleUpload} />
+                  <Grid size={{ xs: 12 }}>
+                    <div className="flex flex-col gap-5 xl:flex-row xl:items-center xl:justify-between">
+                      <div className="flex flex-col items-center w-full gap-6 xl:flex-row">
+                        <div className="flex items-center bg-black dark:bg-brand-500 text-white rounded-full border border-black dark:border-brand-500 p-1">
+                          <div className="relative flex items-center justify-center w-24 h-24 rounded-full overflow-hidden">
+                            <CommonFormImageBox name="profileImage" type="image" label="Profile Image" grid={{ xs: 12 }} multiple={false} onUpload={handleUpload} />
+                          </div>
+                        </div>
+
+                        <div className="order-3 xl:order-2">
+                          <h4 className="mb-2 text-lg font-semibold">{`${user?.firstName} ${user?.lastName}`}</h4>
+
+                          <p className="text-sm text-gray-500">
+                            {user?.phoneNo?.countryCode} {user?.phoneNo?.number}
+                          </p>
+
+                          <p className="text-sm text-gray-500">{user?.email}</p>
                         </div>
                       </div>
-
-                      <div className="order-3 xl:order-2">
-                        <h4 className="mb-2 text-lg font-semibold">{`${user?.firstName} ${user?.lastName}`}</h4>
-
-                        <p className="text-sm text-gray-500">
-                          {user?.phoneNo?.countryCode} {user?.phoneNo?.number}
-                        </p>
-
-                        <p className="text-sm text-gray-500">{user?.email}</p>
-                      </div>
                     </div>
-                  </div>
+                  </Grid>
 
                   {/* Fields */}
-                  <CommonValidationTextField name="firstName" label="First Name" required grid={{ xs: 12 }} />
+                  <CommonValidationTextField name="firstName" label="First Name" required grid={{ xs: 12, md: 6 }} />
                   <CommonValidationTextField name="lastName" label="Last Name" required grid={{ xs: 12, md: 6 }} />
                   <CommonPhoneNumber label="Phone No." countryCodeName="phoneNo.countryCode" numberName="phoneNo.number" grid={{ xs: 12, md: 6 }} />
                   <CommonValidationTextField name="email" label="Email" required grid={{ xs: 12, md: 6 }} />
