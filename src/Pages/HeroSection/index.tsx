@@ -2,17 +2,16 @@ import { Box } from "@mui/material";
 import type { GridColDef } from "@mui/x-data-grid";
 import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDataGrid, usePagePermission } from "../../Utils/Hooks";
+import { useDataGrid } from "../../Utils/Hooks";
 import { Mutations, Queries } from "../../Api";
 import { CommonActionColumn, CommonBreadcrumbs, CommonCard, CommonDataGrid, CommonDeleteModal } from "../../Components/Common";
 import { PAGE_TITLE, ROUTES } from "../../Constants";
-import type { HeroSectionBase } from "../../Types/HeroSection";
 import { BREADCRUMBS } from "../../Data/Breadcrumbs";
+import type { HeroSectionBase } from "../../Types";
 
 const HeroSection = () => {
-  const { paginationModel, setPaginationModel, sortModel, setSortModel, filterModel, setFilterModel, rowToDelete, setRowToDelete, isActive, setActive, params } = useDataGrid();
+  const { sortModel, setSortModel, filterModel, setFilterModel, rowToDelete, setRowToDelete, isActive, setActive, params } = useDataGrid();
   const navigate = useNavigate();
-  const permission = usePagePermission(PAGE_TITLE.HERO_SECTION.BASE);
 
   const { data: heroSection_data, isLoading: heroSectionLoading, isFetching: heroSectionFetching } = Queries.useGetHeroSection(params);
   const { refetch: fetchAll, isFetching: AllFetching, isLoading: AllLoading } = Queries.useGetHeroSection();
@@ -20,7 +19,7 @@ const HeroSection = () => {
   const { mutate: deleteHeroSectionMutate } = Mutations.useDeleteHeroSection();
   const { mutate: editHeroSection, isPending: isEditLoading } = Mutations.useEditHeroSection();
 
-  const allCreditNotes = useMemo(() => heroSection_data?.data?.heroSection_data.map((HeroSection) => ({ ...HeroSection, id: HeroSection?._id })) || [], [heroSection_data]);
+  const allHeroSection = useMemo(() => heroSection_data?.data?.heroSection_data?.map((HeroSection) => ({ ...HeroSection, id: HeroSection?._id })) || [], [heroSection_data]);
   const totalRows = heroSection_data?.data?.totalData || 0;
 
   const handleDeleteBtn = () => {
@@ -36,30 +35,21 @@ const HeroSection = () => {
     { field: "linkTitle", headerName: "Link Title", width: 200 },
     { field: "link", headerName: "Link", width: 200 },
     { field: "description", headerName: "Description", flex: 1, minWidth: 200 },
-
-    ...(permission?.edit || permission?.delete
-      ? [
-          CommonActionColumn<HeroSectionBase>({
-            ...(permission?.edit && {
-              active: (row) => editHeroSection({ heroSectionId: row?._id as string, isActive: !row.isActive }),
-              editRoute: ROUTES.HERO_SECTION.UPDATE,
-            }),
-            ...(permission?.delete && { onDelete: (row) => setRowToDelete({ _id: row?._id, title: row?.title }) }),
-          }),
-        ]
-      : []),
+    CommonActionColumn<HeroSectionBase>({
+      active: (row) => editHeroSection({ heroSectionId: row?._id as string, isActive: !row.isActive }),
+      editRoute: ROUTES.HERO_SECTION.UPDATE,
+      onDelete: (row) => setRowToDelete({ _id: row?._id, title: row?.title }),
+    }),
   ];
 
   const CommonDataGridOption = {
     columns,
-    rows: allCreditNotes,
+    rows: allHeroSection,
     rowCount: totalRows,
     loading: heroSectionLoading || heroSectionFetching || isEditLoading,
     isActive,
     setActive,
-    ...(permission?.add && { handleAdd }),
-    paginationModel,
-    onPaginationModelChange: setPaginationModel,
+    handleAdd,
     sortModel,
     onSortModelChange: setSortModel,
     filterModel,

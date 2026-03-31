@@ -25,7 +25,7 @@ export const URL_KEYS = {
   },
   HERO_SECTION: {
     BASE: "/hero-section",
-    ALL: "/hero-section/all",
+    GET: "/hero-section/get",
     UPDATE: "/hero-section/update",
   },
 } as const;

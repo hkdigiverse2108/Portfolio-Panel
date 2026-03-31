@@ -14,5 +14,5 @@ export const Queries = {
   useGetUser: (params?: Params) => useQueries<UserApiResponse>([KEYS.USER.BASE, params], () => Get(URL_KEYS.USER.GET, params)),
 
   //*************** Hero Section *********
-  useGetHeroSection: (params?: Params) => useQueries<HeroSectionApiResponse>([KEYS.HERO_SECTION.BASE, params], () => Get(URL_KEYS.HERO_SECTION.ALL, params)),
+  useGetHeroSection: (params?: Params) => useQueries<HeroSectionApiResponse>([KEYS.HERO_SECTION.BASE, params], () => Get(URL_KEYS.HERO_SECTION.GET, params)),
 };
