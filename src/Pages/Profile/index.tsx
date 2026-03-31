@@ -1,8 +1,8 @@
-import { Grid, Box } from "@mui/material";
-import { Form, Formik, useFormikContext, type FormikHelpers, type FormikValues } from "formik";
+import { Grid, Box, Typography } from "@mui/material";
+import { FieldArray, Form, Formik, useFormikContext, type FormikHelpers, type FormikValues } from "formik";
 import { CommonBottomActionBar, CommonBreadcrumbs, CommonCard } from "../../Components/Common";
 import { Mutations, Queries } from "../../Api";
-import { CommonValidationTextField } from "../../Attribute";
+import { CommonButton, CommonValidationSwitch, CommonValidationTextField } from "../../Attribute";
 import type { ImageSyncProps, UserFormValues } from "../../Types";
 import { PAGE_TITLE } from "../../Constants";
 import { BREADCRUMBS } from "../../Data/Breadcrumbs";
@@ -11,6 +11,8 @@ import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../Store/hooks";
 import { setSelectedFiles, setUploadModal } from "../../Store/Slices/ModalSlice";
 import { CommonFormImageBox } from "../../Components/Common/CommonUploadImage/CommonImageBox";
+import { GridCloseIcon } from "@mui/x-data-grid";
+import { Add } from "@mui/icons-material";
 
 const Profile = () => {
   const { data, refetch } = Queries.useGetUser();
@@ -29,6 +31,7 @@ const Profile = () => {
     },
     email: user?.email || "",
     profileImage: user?.profileImage || null,
+    socialMediaLinks: user?.socialMediaLinks || [],
   };
 
   const FormikImageSync = <T extends FormikValues>({ activeKey, clearActiveKey }: ImageSyncProps) => {
@@ -68,7 +71,7 @@ const Profile = () => {
       <CommonBreadcrumbs title={PAGE_TITLE.PROFILE.BASE} maxItems={3} breadcrumbs={BREADCRUMBS.PROFILE.BASE} />
       <Box sx={{ p: { xs: 2, md: 3 }, mb: 8 }}>
         <Formik<UserFormValues> enableReinitialize initialValues={initialValues} onSubmit={handleSubmit}>
-          {({ dirty }) => (
+          {({ dirty, values }) => (
             <Form noValidate>
               <FormikImageSync activeKey={activeImageKey} clearActiveKey={() => setActiveImageKey(null)} />
               <CommonCard grid={{ xs: 12 }} hideDivider>
@@ -101,6 +104,37 @@ const Profile = () => {
                   <CommonValidationTextField name="lastName" label="Last Name" required grid={{ xs: 12, md: 6 }} />
                   <CommonPhoneNumber label="Phone No." countryCodeName="phoneNo.countryCode" numberName="phoneNo.number" grid={{ xs: 12, md: 6 }} />
                   <CommonValidationTextField name="email" label="Email" required grid={{ xs: 12, md: 6 }} />
+                  <Grid size={12}>
+                    <Typography component="div">Social Media Links</Typography>
+                  </Grid>
+                  <Grid size={12}>
+                    <FieldArray name="socialMediaLinks">
+                      {({ push, remove }) => (
+                        <>
+                          {values?.socialMediaLinks?.map((_, index) => (
+                            <Grid container spacing={2} key={index} sx={{ mb: 2, alignItems: "center" }}>
+                              <CommonValidationTextField name={`socialMediaLinks.${index}.title`} label="title" required grid={{ xs: 12, md: 3 }} />
+                              <CommonValidationTextField name={`socialMediaLinks.${index}.link`} label="link" required grid={{ xs: 12, md: 3 }} />
+                              <CommonValidationTextField name={`socialMediaLinks.${index}.icon`} label="icon" grid={{ xs: 12, md: 2 }} />
+                              <CommonValidationSwitch name={`socialMediaLinks.${index}.isActive`} label="Active" grid={{ xs: 12, md: 2 }} />
+                              {(values?.socialMediaLinks?.length || 0) > 1 && (
+                                <Grid size={"auto"}>
+                                  <CommonButton variant="outlined" size="small" color="error" sx={{ minWidth: 20 }} onClick={() => remove(index)}>
+                                    <GridCloseIcon />
+                                  </CommonButton>
+                                </Grid>
+                              )}
+                              <Grid size={"auto"}>
+                                <CommonButton variant="outlined" size="small" color="primary" sx={{ minWidth: 20 }} onClick={() => push({ title: "", link: "", icon: "", isActive: true })}>
+                                  <Add />
+                                </CommonButton>
+                              </Grid>
+                            </Grid>
+                          ))}
+                        </>
+                      )}
+                    </FieldArray>
+                  </Grid>
                 </Grid>
               </CommonCard>
               <CommonBottomActionBar save disabled={!dirty} isLoading={isEditLoading} />
