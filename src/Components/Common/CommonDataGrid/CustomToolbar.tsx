@@ -19,9 +19,7 @@ const CustomToolbar: FC<CustomToolbarProps> = ({ isExport = true, fileName, apiR
   const [searchText, setSearchText] = useState(filterModel?.quickFilterValues?.[0] || "");
 
   const { user } = useAppSelector((state) => state.auth);
-  const { company } = useAppSelector((state) => state.company);
-  const companyName = company?.name ?? "Company";
-  const exportFileName = `${fileName ? `${fileName?.replace(/\s+/g, "-")}-` : ""}${companyName?.replace(/\s+/g, "-")}-${new Date().toISOString().split("T")[0]}`;
+  const exportFileName = `${fileName ? `${fileName?.replace(/\s+/g, "-")}-` : ""}-${new Date().toISOString().split("T")[0]}`;
   const { adminSetting } = useAppSelector((state) => state.layout);
 
   const handleSearch = () => {
@@ -95,7 +93,7 @@ const CustomToolbar: FC<CustomToolbarProps> = ({ isExport = true, fileName, apiR
             {/* EXCEL */}
             <MenuItem
               onClick={() => {
-                ExportDataGridToExcel({ columns, rows, fileName: exportFileName, title: fileName ?? companyName, companyName: companyName });
+                ExportDataGridToExcel({ columns, rows, fileName: exportFileName, title: fileName, companyName: fileName });
                 setAnchorEl(null);
               }}
             >
@@ -116,7 +114,7 @@ const CustomToolbar: FC<CustomToolbarProps> = ({ isExport = true, fileName, apiR
             {/* PDF */}
             <MenuItem
               onClick={() => {
-                ExportDataGridToPDF({ columns, rows, fileName: exportFileName, title: companyName, user: user?.fullName, email: adminSetting?.email });
+                ExportDataGridToPDF({ columns, rows, fileName: exportFileName, title: exportFileName, user: user?.fullName, email: adminSetting?.email });
                 setAnchorEl(null);
               }}
             >

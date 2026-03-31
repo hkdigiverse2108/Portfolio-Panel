@@ -22,6 +22,7 @@ export const PageRoutes = [
   { path: ROUTES.HERO_SECTION.BASE, name: PAGE_TITLE.HERO_SECTION.BASE, element: <HeroSection /> },
   { path: ROUTES.HERO_SECTION.UPDATE, name: PAGE_TITLE.HERO_SECTION.BASE, element: <HeroSectionForm /> },
 ];
+
 export const AuthRoutes = [
   { path: ROUTES.HOME, element: <Navigate to={ROUTES.AUTH.SIGNIN} replace /> },
   { path: ROUTES.AUTH.SIGNIN, element: <SignInForm /> },

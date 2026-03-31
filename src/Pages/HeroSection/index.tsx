@@ -10,7 +10,7 @@ import { BREADCRUMBS } from "../../Data/Breadcrumbs";
 import type { HeroSectionBase } from "../../Types";
 
 const HeroSection = () => {
-  const { sortModel, setSortModel, filterModel, setFilterModel, rowToDelete, setRowToDelete, isActive, setActive, params } = useDataGrid();
+  const {paginationModel, setPaginationModel, sortModel, setSortModel, filterModel, setFilterModel, rowToDelete, setRowToDelete, isActive, setActive, params } = useDataGrid();
   const navigate = useNavigate();
 
   const { data: heroSection_data, isLoading: heroSectionLoading, isFetching: heroSectionFetching } = Queries.useGetHeroSection(params);
@@ -50,6 +50,8 @@ const HeroSection = () => {
     isActive,
     setActive,
     handleAdd,
+    paginationModel,
+    onPaginationModelChange: setPaginationModel,
     sortModel,
     onSortModelChange: setSortModel,
     filterModel,

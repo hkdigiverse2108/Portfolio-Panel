@@ -2,7 +2,6 @@ import { configureStore } from "@reduxjs/toolkit";
 import LayoutSlice from "./Slices/LayoutSlice";
 import AuthSlice from "./Slices/AuthSlice";
 import ModalSlice from "./Slices/ModalSlice";
-import CompanySlice from "./Slices/CompanySlice";
 import DrawerSlice from "./Slices/DrawerSlice";
 
 const Store = configureStore({
@@ -10,7 +9,6 @@ const Store = configureStore({
     layout: LayoutSlice,
     auth: AuthSlice,
     modal: ModalSlice,
-    company: CompanySlice,
     drawer: DrawerSlice,
   },
 });

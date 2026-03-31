@@ -38,14 +38,12 @@ const Profile = () => {
     socialMediaLinks: user?.socialMediaLinks || [],
     offers: user?.offers || [],
   };
-  console.log("value:", initialValues);
 
   const FormikImageSync = <T extends FormikValues>({ activeKey, clearActiveKey }: ImageSyncProps) => {
     const { selectedFiles } = useAppSelector((state) => state.modal);
     const { setFieldValue } = useFormikContext<T>();
 
     useEffect(() => {
-      console.log("Selected File:", selectedFiles[0]);
       if (!selectedFiles[0] || !activeKey) return;
 
       setFieldValue(activeKey, selectedFiles[0]);
@@ -123,7 +121,7 @@ const Profile = () => {
                         <>
                           {values?.socialMediaLinks?.map((_, index) => (
                             <Grid container spacing={2} key={index} sx={{ mb: 2, alignItems: "center" }}>
-                              <CommonValidationSelect name={`socialMediaLinks.${index}.title`} label="title" options={SOCIAL_MEDIA_TYPE}  grid={{ xs: 12, md: 3 }} />
+                              <CommonValidationSelect name={`socialMediaLinks.${index}.title`} label="title" options={SOCIAL_MEDIA_TYPE} grid={{ xs: 12, md: 3 }} />
                               <CommonValidationTextField name={`socialMediaLinks.${index}.link`} label="link" required grid={{ xs: 12, md: 3 }} />
                               <CommonValidationTextField name={`socialMediaLinks.${index}.icon`} label="icon" grid={{ xs: 12, md: 2 }} />
                               <CommonValidationSwitch name={`socialMediaLinks.${index}.isActive`} label="Active" grid={{ xs: 12, md: 2 }} />

@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { STORAGE_KEYS } from "../../Constants";
-import type { AdminSettingBase, ChildDetailsApiResponse } from "../../Types";
-import { Storage, Stringify } from "../../Utils";
+import type { AdminSettingBase } from "../../Types";
+import { Storage } from "../../Utils";
 
 type LayoutState = {
   isExpanded: boolean;
@@ -11,11 +11,9 @@ type LayoutState = {
   isApplicationMenuOpen: boolean;
   openSubmenu: string | null;
   isToggleTheme: string;
-  permission: ChildDetailsApiResponse[];
   adminSetting: AdminSettingBase | null;
 };
 
-const StoredPermission = JSON.parse(Storage.getItem(STORAGE_KEYS.PERMISSION) || "null");
 const storedTheme = Storage.getItem(STORAGE_KEYS.THEME) || "light";
 
 // Apply the initial theme class immediately
@@ -30,7 +28,6 @@ const initialState: LayoutState = {
   isApplicationMenuOpen: false,
   openSubmenu: null,
   isToggleTheme: storedTheme,
-  permission: StoredPermission,
   adminSetting: null,
 };
 
@@ -40,10 +37,6 @@ const layoutSlice = createSlice({
   reducers: {
     setAdminSetting: (state, action) => {
       state.adminSetting = action.payload;
-    },
-    setPermission: (state, action) => {
-      state.permission = action.payload;
-      Storage.setItem(STORAGE_KEYS.PERMISSION, Stringify(action.payload));
     },
     setIsMobile: (state, action) => {
       state.isMobile = action.payload;
@@ -81,6 +74,6 @@ const layoutSlice = createSlice({
   },
 });
 
-export const { setAdminSetting, setPermission,setIsMobile, setToggleSidebar, setToggleMobileSidebar, setIsHovered, setApplicationMenuOpen, setToggleSubmenu, setToggleTheme, setSidebarOpen } = layoutSlice.actions;
+export const { setAdminSetting,setIsMobile, setToggleSidebar, setToggleMobileSidebar, setIsHovered, setApplicationMenuOpen, setToggleSubmenu, setToggleTheme, setSidebarOpen } = layoutSlice.actions;
 
 export default layoutSlice.reducer;

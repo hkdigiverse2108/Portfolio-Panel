@@ -2,18 +2,6 @@ import * as Yup from "yup";
 import type { Primitive } from "../../Types";
 import { Validation } from "./Validation";
 
-// const RequiredWhenTrue = (
-//   dependentField: string,
-//   message: string,
-//   baseSchema: Yup.AnySchema,
-// ) => {
-//   return baseSchema.when(dependentField, {
-//     is: true,
-//     then: (schema) => schema.required(`${message} is required`),
-//     otherwise: (schema) => schema.notRequired(),
-//   });
-// };
-
 export const RequiredWhen = (dependentField: string, requiredValues: Primitive[], label: string, type: "string" | "number" | "array" = "string", options?: { extraRules?: (schema: Yup.AnySchema) => Yup.AnySchema }) => {
   let schema: Yup.AnySchema;
 
@@ -42,7 +30,6 @@ export const RequiredWhen = (dependentField: string, requiredValues: Primitive[]
 
 // ---------- Reusable helpers ----------
 
-// const ImageSchema = (label: string, required = true) => Validation("array", label, required ? { minItems: 1 } : { required: false });
 export const PhoneValidation = (label = "Phone No", options?: { requiredCountryCode?: boolean; requiredNumber?: boolean }) =>
   Yup.object({
     countryCode: Validation("string", "Country code", {
