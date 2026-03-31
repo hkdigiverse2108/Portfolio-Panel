@@ -18,4 +18,8 @@ export const ROUTES = {
   PROFILE: {
     BASE: "/profile",
   },
+  HERO_SECTION:{
+    BASE: "/hero-section",
+    UPDATE: "/hero-section/update",
+  }
 } as const;
