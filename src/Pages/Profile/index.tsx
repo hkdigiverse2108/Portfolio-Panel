@@ -1,4 +1,4 @@
-import { Grid, Box, Typography } from "@mui/material";
+import { Grid, Box, Typography, IconButton } from "@mui/material";
 import { FieldArray, Form, Formik, useFormikContext, type FormikHelpers, type FormikValues } from "formik";
 import { CommonBottomActionBar, CommonBreadcrumbs, CommonCard, CommonProfileAvatar } from "../../Components/Common";
 import { Mutations, Queries } from "../../Api";
@@ -12,7 +12,7 @@ import { useAppDispatch, useAppSelector } from "../../Store/hooks";
 import { setSelectedFiles, setUploadModal } from "../../Store/Slices/ModalSlice";
 import { CommonFormImageBox } from "../../Components/Common/CommonUploadImage/CommonImageBox";
 import { GridCloseIcon } from "@mui/x-data-grid";
-import { Add } from "@mui/icons-material";
+import { Add, Delete } from "@mui/icons-material";
 import { UserSchema } from "../../Utils/ValidationSchemas";
 import { CommonValidationCreatableSelect } from "../../Attribute/FormFields/CommonSelectTab";
 import { CommonValidationSelect } from "../../Attribute/FormFields/CommonSelect";
@@ -38,7 +38,7 @@ const Profile = () => {
     socialMediaLinks: user?.socialMediaLinks || [],
     offers: user?.offers || [],
   };
-
+  console.log(user?.profileImage);
   const FormikImageSync = <T extends FormikValues>({ activeKey, clearActiveKey }: ImageSyncProps) => {
     const { selectedFiles } = useAppSelector((state) => state.modal);
     const { setFieldValue } = useFormikContext<T>();
@@ -75,7 +75,7 @@ const Profile = () => {
       <CommonBreadcrumbs title={PAGE_TITLE.PROFILE.BASE} maxItems={3} breadcrumbs={BREADCRUMBS.PROFILE.BASE} />
       <Box sx={{ p: { xs: 2, md: 3 }, mb: 8 }}>
         <Formik<UserFormValues> enableReinitialize initialValues={initialValues} validationSchema={UserSchema} onSubmit={handleSubmit}>
-          {({ dirty, values }) => (
+          {({ dirty, values, setFieldValue }) => (
             <Form noValidate>
               <FormikImageSync activeKey={activeImageKey} clearActiveKey={() => setActiveImageKey(null)} />
               <CommonCard grid={{ xs: 12 }} hideDivider>
@@ -85,8 +85,22 @@ const Profile = () => {
                     <div className="flex flex-col gap-5 xl:flex-row xl:items-center xl:justify-between">
                       <div className="flex flex-col items-center w-full gap-6 xl:flex-row">
                         <div className="flex items-center bg-black dark:bg-brand-500 text-white rounded-full border border-black dark:border-brand-500 p-1">
-                          <div className="relative flex items-center justify-center w-24 h-24 rounded-full overflow-hidden cursor-pointer" onClick={handleUpload}>
+                          <div className="relative flex items-center justify-center w-24 h-24 rounded-full overflow-hidden cursor-pointer group" onClick={handleUpload}>
                             <CommonProfileAvatar fullName={`${values?.firstName || ""} ${values?.lastName || ""}`} profileImage={values?.profileImage || ""} className="w-full h-full text-3xl" />
+                            {values?.profileImage && (
+                              <div className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 transition-all duration-300">
+                                <div
+                                  className="flex items-center justify-center w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm hover:bg-red-500 transition cursor-pointer"
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    setFieldValue("profileImage", null);
+                                  }}
+                                >
+                                  <Delete className="text-white" />
+                                </div>
+                              </div>
+                            )}
+
                             <div className="absolute inset-0 opacity-0 pointer-events-none">
                               <CommonFormImageBox name="profileImage" type="image" label="" grid={{ xs: 12 }} multiple={false} onUpload={handleUpload} />
                             </div>
