@@ -5,3 +5,4 @@ export * from "./AdminSetting";
 export * from "./Layout";
 export * from "./User";
 export * from "./HeroSection";
+export * from "./WorkCount";

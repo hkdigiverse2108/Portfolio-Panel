@@ -3,3 +3,6 @@ export * from "./FormFields/CommonTextField";
 export * from "./Notification/index";
 export * from "./FormFields/CommonSwitch";
 export * from "./FormFields/CommonDateRangeSelector";
+export * from "./FormFields/CommonSelect";
+export * from "./FormFields/CommonPhoneNumber";
+export * from "./FormFields/CommonSelectTab";

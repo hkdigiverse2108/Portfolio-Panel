@@ -8,6 +8,7 @@ import UpdatePassword from "../Pages/Auth/UpdatePassword";
 import ChangePassword from "../Pages/Auth/ChangePassword";
 import Profile from "../Pages/Profile";
 import HeroSection from "../Pages/HeroSection";
+import WorkCount from "../Pages/WorkCount";
 
 export const PageRoutes = [
   { path: ROUTES.HOME, name: PAGE_TITLE.DASHBOARD, element: <Navigate to={ROUTES.DASHBOARD} replace /> },
@@ -19,6 +20,8 @@ export const PageRoutes = [
   { path: ROUTES.PROFILE.BASE, name: PAGE_TITLE.PROFILE.BASE, element: <Profile /> },
 
   { path: ROUTES.HERO_SECTION.BASE, name: PAGE_TITLE.HERO_SECTION.BASE, element: <HeroSection /> },
+
+  { path: ROUTES.WORK_COUNT.BASE, name: PAGE_TITLE.WORK_COUNT.BASE, element: <WorkCount /> },
 ];
 
 export const AuthRoutes = [

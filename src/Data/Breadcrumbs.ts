@@ -10,4 +10,7 @@ export const BREADCRUMBS = {
   HERO_SECTION: {
     BASE: [{ label: PAGE_TITLE.HERO_SECTION.BASE }],
   },
+  WORK_COUNT: {
+    BASE: [{ label: PAGE_TITLE.WORK_COUNT.BASE }],
+  },
 };

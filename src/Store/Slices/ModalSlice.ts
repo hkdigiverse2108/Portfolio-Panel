@@ -4,6 +4,7 @@ import type { ModalStateSlice } from "../../Types";
 const initialState: ModalStateSlice = {
   isUploadModal: { open: false, type: "image", multiple: false },
   selectedFiles: [],
+  isWorkCountModal: { open: false, data: null },
 };
 
 const ModalSlice = createSlice({
@@ -17,9 +18,13 @@ const ModalSlice = createSlice({
     setSelectedFiles: (state, action) => {
       state.selectedFiles = action.payload;
     },
+
+    setWorkCountModal: (state, action) => {
+      state.isWorkCountModal = action.payload;
+    },
   },
 });
 
-export const {setSelectedFiles, setUploadModal } = ModalSlice.actions;
+export const { setSelectedFiles, setUploadModal, setWorkCountModal } = ModalSlice.actions;
 
 export default ModalSlice.reducer;

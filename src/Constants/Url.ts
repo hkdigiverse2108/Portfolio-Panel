@@ -28,4 +28,11 @@ export const URL_KEYS = {
     GET: "/hero-section/get",
     UPDATE: "/hero-section/update",
   },
+  WORK_COUNT: {
+    BASE: "/work-count",
+    ALL: "/work-count/all",
+    ADD: "/work-count/add",
+    EDIT: "/work-count/edit",
+    DELETE: "/work-count/delete",
+  },
 } as const;

@@ -1,9 +1,9 @@
 import type { Params } from "react-router-dom";
 import { KEYS, URL_KEYS } from "../Constants";
-import type { AppQueryOptions, UploadResponse, UserApiResponse } from "../Types";
+import type { AppQueryOptions, UploadResponse, UserApiResponse, WorkCountApiResponse } from "../Types";
+import type { HeroSectionApiResponse } from "../Types/HeroSection";
 import { Get } from "./Methods";
 import { useQueries } from "./ReactQuery";
-import type { HeroSectionApiResponse } from "../Types/HeroSection";
 
 export const Queries = {
   // ************ Upload ***********
@@ -15,4 +15,7 @@ export const Queries = {
 
   //*************** Hero Section *********
   useGetHeroSection: (params?: Params) => useQueries<HeroSectionApiResponse>([KEYS.HERO_SECTION.BASE, params], () => Get(URL_KEYS.HERO_SECTION.GET, params)),
+
+  //*************** Work Count *********
+  useGetWorkCount: (params?: Params) => useQueries<WorkCountApiResponse>([KEYS.WORK_COUNT.BASE, params], () => Get(URL_KEYS.WORK_COUNT.ALL, params)),
 };

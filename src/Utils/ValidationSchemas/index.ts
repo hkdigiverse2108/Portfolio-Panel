@@ -120,4 +120,10 @@ export const HeroSectionSchema = Yup.object({
   link: Validation("string", "Link"),
   description: Validation("string", "Description", { required: false }),
   isActive: Yup.boolean(),
+  });
+// WorkCount
+export const WorkCountSchema = Yup.object({
+  title: Validation("string", "Title"),
+  number: Validation("string", "Count"),
+  isActive: Yup.boolean().nullable(),
 });
