@@ -22,4 +22,10 @@ export const KEYS = {
     IMAGES: "images",
     PDFS: "pdfs",
   },
+  HERO_SECTION: {
+    BASE: "hero-section",
+    ADD: "add-hero-section",
+    UPDATE: "update-hero-section",
+    DELETE: "delete-hero-section",
+  },
 };

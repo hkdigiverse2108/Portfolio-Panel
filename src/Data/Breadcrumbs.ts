@@ -1,4 +1,4 @@
-import { PAGE_TITLE } from "../Constants";
+import { PAGE_TITLE, ROUTES } from "../Constants";
 
 export const BREADCRUMBS = {
   CHANGE_PASSWORD: {
@@ -6,5 +6,10 @@ export const BREADCRUMBS = {
   },
   PROFILE: {
     BASE: [{ label: PAGE_TITLE.PROFILE.BASE }],
+  },
+  HERO_SECTION: {
+    BASE: [{ label: PAGE_TITLE.HERO_SECTION.BASE }],
+    ADD: [{ label: PAGE_TITLE.HERO_SECTION.BASE, href: ROUTES.HERO_SECTION.BASE }, { label: PAGE_TITLE.HERO_SECTION.ADD }],
+    EDIT: [{ label: PAGE_TITLE.HERO_SECTION.BASE, href: ROUTES.HERO_SECTION.BASE }, { label: PAGE_TITLE.HERO_SECTION.EDIT }],
   },
 };

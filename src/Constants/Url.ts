@@ -23,4 +23,9 @@ export const URL_KEYS = {
     IMAGES: "/upload/images",
     PDFS: "/upload/pdfs",
   },
+  HERO_SECTION: {
+    BASE: "/hero-section",
+    ALL: "/hero-section/all",
+    UPDATE: "/hero-section/update",
+  },
 } as const;
