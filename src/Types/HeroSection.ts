@@ -12,7 +12,7 @@ export interface HeroSectionFormValues {
 
 export type AddHeroSectionPayload = HeroSectionFormValues;
 
-export type EditHeroSectionPayload = HeroSectionFormValues & { heroSectionId: string };
+export type EditHeroSectionPayload = HeroSectionFormValues;
 
 export type HeroSectionBase = HeroSectionFormValues & CommonDataType;
 
@@ -21,9 +21,5 @@ export interface HeroSectionDataResponse extends PageStatus {
 }
 
 export interface HeroSectionApiResponse extends MessageStatus {
-  data: HeroSectionDataResponse;
-}
-
-export interface HeroSectionDropdownApiResponse extends MessageStatus {
-  data: HeroSectionBase[];
+  data: HeroSectionBase;
 }

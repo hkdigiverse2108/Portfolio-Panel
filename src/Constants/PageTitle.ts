@@ -9,7 +9,5 @@ export const PAGE_TITLE = {
   },
   HERO_SECTION:{
     BASE: "Hero Section",
-    ADD: "Add Hero Section",
-    EDIT: "Edit Hero Section",
   }
 } as const;

@@ -15,7 +15,7 @@ export interface UserFormValues {
 
 export type AddUserPayload = UserFormValues;
 
-export type UpdateUserPayload = AddUserPayload & { userId?: string };
+export type UpdateUserPayload = AddUserPayload;
 
 export type UserBase = UserFormValues & CommonDataType;
 
@@ -27,7 +27,4 @@ export interface UserApiResponse extends MessageStatus {
   data: UserBase;
 }
 
-export interface SingleUserApiResponse extends MessageStatus {
-  data: UserBase;
-}
 

@@ -110,3 +110,14 @@ export const UserSchema = Yup.object({
     .nullable(),
   offers: Validation("array", "Offers", { required: false }),
 });
+
+export const HeroSectionSchema = Yup.object({
+  title: Validation("string", "Title"),
+  subTitles: Yup.array()
+    .of(Validation("string", "Sub Title"))
+    .required("Sub Titles are required"),
+  linkTitle: Validation("string", "Link Title"),
+  link: Validation("string", "Link"),
+  description: Validation("string", "Description", { required: false }),
+  isActive: Yup.boolean(),
+});

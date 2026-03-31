@@ -20,6 +20,5 @@ export const ROUTES = {
   },
   HERO_SECTION:{
     BASE: "/hero-section",
-    UPDATE: "/hero-section/update",
   }
 } as const;
