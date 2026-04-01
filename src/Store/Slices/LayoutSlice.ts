@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { STORAGE_KEYS } from "../../Constants";
-import type { UserBase } from "../../Types";
+import type { AdminSettingBase } from "../../Types";
 import { Storage } from "../../Utils";
 
 type LayoutState = {
@@ -11,7 +11,7 @@ type LayoutState = {
   isApplicationMenuOpen: boolean;
   openSubmenu: string | null;
   isToggleTheme: string;
-  user: UserBase | null;
+  adminSetting: AdminSettingBase | null;
 };
 
 const storedTheme = Storage.getItem(STORAGE_KEYS.THEME) || "light";
@@ -28,15 +28,15 @@ const initialState: LayoutState = {
   isApplicationMenuOpen: false,
   openSubmenu: null,
   isToggleTheme: storedTheme,
-  user: null,
+  adminSetting: null,
 };
 
 const layoutSlice = createSlice({
   name: "layout",
   initialState,
   reducers: {
-    setUser: (state, action) => {
-      state.user = action.payload;
+    setAdminSetting: (state, action) => {
+      state.adminSetting = action.payload;
     },
     setIsMobile: (state, action) => {
       state.isMobile = action.payload;
@@ -74,6 +74,6 @@ const layoutSlice = createSlice({
   },
 });
 
-export const { setUser, setIsMobile, setToggleSidebar, setToggleMobileSidebar, setIsHovered, setApplicationMenuOpen, setToggleSubmenu, setToggleTheme, setSidebarOpen } = layoutSlice.actions;
+export const { setAdminSetting,setIsMobile, setToggleSidebar, setToggleMobileSidebar, setIsHovered, setApplicationMenuOpen, setToggleSubmenu, setToggleTheme, setSidebarOpen } = layoutSlice.actions;
 
 export default layoutSlice.reducer;
