@@ -6,7 +6,6 @@ import { NavItems } from "../../Data";
 import { useAppDispatch, useAppSelector } from "../../Store/hooks";
 import { setIsHovered, setToggleMobileSidebar, setToggleSidebar } from "../../Store/Slices/LayoutSlice";
 import type { NavItem } from "../../Types";
-import SidebarWidget from "./SidebarWidget";
 import { ThemeTitle } from "../../Constants";
 import { useWindowWidth } from "../../Utils/Hooks";
 
@@ -153,7 +152,6 @@ const Sidebar = () => {
             </div>
           </div>
         </nav>
-        {isExpanded || isHovered || isMobileOpen ? <SidebarWidget /> : null}
       </div>
     </aside>
   );
