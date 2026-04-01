@@ -86,7 +86,7 @@ const BlogForm = () => {
 
   return (
     <>
-      <CommonBreadcrumbs title={PAGE_TITLE.BLOG[pageMode]} maxItems={1} breadcrumbs={BREADCRUMBS.BLOG[pageMode]} />
+      <CommonBreadcrumbs title={PAGE_TITLE.BLOG[pageMode]} maxItems={3} breadcrumbs={BREADCRUMBS.BLOG[pageMode]} />
 
       <Box sx={{ p: { xs: 2, md: 3 }, mb: 8 }}>
         <Formik<BlogFormValues> enableReinitialize initialValues={initialValues} validationSchema={BlogSchema} onSubmit={handleSubmit}>
