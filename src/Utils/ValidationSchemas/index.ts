@@ -113,17 +113,33 @@ export const UserSchema = Yup.object({
 
 export const HeroSectionSchema = Yup.object({
   title: Validation("string", "Title"),
-  subTitles: Yup.array()
-    .of(Validation("string", "Sub Title"))
-    .required("Sub Titles are required"),
+  subTitles: Yup.array().of(Validation("string", "Sub Title")).required("Sub Titles are required"),
   linkTitle: Validation("string", "Link Title"),
   link: Validation("string", "Link"),
   description: Validation("string", "Description", { required: false }),
   isActive: Yup.boolean(),
-  });
+});
+
 // WorkCount
 export const WorkCountSchema = Yup.object({
   title: Validation("string", "Title"),
   number: Validation("string", "Count"),
+  isActive: Yup.boolean().nullable(),
+});
+
+//Service
+export const ServiceSchema = Yup.object({
+  name: Validation("string", "Name"),
+  isActive: Yup.boolean().nullable(),
+});
+
+//Blog
+export const BlogSchema = Yup.object({
+  serviceId: Validation("string", "Service", { required: false }),
+  title: Validation("string", "Title"),
+  tagLine: Validation("string", "Tag Line", { required: false }),
+  date: Validation("string", "Date", { required: false }),
+  tags: Validation("array", "Tags", { required: false }),
+  description: Validation("string", "Description", { required: false }),
   isActive: Yup.boolean().nullable(),
 });

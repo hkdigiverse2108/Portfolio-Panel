@@ -9,6 +9,9 @@ import ChangePassword from "../Pages/Auth/ChangePassword";
 import Profile from "../Pages/Profile";
 import HeroSection from "../Pages/HeroSection";
 import WorkCount from "../Pages/WorkCount";
+import Service from "../Pages/Service";
+import Blog from "../Pages/Blog";
+import BlogForm from "../Pages/Blog/BlogForm";
 
 export const PageRoutes = [
   { path: ROUTES.HOME, name: PAGE_TITLE.DASHBOARD, element: <Navigate to={ROUTES.DASHBOARD} replace /> },
@@ -22,6 +25,11 @@ export const PageRoutes = [
   { path: ROUTES.HERO_SECTION.BASE, name: PAGE_TITLE.HERO_SECTION.BASE, element: <HeroSection /> },
 
   { path: ROUTES.WORK_COUNT.BASE, name: PAGE_TITLE.WORK_COUNT.BASE, element: <WorkCount /> },
+
+  { path: ROUTES.SERVICE.BASE, name: PAGE_TITLE.SERVICE.BASE, element: <Service /> },
+
+  { path: ROUTES.BLOG.BASE, name: PAGE_TITLE.BLOG.BASE, element: <Blog /> },
+  { path: ROUTES.BLOG.ADD_EDIT, name: PAGE_TITLE.BLOG.BASE, element: <BlogForm /> },
 ];
 
 export const AuthRoutes = [

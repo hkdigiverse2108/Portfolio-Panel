@@ -1,8 +1,7 @@
 import { KEYS, URL_KEYS } from "../Constants";
-import type { AddWorkCountPayload, EditHeroSectionPayload, EditWorkCountPayload, ForgotPasswordPayload, LoginPayload, LoginResponse, MessageStatus, ResendOtpPayload, ResetPasswordPayload, UpdatePasswordPayload, UploadResponse, VerifyOtpPayload } from "../Types";
+import type { AddBlogPayload, AddServicePayload, AddWorkCountPayload, EditBlogPayload, EditHeroSectionPayload, EditServicePayload, EditWorkCountPayload, ForgotPasswordPayload, LoginPayload, LoginResponse, MessageStatus, ResendOtpPayload, ResetPasswordPayload, UpdatePasswordPayload, UpdateUserPayload, UploadResponse, UserApiResponse, VerifyOtpPayload } from "../Types";
 import { Delete, Post, Put } from "./Methods";
 import { useMutations } from "./ReactQuery";
-import type { UpdateUserPayload, UserApiResponse } from "../Types/User";
 
 export const Mutations = {
   // ************ Auth ***********
@@ -36,4 +35,14 @@ export const Mutations = {
   useAddWorkCount: () => useMutations<AddWorkCountPayload, void>([KEYS.WORK_COUNT.ADD, KEYS.WORK_COUNT.BASE], (input) => Post(URL_KEYS.WORK_COUNT.ADD, input)),
   useEditWorkCount: () => useMutations<EditWorkCountPayload, void>([KEYS.WORK_COUNT.EDIT, KEYS.WORK_COUNT.BASE], (input) => Put(URL_KEYS.WORK_COUNT.EDIT, input)),
   useDeleteWorkCount: () => useMutations<string, void>([KEYS.WORK_COUNT.DELETE, KEYS.WORK_COUNT.BASE], (id) => Delete(`${URL_KEYS.WORK_COUNT.BASE}/${id}`)),
+
+  //*************** Blog *********
+  useAddBlog: () => useMutations<AddBlogPayload, void>([KEYS.BLOG.ADD, KEYS.BLOG.BASE], (input) => Post(URL_KEYS.BLOG.ADD, input)),
+  useEditBlog: () => useMutations<EditBlogPayload, void>([KEYS.BLOG.EDIT, KEYS.BLOG.BASE], (input) => Put(URL_KEYS.BLOG.EDIT, input)),
+  useDeleteBlog: () => useMutations<string, void>([KEYS.BLOG.DELETE, KEYS.BLOG.BASE], (id) => Delete(`${URL_KEYS.BLOG.BASE}/${id}`)),
+
+  //*************** Service *********
+  useAddService: () => useMutations<AddServicePayload, void>([KEYS.SERVICE.ADD, KEYS.SERVICE.BASE], (input) => Post(URL_KEYS.SERVICE.ADD, input)),
+  useEditService: () => useMutations<EditServicePayload, void>([KEYS.SERVICE.EDIT, KEYS.SERVICE.BASE], (input) => Put(URL_KEYS.SERVICE.EDIT, input)),
+  useDeleteService: () => useMutations<string, void>([KEYS.SERVICE.DELETE, KEYS.SERVICE.BASE], (id) => Delete(`${URL_KEYS.SERVICE.BASE}/${id}`)),
 };

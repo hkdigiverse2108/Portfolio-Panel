@@ -7,4 +7,6 @@ export const NavItems: NavItem[] = [
   { icon: <Person />, name: PAGE_TITLE.PROFILE.BASE, path: ROUTES.PROFILE.BASE },
   { icon: <Home />, name: PAGE_TITLE.HERO_SECTION.BASE, path: ROUTES.HERO_SECTION.BASE },
   { icon: <Home />, name: PAGE_TITLE.WORK_COUNT.BASE, path: ROUTES.WORK_COUNT.BASE },
+  { icon: <Home />, name: PAGE_TITLE.SERVICE.BASE, path: ROUTES.SERVICE.BASE },
+  { icon: <Home />, name: PAGE_TITLE.BLOG.BASE, path: ROUTES.BLOG.BASE },
 ];

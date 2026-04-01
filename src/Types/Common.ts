@@ -7,6 +7,7 @@ export type GridType = number | object | "auto" | "grow";
 import * as Yup from "yup";
 import type { MuiTelInputProps } from "mui-tel-input";
 import type { WorkCountBase } from "./WorkCount";
+import type { ServiceBase } from "./Service";
 
 export interface CommonProfileAvatarProps {
   fullName?: string;
@@ -495,6 +496,7 @@ export interface ModalStateSlice {
   isUploadModal: { open: boolean; type: UploadType; multiple?: boolean };
   selectedFiles: string[];
   isWorkCountModal: { open: boolean; data: WorkCountBase | null };
+  isServiceModal: { open: boolean; data: ServiceBase | null };
 }
 
 // ************ Modal End ***********

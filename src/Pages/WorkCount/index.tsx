@@ -15,7 +15,7 @@ const WorkCount = () => {
   const dispatch = useDispatch();
   const { data: WorkCountData, isLoading: WorkCountDataLoading, isFetching: WorkCountDataFetching } = Queries.useGetWorkCount(params);
 
-  const { mutate: deleteWorkCountMutate } = Mutations.useDeleteWorkCount();
+  const { mutate: deleteWorkCountMutate , isPending: isDeleteLoading} = Mutations.useDeleteWorkCount();
   const { mutate: editWorkCount, isPending: isEditLoading } = Mutations.useEditWorkCount();
 
   const allWorkCount = useMemo(() => WorkCountData?.data?.workCount_data.map((item) => ({ ...item, id: item?._id })) || [], [WorkCountData]);
@@ -65,7 +65,7 @@ const WorkCount = () => {
         <CommonCard hideDivider>
           <CommonDataGrid {...CommonDataGridOption} />
         </CommonCard>
-        <CommonDeleteModal open={Boolean(rowToDelete)} itemName={rowToDelete?.title} onClose={() => setRowToDelete(null)} onConfirm={() => handleDeleteBtn()} />
+        <CommonDeleteModal open={Boolean(rowToDelete)} itemName={rowToDelete?.title} loading={isDeleteLoading} onClose={() => setRowToDelete(null)} onConfirm={() => handleDeleteBtn()} />
         <WorkCountForm />
       </Box>
     </>

@@ -6,3 +6,5 @@ export * from "./Layout";
 export * from "./User";
 export * from "./HeroSection";
 export * from "./WorkCount";
+export * from "./Blog";
+export * from "./Service";
