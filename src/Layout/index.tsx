@@ -13,9 +13,7 @@ import Loader from "./Loader";
 const Layout = () => {
   const dispatch = useDispatch();
   const { isExpanded, isHovered } = useAppSelector((state) => state.layout);
-
-  const { user } = useAppSelector((state) => state.auth);
-  const { data: userData, isLoading: userLoading } = Queries.useGetUser(user);
+  const { data: userData, isLoading: userLoading } = Queries.useGetUser();
   const isAppLoading = userLoading;
   useEffect(() => {
     const handleResize = () => {
