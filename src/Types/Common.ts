@@ -9,6 +9,9 @@ import type { MuiTelInputProps } from "mui-tel-input";
 import type { WorkCountBase } from "./WorkCount";
 import type { ServiceBase } from "./Service";
 import type { ClientLogoBase } from "./ClientLogo";
+import type { WorkExperienceBase } from "./WorkExperience";
+import type { SkillBase } from "./Skill";
+import type { AwardsBase } from "./Awards";
 
 export interface CommonProfileAvatarProps {
   fullName?: string;
@@ -503,6 +506,9 @@ export interface ModalStateSlice {
   isWorkCountModal: { open: boolean; data: WorkCountBase | null };
   isServiceModal: { open: boolean; data: ServiceBase | null };
   isClientLogoModal: { open: boolean; data: ClientLogoBase | null };
+  isWorkExperienceModal: { open: boolean; data: WorkExperienceBase | null };
+  isSkillModal: { open: boolean; data: SkillBase | null };
+  isAwardsModal: { open: boolean; data: AwardsBase | null };
 }
 
 // ************ Modal End ***********

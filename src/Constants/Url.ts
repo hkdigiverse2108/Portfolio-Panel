@@ -70,4 +70,25 @@ export const URL_KEYS = {
     EDIT: "/client-logo/edit",
     DELETE: "/client-logo/delete",
   },
+  WORK_EXPERIENCE: {
+    BASE: "/work-experience",
+    ALL: "/work-experience/all",
+    ADD: "/work-experience/add",
+    EDIT: "/work-experience/edit",
+    DELETE: "/work-experience/delete",
+  },
+  SKILL: {
+    BASE: "/skill",
+    ALL: "/skill/all",
+    ADD: "/skill/add",
+    EDIT: "/skill/edit",
+    DELETE: "/skill/delete",
+  },
+  AWARDS: {
+    BASE: "/awards",
+    ALL: "/awards/all",
+    ADD: "/awards/add",
+    EDIT: "/awards/edit",
+    DELETE: "/awards/delete",
+  },
 } as const;

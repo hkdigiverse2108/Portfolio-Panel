@@ -17,6 +17,9 @@ import PortfolioForm from "../Pages/Portfolio/PortfolioForm";
 import OurService from "../Pages/OurService";
 import OurServiceForm from "../Pages/OurService/OurServiceForm";
 import ClientLogo from "../Pages/ClientLogo";
+import WorkExperience from "../Pages/WorkExperience";
+import Skill from "../Pages/Skill";
+import Awards from "../Pages/Awards";
 
 export const PageRoutes = [
   { path: ROUTES.HOME, name: PAGE_TITLE.DASHBOARD, element: <Navigate to={ROUTES.DASHBOARD} replace /> },
@@ -43,6 +46,12 @@ export const PageRoutes = [
   { path: ROUTES.OUR_SERVICE.ADD_EDIT, name: PAGE_TITLE.OUR_SERVICE.BASE, element: <OurServiceForm /> },
 
   { path: ROUTES.CLIENT_LOGO.BASE, name: PAGE_TITLE.CLIENT_LOGO.BASE, element: <ClientLogo /> },
+
+  { path: ROUTES.WORK_EXPERIENCE.BASE, name: PAGE_TITLE.WORK_EXPERIENCE.BASE, element: <WorkExperience /> },
+
+  { path: ROUTES.SKILL.BASE, name: PAGE_TITLE.SKILL.BASE, element: <Skill /> },
+
+  { path: ROUTES.AWARDS.BASE, name: PAGE_TITLE.AWARDS.BASE, element: <Awards /> },
 ];
 
 export const AuthRoutes = [

@@ -8,29 +8,29 @@ import { CommonModal } from "../../Components/Common";
 import { CommonFormImageBox } from "../../Components/Common/CommonUploadImage/CommonImageBox";
 import { PAGE_TITLE } from "../../Constants";
 import { useAppDispatch, useAppSelector } from "../../Store/hooks";
-import { setClientLogoModal, setSelectedFiles, setUploadModal } from "../../Store/Slices/ModalSlice";
-import type { ClientLogoFormValues, ImageSyncProps } from "../../Types";
+import { setSkillModal, setSelectedFiles, setUploadModal } from "../../Store/Slices/ModalSlice";
+import type { SkillFormValues, ImageSyncProps } from "../../Types";
 import { GetChangedFields, RemoveEmptyFields } from "../../Utils";
-import { ClientLogoSchema } from "../../Utils/ValidationSchemas";
+import { SkillSchema } from "../../Utils/ValidationSchemas";
 
-const ClientLogoForm = () => {
-  const { mutate: addClientLogo, isPending: isAddLoading } = Mutations.useAddClientLogo();
-  const { mutate: editClientLogo, isPending: isEditLoading } = Mutations.useEditClientLogo();
+const SkillForm = () => {
+  const { mutate: addSkill, isPending: isAddLoading } = Mutations.useAddSkill();
+  const { mutate: editSkill, isPending: isEditLoading } = Mutations.useEditSkill();
 
   const [activeImageKey, setActiveImageKey] = useState<"image" | null>(null);
-  const { isClientLogoModal } = useAppSelector((state) => state.modal);
+  const { isSkillModal } = useAppSelector((state) => state.modal);
 
   const dispatch = useDispatch();
 
-  const isEdit = isClientLogoModal.data;
-  const openModal = isClientLogoModal.open;
+  const isEdit = isSkillModal.data;
+  const openModal = isSkillModal.open;
   const isEditing = Boolean(isEdit?._id);
   const pageMode = isEditing ? "EDIT" : "ADD";
 
-  const initialValues: ClientLogoFormValues = {
-    name: isEdit?.name || "",
+  const initialValues: SkillFormValues = {
+    title: isEdit?.title || "",
     image: isEdit?.image || "",
-    link: isEdit?.link || "",
+    percentage: isEdit?.percentage,
     isActive: isEdit?.isActive ?? true,
   };
 
@@ -56,34 +56,33 @@ const ClientLogoForm = () => {
     dispatch(setUploadModal({ open: true, type: "image" }));
   };
 
-  const closeModal = () => dispatch(setClientLogoModal({ open: false, data: null }));
+  const closeModal = () => dispatch(setSkillModal({ open: false, data: null }));
 
-  const handleSubmit = (values: ClientLogoFormValues, { resetForm }: FormikHelpers<ClientLogoFormValues>) => {
+  const handleSubmit = (values: SkillFormValues, { resetForm }: FormikHelpers<SkillFormValues>) => {
     const onSuccessHandler = () => {
       resetForm();
       closeModal();
     };
 
     if (isEditing) {
-      const changedFields = GetChangedFields(values, isEdit as Partial<ClientLogoFormValues>);
-      editClientLogo({ ...changedFields, clientLogoId: isEdit?._id }, { onSuccess: onSuccessHandler });
+      const changedFields = GetChangedFields(values, isEdit as Partial<SkillFormValues>);
+      editSkill({ ...changedFields, skillId: isEdit?._id }, { onSuccess: onSuccessHandler });
     } else {
-      addClientLogo(RemoveEmptyFields(values), { onSuccess: onSuccessHandler });
+      addSkill(RemoveEmptyFields(values), { onSuccess: onSuccessHandler });
     }
   };
 
   return (
-    <CommonModal title={PAGE_TITLE.CLIENT_LOGO[pageMode]} isOpen={openModal} onClose={closeModal} className="max-w-125">
-      <Formik<ClientLogoFormValues> enableReinitialize initialValues={initialValues} validationSchema={ClientLogoSchema} onSubmit={handleSubmit}>
+    <CommonModal title={PAGE_TITLE.SKILL[pageMode]} isOpen={openModal} onClose={closeModal} className="max-w-125">
+      <Formik<SkillFormValues> enableReinitialize initialValues={initialValues} validationSchema={SkillSchema} onSubmit={handleSubmit}>
         {({ setFieldValue, dirty }) => (
           <Form noValidate>
             <FormikImageSync activeKey={activeImageKey} clearActiveKey={() => setActiveImageKey(null)} />
 
             <Grid container spacing={2} sx={{ p: 1 }}>
-              <CommonValidationTextField name="name" label="Name" required grid={{ xs: 12 }} />
-              <CommonValidationTextField name="link" label="Link" grid={{ xs: 12 }} />
+              <CommonValidationTextField name="title" label="Title" grid={{ xs: 12 }} required />
+              <CommonValidationTextField name="percentage" label="Percentage" type="number" grid={{ xs: 12 }} required />
               <CommonFormImageBox name="image" label="Image" type="image" grid={{ xs: 12 }} onUpload={handleUpload} onDelete={() => setFieldValue("image", null)} />
-
               {!isEditing && <CommonValidationSwitch name="isActive" label="Is Active" grid={{ xs: 12 }} />}
               <Grid sx={{ display: "flex", gap: 2, ml: "auto" }}>
                 <CommonButton variant="outlined" onClick={closeModal} title="Cancel" />
@@ -96,4 +95,4 @@ const ClientLogoForm = () => {
     </CommonModal>
   );
 };
-export default ClientLogoForm;
+export default SkillForm;

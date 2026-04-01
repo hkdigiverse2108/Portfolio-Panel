@@ -1,5 +1,5 @@
 import { KEYS, URL_KEYS } from "../Constants";
-import type { AddBlogPayload, AddClientLogoPayload, AddOurServicePayload, AddPortfolioPayload, AddServicePayload, AddWorkCountPayload, EditBlogPayload, EditClientLogoPayload, EditHeroSectionPayload, EditOurServicePayload, EditPortfolioPayload, EditServicePayload, EditWorkCountPayload, ForgotPasswordPayload, LoginPayload, LoginResponse, MessageStatus, ResendOtpPayload, ResetPasswordPayload, UpdatePasswordPayload, UpdateUserPayload, UploadResponse, UserApiResponse, VerifyOtpPayload } from "../Types";
+import type { AddAwardsPayload, AddBlogPayload, AddClientLogoPayload, AddOurServicePayload, AddPortfolioPayload, AddServicePayload, AddSkillPayload, AddWorkCountPayload, AddWorkExperiencePayload, EditAwardsPayload, EditBlogPayload, EditClientLogoPayload, EditHeroSectionPayload, EditOurServicePayload, EditPortfolioPayload, EditServicePayload, EditSkillPayload, EditWorkCountPayload, EditWorkExperiencePayload, ForgotPasswordPayload, LoginPayload, LoginResponse, MessageStatus, ResendOtpPayload, ResetPasswordPayload, UpdatePasswordPayload, UpdateUserPayload, UploadResponse, UserApiResponse, VerifyOtpPayload } from "../Types";
 import { Delete, Post, Put } from "./Methods";
 import { useMutations } from "./ReactQuery";
 
@@ -60,4 +60,19 @@ export const Mutations = {
   useAddClientLogo: () => useMutations<AddClientLogoPayload, void>([KEYS.CLIENT_LOGO.ADD, KEYS.CLIENT_LOGO.BASE], (input) => Post(URL_KEYS.CLIENT_LOGO.ADD, input)),
   useEditClientLogo: () => useMutations<EditClientLogoPayload, void>([KEYS.CLIENT_LOGO.EDIT, KEYS.CLIENT_LOGO.BASE], (input) => Put(URL_KEYS.CLIENT_LOGO.EDIT, input)),
   useDeleteClientLogo: () => useMutations<string, void>([KEYS.CLIENT_LOGO.DELETE, KEYS.CLIENT_LOGO.BASE], (id) => Delete(`${URL_KEYS.CLIENT_LOGO.BASE}/${id}`)),
+
+  //*************** Work Experience *********
+  useAddWorkExperience: () => useMutations<AddWorkExperiencePayload, void>([KEYS.WORK_EXPERIENCE.ADD, KEYS.WORK_EXPERIENCE.BASE], (input) => Post(URL_KEYS.WORK_EXPERIENCE.ADD, input)),
+  useEditWorkExperience: () => useMutations<EditWorkExperiencePayload, void>([KEYS.WORK_EXPERIENCE.EDIT, KEYS.WORK_EXPERIENCE.BASE], (input) => Put(URL_KEYS.WORK_EXPERIENCE.EDIT, input)),
+  useDeleteWorkExperience: () => useMutations<string, void>([KEYS.WORK_EXPERIENCE.DELETE, KEYS.WORK_EXPERIENCE.BASE], (id) => Delete(`${URL_KEYS.WORK_EXPERIENCE.BASE}/${id}`)),
+
+  //*************** Skill *********
+  useAddSkill: () => useMutations<AddSkillPayload, void>([KEYS.SKILL.ADD, KEYS.SKILL.BASE], (input) => Post(URL_KEYS.SKILL.ADD, input)),
+  useEditSkill: () => useMutations<EditSkillPayload, void>([KEYS.SKILL.EDIT, KEYS.SKILL.BASE], (input) => Put(URL_KEYS.SKILL.EDIT, input)),
+  useDeleteSkill: () => useMutations<string, void>([KEYS.SKILL.DELETE, KEYS.SKILL.BASE], (id) => Delete(`${URL_KEYS.SKILL.BASE}/${id}`)),
+
+  //*************** Awards *********
+  useAddAwards: () => useMutations<AddAwardsPayload, void>([KEYS.AWARDS.ADD, KEYS.AWARDS.BASE], (input) => Post(URL_KEYS.AWARDS.ADD, input)),
+  useEditAwards: () => useMutations<EditAwardsPayload, void>([KEYS.AWARDS.EDIT, KEYS.AWARDS.BASE], (input) => Put(URL_KEYS.AWARDS.EDIT, input)),
+  useDeleteAwards: () => useMutations<string, void>([KEYS.AWARDS.DELETE, KEYS.AWARDS.BASE], (id) => Delete(`${URL_KEYS.AWARDS.BASE}/${id}`)),
 };

@@ -45,4 +45,16 @@ export const ROUTES = {
     BASE: "/client-logo",
     ADD_EDIT: "/client-logo/add-edit",
   },
+  WORK_EXPERIENCE: {
+    BASE: "/work-experience",
+    ADD_EDIT: "/work-experience/add-edit",
+  },
+  SKILL: {
+    BASE: "/skill",
+    ADD_EDIT: "/skill/add-edit",
+  },
+  AWARDS: {
+    BASE: "/awards",
+    ADD_EDIT: "/awards/add-edit",
+  },
 } as const;

@@ -63,5 +63,23 @@ export const KEYS = {
     ADD: "add-client-logo",
     EDIT: "edit-client-logo",
     DELETE: "delete-client-logo",
+  },
+  WORK_EXPERIENCE:{
+    BASE: "work-experience",
+    ADD: "add-work-experience",
+    EDIT: "edit-work-experience",
+    DELETE: "delete-work-experience",
+  },
+  SKILL:{
+    BASE: "skill",
+    ADD: "add-skill",
+    EDIT: "edit-skill",
+    DELETE: "delete-skill",
+  },
+  AWARDS:{
+    BASE: "awards",
+    ADD: "add-awards",
+    EDIT: "edit-awards",
+    DELETE: "delete-awards",
   }
 };

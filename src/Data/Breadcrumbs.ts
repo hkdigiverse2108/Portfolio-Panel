@@ -38,4 +38,13 @@ export const BREADCRUMBS = {
     ADD: [{ label: PAGE_TITLE.CLIENT_LOGO.BASE, href: ROUTES.CLIENT_LOGO.BASE }, { label: PAGE_TITLE.CLIENT_LOGO.ADD }],
     EDIT: [{ label: PAGE_TITLE.CLIENT_LOGO.BASE, href: ROUTES.CLIENT_LOGO.BASE }, { label: PAGE_TITLE.CLIENT_LOGO.EDIT }],
   },
+  WORK_EXPERIENCE: {
+    BASE: [{ label: PAGE_TITLE.WORK_EXPERIENCE.BASE }],
+  },
+  SKILL: {
+    BASE: [{ label: PAGE_TITLE.SKILL.BASE }],
+  },
+  AWARDS: {
+    BASE: [{ label: PAGE_TITLE.AWARDS.BASE }],
+  },
 };

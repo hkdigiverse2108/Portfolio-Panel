@@ -11,7 +11,7 @@ import type { WorkCountFormValues } from "../../Types";
 import { GetChangedFields, RemoveEmptyFields } from "../../Utils";
 import { WorkCountSchema } from "../../Utils/ValidationSchemas";
 
-const RoleForm = () => {
+const WorkCountForm = () => {
   const { mutate: addWorkCount, isPending: isAddLoading } = Mutations.useAddWorkCount();
   const { mutate: editWorkCount, isPending: isEditLoading } = Mutations.useEditWorkCount();
 
@@ -67,4 +67,4 @@ const RoleForm = () => {
     </CommonModal>
   );
 };
-export default RoleForm;
+export default WorkCountForm;

@@ -11,3 +11,6 @@ export * from "./Service";
 export * from "./Portfolio";
 export * from "./OurService";
 export * from "./ClientLogo";
+export * from "./WorkExperience";
+export * from "./Skill";
+export * from "./Awards";

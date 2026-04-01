@@ -40,4 +40,19 @@ export const PAGE_TITLE = {
     ADD: "Add Client Logo",
     EDIT: "Edit Client Logo",
   },
+  WORK_EXPERIENCE: {
+    BASE: "Work Experience",
+    ADD: "Add Work Experience",
+    EDIT: "Edit Work Experience",
+  },
+  SKILL: {
+    BASE: "Skill",
+    ADD: "Add Skill",
+    EDIT: "Edit Skill",
+  },
+  AWARDS: {
+    BASE: "Awards",
+    ADD: "Add Awards",
+    EDIT: "Edit Awards",
+  },
 } as const;

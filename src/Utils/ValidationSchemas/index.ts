@@ -183,3 +183,28 @@ export const ClientLogoSchema = Yup.object({
   image: Validation("string", "Image", { required: false }),
   isActive: Yup.boolean().nullable(),
 });
+
+//WorkExperience
+export const WorkExperienceSchema = Yup.object({
+  year: Validation("string", "Year"),
+  title: Validation("string", "Title"),
+  subTitle: Validation("string", "Sub Title", { required: false }),
+  isActive: Yup.boolean().nullable(),
+});
+
+//Skill
+export const SkillSchema = Yup.object({
+  image: Validation("string", "Image", { required: false }),
+  title: Validation("string", "Title"),
+  percentage: Validation("number", "Percentage"),
+  isActive: Yup.boolean().nullable(),
+});
+
+//Awards
+export const AwardsSchema = Yup.object({
+  image: Validation("string", "Image", { required: false }),
+  iconImage: Validation("string", "Icon Image", { required: false }),
+  title: Validation("string", "Title"),
+  date: Validation("string", "Date", { required: false }),
+  isActive: Yup.boolean().nullable(),
+});

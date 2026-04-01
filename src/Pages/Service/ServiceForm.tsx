@@ -11,7 +11,7 @@ import type { ServiceFormValues } from "../../Types";
 import { GetChangedFields, RemoveEmptyFields } from "../../Utils";
 import { ServiceSchema } from "../../Utils/ValidationSchemas";
 
-const RoleForm = () => {
+const ServiceForm = () => {
   const { mutate: addService, isPending: isAddLoading } = Mutations.useAddService();
   const { mutate: editService, isPending: isEditLoading } = Mutations.useEditService();
 
@@ -65,4 +65,4 @@ const RoleForm = () => {
     </CommonModal>
   );
 };
-export default RoleForm;
+export default ServiceForm;

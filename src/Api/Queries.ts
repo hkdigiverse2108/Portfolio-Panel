@@ -1,5 +1,5 @@
 import { KEYS, URL_KEYS } from "../Constants";
-import type { AppQueryOptions, BlogApiResponse, ClientLogoApiResponse, HeroSectionApiResponse, OurServiceApiResponse, Params, PortfolioApiResponse, ServiceApiResponse, UploadResponse, UserApiResponse, WorkCountApiResponse } from "../Types";
+import type { AppQueryOptions, AwardsApiResponse, BlogApiResponse, ClientLogoApiResponse, HeroSectionApiResponse, OurServiceApiResponse, Params, PortfolioApiResponse, ServiceApiResponse, SkillApiResponse, UploadResponse, UserApiResponse, WorkCountApiResponse, WorkExperienceApiResponse } from "../Types";
 import { Get } from "./Methods";
 import { useQueries } from "./ReactQuery";
 
@@ -31,4 +31,13 @@ export const Queries = {
 
   //*************** Client Logo *********
   useGetClientLogo: (params?: Params) => useQueries<ClientLogoApiResponse>([KEYS.CLIENT_LOGO.BASE, params], () => Get(URL_KEYS.CLIENT_LOGO.ALL, params)),
+
+  //*************** Work Experience *********
+  useGetWorkExperience: (params?: Params) => useQueries<WorkExperienceApiResponse>([KEYS.WORK_EXPERIENCE.BASE, params], () => Get(URL_KEYS.WORK_EXPERIENCE.ALL, params)),
+
+  //*************** Skill *********
+  useGetSkill: (params?: Params) => useQueries<SkillApiResponse>([KEYS.SKILL.BASE, params], () => Get(URL_KEYS.SKILL.ALL, params)),
+
+  //*************** Awards *********
+  useGetAwards: (params?: Params) => useQueries<AwardsApiResponse>([KEYS.AWARDS.BASE, params], () => Get(URL_KEYS.AWARDS.ALL, params)),
 };
