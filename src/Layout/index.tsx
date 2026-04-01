@@ -6,11 +6,17 @@ import { useAppSelector } from "../Store/hooks";
 import Header from "./Header/index";
 import Sidebar from "./Sidebar/index";
 import { CommonUpload } from "../Components/Common";
+import { Queries } from "../Api";
+import { setUser } from "../Store/Slices/AuthSlice";
+import Loader from "./Loader";
 
 const Layout = () => {
   const dispatch = useDispatch();
   const { isExpanded, isHovered } = useAppSelector((state) => state.layout);
 
+  const { user } = useAppSelector((state) => state.auth);
+  const { data: userData, isLoading: userLoading } = Queries.useGetUser(user);
+  const isAppLoading = userLoading;
   useEffect(() => {
     const handleResize = () => {
       const isMobile = window.innerWidth < 768;
@@ -22,22 +28,31 @@ const Layout = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, [dispatch]);
 
+  useEffect(() => {
+    if (userData) {
+      dispatch(setUser(userData?.data));
+    }
+  }, [dispatch, userData]);
+
   return (
-    <div className="flex flex-col min-h-screen bg-white dark:bg-gray-dark transition-colors duration-300">
-      {/* Header occupies full-width sticky-top */}
-      <Header />
+    <>
+      <Loader loading={isAppLoading} />
+      <div className="flex flex-col min-h-screen bg-white dark:bg-gray-dark transition-colors duration-300">
+        {/* Header occupies full-width sticky-top */}
+        <Header />
 
-      <div className="flex flex-grow relative overflow-hidden">
-        {/* Sidebar is fixed, so we need content padding if shown */}
-        <Sidebar />
+        <div className="flex flex-grow relative overflow-hidden">
+          {/* Sidebar is fixed, so we need content padding if shown */}
+          <Sidebar />
 
-        {/* Main Content Area */}
-        <main className={`flex-grow transition-all duration-300 relative w-full ${isExpanded || isHovered ? "lg:pl-[290px]" : "lg:pl-[90px]"}`}>
-          <Outlet />
-        </main>
+          {/* Main Content Area */}
+          <main className={`flex-grow transition-all duration-300 relative w-full ${isExpanded || isHovered ? "lg:pl-[290px]" : "lg:pl-[90px]"}`}>
+            <Outlet />
+          </main>
+        </div>
+        <CommonUpload />
       </div>
-      <CommonUpload />
-    </div>
+    </>
   );
 };
 
