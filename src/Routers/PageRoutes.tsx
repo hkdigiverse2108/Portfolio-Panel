@@ -24,6 +24,7 @@ import Testimonial from "../Pages/Testimonial";
 import ContactUs from "../Pages/ContactUs";
 import MyAchievement from "../Pages/MyAchievement";
 import TestimonialDescription from "../Pages/TestimonialDescription";
+import PrivacyPolicy from "../Pages/PrivacyPolicy";
 
 export const PageRoutes = [
   { path: ROUTES.HOME, name: PAGE_TITLE.DASHBOARD, element: <Navigate to={ROUTES.DASHBOARD} replace /> },
@@ -64,6 +65,8 @@ export const PageRoutes = [
   { path: ROUTES.MY_ACHIEVEMENT.BASE, name: PAGE_TITLE.MY_ACHIEVEMENT.BASE, element: <MyAchievement /> },
 
   { path: ROUTES.TESTIMONIAL_DESCRIPTION.BASE, name: PAGE_TITLE.TESTIMONIAL_DESCRIPTION.BASE, element: <TestimonialDescription /> },
+
+  { path: ROUTES.PRIVACY_POLICY.BASE, name: PAGE_TITLE.PRIVACY_POLICY.BASE, element: <PrivacyPolicy /> },
 ];
 
 export const AuthRoutes = [

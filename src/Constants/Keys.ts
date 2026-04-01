@@ -103,5 +103,9 @@ export const KEYS = {
     ADD: "add-my-achievement",
     EDIT: "edit-my-achievement",
     DELETE: "delete-my-achievement",
-  }
+  },
+  PRIVACY_POLICY:{
+    BASE: "privacy-policy",
+    UPDATE: "update-privacy-policy",
+  },
 };

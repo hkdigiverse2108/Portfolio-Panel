@@ -1,5 +1,6 @@
 import { KEYS, URL_KEYS } from "../Constants";
 import type { AppQueryOptions, AwardsApiResponse, BlogApiResponse, ClientLogoApiResponse, ContactUsApiResponse, HeroSectionApiResponse, MyAchievementApiResponse, OurServiceApiResponse, Params, PortfolioApiResponse, ServiceApiResponse, SkillApiResponse, TestimonialApiResponse, UploadResponse, UserApiResponse, WorkCountApiResponse, WorkExperienceApiResponse } from "../Types";
+import type { PrivacyPolicyApiResponse } from "../Types/PrivacyPolicy";
 import type { TestimonialDescriptionApiResponse } from "../Types/TestimonialDescription";
 import { Get } from "./Methods";
 import { useQueries } from "./ReactQuery";
@@ -53,4 +54,7 @@ export const Queries = {
 
   //*************** Testimonial Description *********
   useGetTestimonialDescription: (params?: Params) => useQueries<TestimonialDescriptionApiResponse>([KEYS.TESTIMONIAL_DESCRIPTION.BASE, params], () => Get(URL_KEYS.TESTIMONIAL_DESCRIPTION.GET, params)),
+
+  //*************** Privacy Policy *********
+  useGetPrivacyPolicy: (params?: Params) => useQueries<PrivacyPolicyApiResponse>([KEYS.PRIVACY_POLICY.BASE, params], () => Get(URL_KEYS.PRIVACY_POLICY.GET, params)),
 };

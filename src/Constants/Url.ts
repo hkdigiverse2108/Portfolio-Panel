@@ -117,4 +117,9 @@ export const URL_KEYS = {
     EDIT: "/my-achievement/edit",
     DELETE: "/my-achievement/delete",
   },
+  PRIVACY_POLICY: {
+    BASE: "/privacy-policy",
+    GET: "/privacy-policy/get",
+    UPDATE: "/privacy-policy/update",
+  },
 } as const;

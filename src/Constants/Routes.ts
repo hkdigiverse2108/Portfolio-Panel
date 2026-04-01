@@ -72,4 +72,7 @@ export const ROUTES = {
     BASE: "/my-achievement",
     ADD_EDIT: "/my-achievement/add-edit",
   },
+  PRIVACY_POLICY: {
+    BASE: "/privacy-policy",
+  },
 } as const;

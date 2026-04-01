@@ -73,4 +73,7 @@ export const PAGE_TITLE = {
     ADD: "Add My Achievement",
     EDIT: "Edit My Achievement",
   },
+  PRIVACY_POLICY: {
+    BASE: "Privacy Policy",
+  },
 } as const;

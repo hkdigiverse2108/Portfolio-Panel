@@ -59,4 +59,7 @@ export const BREADCRUMBS = {
   MY_ACHIEVEMENT: {
     BASE: [{ label: PAGE_TITLE.MY_ACHIEVEMENT.BASE }],
   },
+  PRIVACY_POLICY: {
+    BASE: [{ label: PAGE_TITLE.PRIVACY_POLICY.BASE }],
+  },
 };
