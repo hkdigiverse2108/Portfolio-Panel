@@ -19,7 +19,7 @@ import { CommonValidationSelect } from "../../Attribute/FormFields/CommonSelect"
 import { SOCIAL_MEDIA_TYPE } from "../../Data/Enum";
 
 const Profile = () => {
-  const { data, refetch } = Queries.useGetUser();
+  const { data } = Queries.useGetUser();
   const user = data?.data;
   const dispatch = useAppDispatch();
 
@@ -64,7 +64,6 @@ const Profile = () => {
     const payload = { ...values };
     await editUser(payload, {
       onSuccess: () => {
-        refetch();
         resetForm();
       },
     });
