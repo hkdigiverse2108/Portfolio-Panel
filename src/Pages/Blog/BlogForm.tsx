@@ -51,7 +51,7 @@ const BlogForm = () => {
     useEffect(() => {
       if (!selectedFiles.length || !activeKey) return;
       const merged = [...(values[activeKey] || []), ...selectedFiles].filter((v, i, arr) => arr.indexOf(v) === i);
-      setFieldValue(activeKey, merged);
+      setFieldValue(activeKey, activeKey === "images" ? merged : merged[0]);
 
       dispatch(setSelectedFiles([]));
       clearActiveKey();
