@@ -30,15 +30,11 @@ const TestimonialDescription = () => {
           {({ dirty }) => (
             <Form noValidate>
               <Grid container spacing={2}>
-                <CommonCard hideDivider grid={{ xs: 12 }}>
-                  <Grid container spacing={2} sx={{ p: 2 }}>
-                    <CommonValidationTextField name="title" label="Title" required grid={{ xs: 12 }} disabled={isLoading} />
-                    <CommonValidationTextField name="subTitle" label="Sub Title" required grid={{ xs: 12 }} disabled={isLoading} />
-                    <CommonValidationTextField name="rating" label="Rating" type="number" required grid={{ xs: 12 }} disabled={isLoading} />
-                  </Grid>
-                </CommonCard>
-                <CommonBottomActionBar submit disabled={!dirty} isLoading={isEditLoading} />
+                <CommonValidationTextField name="title" label="Title" required grid={{ xs: 12 }} disabled={isLoading} />
+                <CommonValidationTextField name="subTitle" label="Sub Title" required grid={{ xs: 12 }} disabled={isLoading} />
+                <CommonValidationTextField name="rating" label="Rating" type="number" required grid={{ xs: 12 }} disabled={isLoading} />
               </Grid>
+              <CommonBottomActionBar submit disabled={!dirty} isLoading={isEditLoading} />
             </Form>
           )}
         </Formik>
