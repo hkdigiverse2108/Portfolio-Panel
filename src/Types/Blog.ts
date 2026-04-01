@@ -10,6 +10,7 @@ export interface BlogFormValues {
   tagLine?: string;
   tags?: string[];
   isActive?: boolean;
+  _submitAction?: string;
 }
 
 export type AddBlogPayload = BlogFormValues;

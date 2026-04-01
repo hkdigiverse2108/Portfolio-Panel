@@ -18,7 +18,7 @@ const Blog = () => {
   const { data: serviceData, isLoading: serviceDataLoading } = Queries.useGetService({ activeFilter: true });
 
   const { mutate: editBlog, isPending: isEditLoading } = Mutations.useEditBlog();
-  const { mutate: deleteBlogMutate } = Mutations.useDeleteBlog();
+  const { mutate: deleteBlogMutate, isPending: isDeleteLoading } = Mutations.useDeleteBlog();
 
   const allBlog = useMemo(() => blogData?.data?.blog_data.map((emp) => ({ ...emp, id: emp?._id, removeQty: null })) || [], [blogData]);
   const totalRows = blogData?.data?.totalData || 0;
@@ -32,11 +32,9 @@ const Blog = () => {
 
   const columns: AppGridColDef<BlogBase>[] = [
     CommonObjectPropertyColumn<BlogBase>("service", "serviceId", ["name"], { headerName: "Service", flex: 1, minWidth: 150 }),
-    { field: "title", headerName: "title", width: 200 },
-    { field: "mrp", headerName: "MRP", width: 150 },
-    { field: "sellingPrice", headerName: "Selling Price", width: 150 },
-    { field: "hsnCode", headerName: "HSN", width: 200 },
-    { field: "openingQty", headerName: "Opening Qty", flex: 1, minWidth: 150 },
+    { field: "title", headerName: "title", flex: 1, minWidth: 200 },
+    { field: "tagLine", headerName: "tagLine", flex: 1, minWidth: 150 },
+    CommonObjectPropertyColumn<BlogBase>("date", "date", [], { headerName: "Date", flex: 1, minWidth: 150, type: "date" }),
     CommonActionColumn<BlogBase>({
       active: (row) => editBlog({ blogId: row?._id, isActive: !row.isActive }),
       editRoute: ROUTES.BLOG.ADD_EDIT,
@@ -72,7 +70,7 @@ const Blog = () => {
       <Box sx={{ p: { xs: 2, md: 3 }, display: "grid", gap: 2 }}>
         <AdvancedSearch filter={filter} />
         <CommonDataGrid {...CommonDataGridOption} />
-        <CommonDeleteModal open={Boolean(rowToDelete)} itemName={rowToDelete?.title} onClose={() => setRowToDelete(null)} onConfirm={() => handleDeleteBtn()} />
+        <CommonDeleteModal open={Boolean(rowToDelete)} itemName={rowToDelete?.title} loading={isDeleteLoading} onClose={() => setRowToDelete(null)} onConfirm={() => handleDeleteBtn()} />
       </Box>
     </>
   );

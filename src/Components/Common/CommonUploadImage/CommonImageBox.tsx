@@ -5,19 +5,20 @@ import { Box, Grid, IconButton } from "@mui/material";
 import { useField } from "formik";
 import { useEffect, useMemo, type FC } from "react";
 import { Link } from "react-router-dom";
+import type { GridType } from "../../../Types";
 
 export interface commonImageBoxProps {
   url: string;
   label: string;
   type: "image" | "pdf";
-  grid?: object | number;
+  grid?: GridType;
 }
 
 export interface CommonFormImageBoxProps {
   name: string;
   label: string;
   type: "image" | "pdf";
-  grid?: object | number;
+  grid?: GridType;
   required?: boolean;
   onUpload: () => void;
   onDelete?: () => void;
