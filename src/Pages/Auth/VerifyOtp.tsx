@@ -31,7 +31,7 @@ const VerifyOtp = () => {
       onSuccess: () => {
         if (signinResponse?.type === "signin") {
           dispatch(setSignin(signinResponse.responseData));
-          navigate(ROUTES.DASHBOARD);
+          navigate(ROUTES.PORTFOLIO.BASE);
         } else {
           dispatch(setSigninResponse({ ...signinResponse, otp: values.otp, email: signinResponse?.email || "" }));
           navigate(ROUTES.AUTH.RESET_PASSWORD);

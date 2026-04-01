@@ -29,7 +29,7 @@ import TermsConditions from "../Pages/TermsConditions";
 import Setting from "../Pages/Setting";
 
 export const PageRoutes = [
-  { path: ROUTES.HOME, name: PAGE_TITLE.DASHBOARD, element: <Navigate to={ROUTES.DASHBOARD} replace /> },
+  { path: ROUTES.HOME, name: PAGE_TITLE.PORTFOLIO.BASE, element: <Navigate to={ROUTES.PORTFOLIO.BASE} replace /> },
 
   { path: ROUTES.DASHBOARD, name: PAGE_TITLE.DASHBOARD, element: <Dashboard /> },
 
