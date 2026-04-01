@@ -1,6 +1,6 @@
 import { PAGE_TITLE, ROUTES } from "../Constants";
 import type { NavItem } from "../Types";
-import { BarChart, EditNote, GridViewRounded, Home, MiscellaneousServices, Person, Source } from "@mui/icons-material";
+import { BarChart, EditNote, GridViewRounded, Group, Home, MiscellaneousServices, Person, Source } from "@mui/icons-material";
 
 export const NavItems: NavItem[] = [
   { icon: <GridViewRounded />, name: PAGE_TITLE.DASHBOARD, path: ROUTES.DASHBOARD },
@@ -10,6 +10,6 @@ export const NavItems: NavItem[] = [
   { icon: <MiscellaneousServices />, name: PAGE_TITLE.SERVICE.BASE, path: ROUTES.SERVICE.BASE },
   { icon: <EditNote />, name: PAGE_TITLE.BLOG.BASE, path: ROUTES.BLOG.BASE },
   { icon: <Source />, name: PAGE_TITLE.PORTFOLIO.BASE, path: ROUTES.PORTFOLIO.BASE },
-  { icon: <Home />, name: PAGE_TITLE.OUR_SERVICE.BASE, path: ROUTES.OUR_SERVICE.BASE },
-  { icon: <Home />, name: PAGE_TITLE.CLIENT_LOGO.BASE, path: ROUTES.CLIENT_LOGO.BASE },
+  { icon: <MiscellaneousServices />, name: PAGE_TITLE.OUR_SERVICE.BASE, path: ROUTES.OUR_SERVICE.BASE },
+  { icon: <Group />, name: PAGE_TITLE.CLIENT_LOGO.BASE, path: ROUTES.CLIENT_LOGO.BASE },
 ];
