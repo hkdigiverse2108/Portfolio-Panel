@@ -1,4 +1,4 @@
-import { BarChart, ContactMail, Description, DesignServices, EditNote, EmojiEvents, Group, Home, MiscellaneousServices, Psychology, Reviews, Source, Work, WorkspacePremium } from "@mui/icons-material";
+import { BarChart, ContactMail, Description, DesignServices, EditNote, EmojiEvents, Gavel, Group, Home, MiscellaneousServices, Psychology, Reviews, Security, Settings, Source, Work, WorkspacePremium } from "@mui/icons-material";
 import { PAGE_TITLE, ROUTES } from "../Constants";
 import type { NavItem } from "../Types";
 
@@ -19,7 +19,7 @@ export const NavItems: NavItem[] = [
   { icon: <Description />, name: PAGE_TITLE.TESTIMONIAL_DESCRIPTION.BASE, path: ROUTES.TESTIMONIAL_DESCRIPTION.BASE },
   { icon: <ContactMail />, name: PAGE_TITLE.CONTACT_US.BASE, path: ROUTES.CONTACT_US.BASE },
   { icon: <EmojiEvents />, name: PAGE_TITLE.MY_ACHIEVEMENT.BASE, path: ROUTES.MY_ACHIEVEMENT.BASE },
-  { icon: <Home />, name: PAGE_TITLE.PRIVACY_POLICY.BASE, path: ROUTES.PRIVACY_POLICY.BASE },
-  { icon: <Home />, name: PAGE_TITLE.TERMS_CONDITIONS.BASE, path: ROUTES.TERMS_CONDITIONS.BASE },
-  { icon: <Home />, name: PAGE_TITLE.SETTING.BASE, path: ROUTES.SETTING.BASE },
+  { icon: <Security />, name: PAGE_TITLE.PRIVACY_POLICY.BASE, path: ROUTES.PRIVACY_POLICY.BASE },
+  { icon: <Gavel />, name: PAGE_TITLE.TERMS_CONDITIONS.BASE, path: ROUTES.TERMS_CONDITIONS.BASE },
+  { icon: <Settings />, name: PAGE_TITLE.SETTING.BASE, path: ROUTES.SETTING.BASE },
 ];
