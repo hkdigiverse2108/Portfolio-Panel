@@ -1,7 +1,5 @@
 import { KEYS, URL_KEYS } from "../Constants";
-import type { AddAwardsPayload, AddBlogPayload, AddClientLogoPayload, AddContactUsPayload, AddMyAchievementPayload, AddOurServicePayload, AddPortfolioPayload, AddServicePayload, AddSkillPayload, AddTestimonialPayload, AddWorkCountPayload, AddWorkExperiencePayload, EditAwardsPayload, EditBlogPayload, EditClientLogoPayload, EditContactUsPayload, EditHeroSectionPayload, EditMyAchievementPayload, EditOurServicePayload, EditPortfolioPayload, EditServicePayload, EditSkillPayload, EditTestimonialPayload, EditWorkCountPayload, EditWorkExperiencePayload, ForgotPasswordPayload, LoginPayload, LoginResponse, MessageStatus, ResendOtpPayload, ResetPasswordPayload, UpdatePasswordPayload, UpdateUserPayload, UploadResponse, UserApiResponse, VerifyOtpPayload } from "../Types";
-import type { UpdatePrivacyPolicyPayload } from "../Types/PrivacyPolicy";
-import type { UpdateTestimonialDescriptionPayload } from "../Types/TestimonialDescription";
+import type { AddAwardsPayload, AddBlogPayload, AddClientLogoPayload, AddContactUsPayload, AddMyAchievementPayload, AddOurServicePayload, AddPortfolioPayload, AddServicePayload, AddSkillPayload, AddTestimonialPayload, AddWorkCountPayload, AddWorkExperiencePayload, EditAwardsPayload, EditBlogPayload, EditClientLogoPayload, EditContactUsPayload, EditHeroSectionPayload, EditMyAchievementPayload, EditOurServicePayload, EditPortfolioPayload, EditServicePayload, EditSkillPayload, EditTestimonialPayload, EditWorkCountPayload, EditWorkExperiencePayload, ForgotPasswordPayload, LoginPayload, LoginResponse, MessageStatus, ResendOtpPayload, ResetPasswordPayload, UpdatePasswordPayload, UpdatePrivacyPolicyPayload, UpdateSettingPayload, UpdateTermsConditionsPayload, UpdateTestimonialDescriptionPayload, UpdateUserPayload, UploadResponse, UserApiResponse, VerifyOtpPayload } from "../Types";
 import { Delete, Post, Put } from "./Methods";
 import { useMutations } from "./ReactQuery";
 
@@ -98,4 +96,10 @@ export const Mutations = {
 
   //*************** Privacy Policy *********
   useUpdatePrivacyPolicy: () => useMutations<UpdatePrivacyPolicyPayload, void>([KEYS.PRIVACY_POLICY.UPDATE, KEYS.PRIVACY_POLICY.BASE], (input) => Put(URL_KEYS.PRIVACY_POLICY.UPDATE, input)),
+
+  //*************** Terms & Conditions *********
+  useUpdateTermsConditions: () => useMutations<UpdateTermsConditionsPayload, void>([KEYS.TERMS_CONDITIONS.UPDATE, KEYS.TERMS_CONDITIONS.BASE], (input) => Put(URL_KEYS.TERMS_CONDITIONS.UPDATE, input)),
+
+  //*************** Setting *********
+  useUpdateSetting: () => useMutations<UpdateSettingPayload, void>([KEYS.SETTING.UPDATE, KEYS.SETTING.BASE], (input) => Put(URL_KEYS.SETTING.UPDATE, input)),
 };

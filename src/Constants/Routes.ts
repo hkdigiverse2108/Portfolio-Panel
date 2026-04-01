@@ -75,4 +75,10 @@ export const ROUTES = {
   PRIVACY_POLICY: {
     BASE: "/privacy-policy",
   },
+  TERMS_CONDITIONS: {
+    BASE: "/terms-conditions",
+  },
+  SETTING: {
+    BASE: "/setting",
+  },
 } as const;

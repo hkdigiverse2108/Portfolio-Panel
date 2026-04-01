@@ -122,4 +122,14 @@ export const URL_KEYS = {
     GET: "/privacy-policy/get",
     UPDATE: "/privacy-policy/update",
   },
+  TERMS_CONDITIONS: {
+    BASE: "/terms-conditions",
+    GET: "/terms-conditions/get",
+    UPDATE: "/terms-conditions/update",
+  },
+  SETTING: {
+    BASE: "/setting",
+    GET: "/setting/get",
+    UPDATE: "/setting/update",
+  },
 } as const;

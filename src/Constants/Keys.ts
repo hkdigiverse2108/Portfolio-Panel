@@ -108,4 +108,12 @@ export const KEYS = {
     BASE: "privacy-policy",
     UPDATE: "update-privacy-policy",
   },
+  TERMS_CONDITIONS:{
+    BASE: "terms-conditions",
+    UPDATE: "update-terms-conditions",
+  },
+  SETTING:{
+    BASE: "setting",
+    UPDATE: "update-setting",
+  },
 };

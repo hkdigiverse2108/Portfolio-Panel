@@ -62,4 +62,10 @@ export const BREADCRUMBS = {
   PRIVACY_POLICY: {
     BASE: [{ label: PAGE_TITLE.PRIVACY_POLICY.BASE }],
   },
+  TERMS_CONDITIONS: {
+    BASE: [{ label: PAGE_TITLE.TERMS_CONDITIONS.BASE }],
+  },
+  SETTING: {
+    BASE: [{ label: PAGE_TITLE.SETTING.BASE }],
+  },
 };

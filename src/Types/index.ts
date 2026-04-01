@@ -17,3 +17,8 @@ export * from "./Awards";
 export * from "./Testimonial";
 export * from "./ContactUs";
 export * from "./MyAchievement";
+export * from "./PrivacyPolicy";
+export * from "./TermsConditions";
+export * from "./TestimonialDescription";
+export * from "./Setting";
+

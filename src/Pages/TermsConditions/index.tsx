@@ -5,25 +5,25 @@ import { CommonValidationQuillInput } from "../../Attribute";
 import { CommonBottomActionBar, CommonBreadcrumbs } from "../../Components/Common";
 import { PAGE_TITLE } from "../../Constants";
 import { BREADCRUMBS } from "../../Data/Breadcrumbs";
-import type { PrivacyPolicyFormValues } from "../../Types/PrivacyPolicy";
+import type { TermsConditionsFormValues } from "../../Types/TermsConditions";
 
-const PrivacyPolicy = () => {
-  const { data, isLoading } = Queries.useGetPrivacyPolicy();
-  const { mutate: updatePrivacyPolicy, isPending: isEditLoading } = Mutations.useUpdatePrivacyPolicy();
+const TermsConditions = () => {
+  const { data, isLoading } = Queries.useGetTermsConditions();
+  const { mutate: updateTermsConditions, isPending: isEditLoading } = Mutations.useUpdateTermsConditions();
 
-  const initialValues: PrivacyPolicyFormValues = {
+  const initialValues: TermsConditionsFormValues = {
     description: data?.data?.description || "",
   };
 
-  const handleSubmit = async (values: PrivacyPolicyFormValues, { resetForm }: FormikHelpers<PrivacyPolicyFormValues>) => {
-    await updatePrivacyPolicy(values, { onSuccess: () => resetForm() });
+  const handleSubmit = async (values: TermsConditionsFormValues, { resetForm }: FormikHelpers<TermsConditionsFormValues>) => {
+    await updateTermsConditions(values, { onSuccess: () => resetForm() });
   };
 
   return (
     <>
-      <CommonBreadcrumbs title={PAGE_TITLE.PRIVACY_POLICY.BASE} maxItems={3} breadcrumbs={BREADCRUMBS.PRIVACY_POLICY.BASE} />
+      <CommonBreadcrumbs title={PAGE_TITLE.TERMS_CONDITIONS.BASE} maxItems={3} breadcrumbs={BREADCRUMBS.TERMS_CONDITIONS.BASE} />
       <Box sx={{ p: { xs: 2, md: 3 }, mb: 8 }}>
-        <Formik<PrivacyPolicyFormValues> enableReinitialize initialValues={initialValues} onSubmit={handleSubmit}>
+        <Formik<TermsConditionsFormValues> enableReinitialize initialValues={initialValues} onSubmit={handleSubmit}>
           {({ dirty }) => (
             <Form noValidate>
               <Grid container spacing={2} className="ql-container-custom">
@@ -38,4 +38,4 @@ const PrivacyPolicy = () => {
   );
 };
 
-export default PrivacyPolicy;
+export default TermsConditions;

@@ -20,4 +20,6 @@ export const NavItems: NavItem[] = [
   { icon: <Home />, name: PAGE_TITLE.CONTACT_US.BASE, path: ROUTES.CONTACT_US.BASE },
   { icon: <Home />, name: PAGE_TITLE.MY_ACHIEVEMENT.BASE, path: ROUTES.MY_ACHIEVEMENT.BASE },
   { icon: <Home />, name: PAGE_TITLE.PRIVACY_POLICY.BASE, path: ROUTES.PRIVACY_POLICY.BASE },
+  { icon: <Home />, name: PAGE_TITLE.TERMS_CONDITIONS.BASE, path: ROUTES.TERMS_CONDITIONS.BASE },
+  { icon: <Home />, name: PAGE_TITLE.SETTING.BASE, path: ROUTES.SETTING.BASE },
 ];

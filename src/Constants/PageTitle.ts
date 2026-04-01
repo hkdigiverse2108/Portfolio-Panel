@@ -76,4 +76,10 @@ export const PAGE_TITLE = {
   PRIVACY_POLICY: {
     BASE: "Privacy Policy",
   },
+  TERMS_CONDITIONS: {
+    BASE: "Terms Conditions",
+  },
+  SETTING: {
+    BASE: "Setting",
+  },
 } as const;

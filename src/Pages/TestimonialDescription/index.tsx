@@ -5,7 +5,7 @@ import { CommonValidationTextField } from "../../Attribute";
 import { CommonBottomActionBar, CommonBreadcrumbs } from "../../Components/Common";
 import { PAGE_TITLE } from "../../Constants";
 import { BREADCRUMBS } from "../../Data/Breadcrumbs";
-import type { TestimonialDescriptionFormValues } from "../../Types/TestimonialDescription";
+import type { TestimonialDescriptionFormValues } from "../../Types";
 import { TestimonialDescriptionSchema } from "../../Utils/ValidationSchemas";
 
 const TestimonialDescription = () => {

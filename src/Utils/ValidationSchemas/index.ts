@@ -242,3 +242,13 @@ export const TestimonialDescriptionSchema = Yup.object({
   subTitle: Validation("string", "Sub Title", { required: false }),
   rating: Validation("number", "Rating"),
 });
+
+//Setting
+export const SettingSchema = Yup.object({
+  bookMeeting: Yup.object({
+    link: Validation("string", "Link"),
+    phoneNo: PhoneValidation("Phone No", { requiredCountryCode: false, requiredNumber: false }),
+    email: Validation("string", "Email", { extraRules: (s) => s.email("Invalid email address") }),
+    address: Validation("string", "Address"),
+  }),
+});
