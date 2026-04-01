@@ -12,7 +12,7 @@ export interface HeroSectionFormValues {
 
 export type AddHeroSectionPayload = HeroSectionFormValues;
 
-export type EditHeroSectionPayload = HeroSectionFormValues;
+export type UpdateHeroSectionPayload = HeroSectionFormValues;
 
 export type HeroSectionBase = HeroSectionFormValues & CommonDataType;
 

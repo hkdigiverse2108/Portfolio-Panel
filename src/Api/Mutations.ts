@@ -1,5 +1,5 @@
 import { KEYS, URL_KEYS } from "../Constants";
-import type { AddAwardsPayload, AddBlogPayload, AddClientLogoPayload, AddContactUsPayload, AddMyAchievementPayload, AddOurServicePayload, AddPortfolioPayload, AddServicePayload, AddSkillPayload, AddTestimonialPayload, AddWorkCountPayload, AddWorkExperiencePayload, EditAwardsPayload, EditBlogPayload, EditClientLogoPayload, EditContactUsPayload, EditHeroSectionPayload, EditMyAchievementPayload, EditOurServicePayload, EditPortfolioPayload, EditServicePayload, EditSkillPayload, EditTestimonialPayload, EditWorkCountPayload, EditWorkExperiencePayload, ForgotPasswordPayload, LoginPayload, LoginResponse, MessageStatus, ResendOtpPayload, ResetPasswordPayload, UpdatePasswordPayload, UpdatePrivacyPolicyPayload, UpdateSettingPayload, UpdateTermsConditionsPayload, UpdateTestimonialDescriptionPayload, UpdateUserPayload, UploadResponse, UserApiResponse, VerifyOtpPayload } from "../Types";
+import type { AddAwardsPayload, AddBlogPayload, AddClientLogoPayload, AddContactUsPayload, AddMyAchievementPayload, AddOurServicePayload, AddPortfolioPayload, AddServicePayload, AddSkillPayload, AddTestimonialPayload, AddWorkCountPayload, AddWorkExperiencePayload, EditAwardsPayload, EditBlogPayload, EditClientLogoPayload, EditContactUsPayload, EditMyAchievementPayload, EditOurServicePayload, EditPortfolioPayload, EditServicePayload, EditSkillPayload, EditTestimonialPayload, EditWorkCountPayload, EditWorkExperiencePayload, ForgotPasswordPayload, LoginPayload, LoginResponse, MessageStatus, ResendOtpPayload, ResetPasswordPayload, UpdateHeroSectionPayload, UpdatePasswordPayload, UpdatePrivacyPolicyPayload, UpdateSettingPayload, UpdateTermsConditionsPayload, UpdateTestimonialDescriptionPayload, UpdateUserPayload, UploadResponse, UserApiResponse, VerifyOtpPayload } from "../Types";
 import { Delete, Post, Put } from "./Methods";
 import { useMutations } from "./ReactQuery";
 
@@ -28,7 +28,7 @@ export const Mutations = {
   useDeleteUpload: () => useMutations<{ fileUrl: string }, void>([KEYS.UPLOAD.DELETE, KEYS.UPLOAD.IMAGES, KEYS.UPLOAD.PDFS], (id) => Delete(`${URL_KEYS.UPLOAD.DELETE}`, id)),
 
   //*************** Hero Section *********
-  useEditHeroSection: () => useMutations<EditHeroSectionPayload, void>([KEYS.HERO_SECTION.UPDATE, KEYS.HERO_SECTION.BASE], (input) => Put(URL_KEYS.HERO_SECTION.UPDATE, input)),
+  useUpdateHeroSection: () => useMutations<UpdateHeroSectionPayload, void>([KEYS.HERO_SECTION.UPDATE, KEYS.HERO_SECTION.BASE], (input) => Put(URL_KEYS.HERO_SECTION.UPDATE, input)),
   useDeleteHeroSection: () => useMutations<string, void>([KEYS.HERO_SECTION.DELETE, KEYS.HERO_SECTION.BASE], (id) => Delete(`${URL_KEYS.HERO_SECTION.BASE}/${id}`)),
 
   //*************** Work Count *********
@@ -103,3 +103,4 @@ export const Mutations = {
   //*************** Setting *********
   useUpdateSetting: () => useMutations<UpdateSettingPayload, void>([KEYS.SETTING.UPDATE, KEYS.SETTING.BASE], (input) => Put(URL_KEYS.SETTING.UPDATE, input)),
 };
+
