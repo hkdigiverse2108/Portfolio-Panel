@@ -1,13 +1,13 @@
 import { PAGE_TITLE, ROUTES } from "../Constants";
 import type { NavItem } from "../Types";
-import { BarChart, EditNote, GridViewRounded, Group, Home, MiscellaneousServices, Person, Psychology, Source, Work, WorkspacePremium } from "@mui/icons-material";
+import { BarChart, DesignServices, EditNote, GridViewRounded, Group, Home, MiscellaneousServices, Person, Psychology, Source, Work, WorkspacePremium } from "@mui/icons-material";
 
 export const NavItems: NavItem[] = [
   { icon: <GridViewRounded />, name: PAGE_TITLE.DASHBOARD, path: ROUTES.DASHBOARD },
   { icon: <Person />, name: PAGE_TITLE.PROFILE.BASE, path: ROUTES.PROFILE.BASE },
   { icon: <Home />, name: PAGE_TITLE.HERO_SECTION.BASE, path: ROUTES.HERO_SECTION.BASE },
   { icon: <BarChart />, name: PAGE_TITLE.WORK_COUNT.BASE, path: ROUTES.WORK_COUNT.BASE },
-  { icon: <MiscellaneousServices />, name: PAGE_TITLE.SERVICE.BASE, path: ROUTES.SERVICE.BASE },
+  { icon: <DesignServices />, name: PAGE_TITLE.SERVICE.BASE, path: ROUTES.SERVICE.BASE },
   { icon: <EditNote />, name: PAGE_TITLE.BLOG.BASE, path: ROUTES.BLOG.BASE },
   { icon: <Source />, name: PAGE_TITLE.PORTFOLIO.BASE, path: ROUTES.PORTFOLIO.BASE },
   { icon: <MiscellaneousServices />, name: PAGE_TITLE.OUR_SERVICE.BASE, path: ROUTES.OUR_SERVICE.BASE },
