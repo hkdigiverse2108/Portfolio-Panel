@@ -117,7 +117,6 @@ export const HeroSectionSchema = Yup.object({
   linkTitle: Validation("string", "Link Title"),
   link: Validation("string", "Link"),
   description: Validation("string", "Description", { required: false }),
-  isActive: Yup.boolean(),
 });
 
 // WorkCount
@@ -207,4 +206,39 @@ export const AwardsSchema = Yup.object({
   title: Validation("string", "Title"),
   date: Validation("string", "Date", { required: false }),
   isActive: Yup.boolean().nullable(),
+});
+
+//Testimonial
+export const TestimonialSchema = Yup.object({
+  name: Validation("string", "Name"),
+  image: Validation("string", "Image", { required: false }),
+  designation: Validation("string", "Designation", { required: false }),
+  description: Validation("string", "Description", { required: false }),
+  isActive: Yup.boolean().nullable(),
+});
+
+//ContactUs
+export const ContactUsSchema = Yup.object({
+  name: Validation("string", "Name"),
+  email: Validation("string", "Email", { required: false, extraRules: (s) => s.email("Invalid email address") }),
+  phoneNo: Validation("string", "Phone No", { extraRules: (s) => s.trim().matches(/^[0-9]{10}$/, "Phone number must be 10 digits") }),
+  message: Validation("string", "Message", { required: false }),
+  isActive: Yup.boolean().nullable(),
+});
+
+//MyAchievement
+export const MyAchievementSchema = Yup.object({
+  image: Validation("string", "Image", { required: false }),
+  title: Validation("string", "Title"),
+  link: Validation("string", "Link", { required: false }),
+  btnTitle: Validation("string", "Button Title", { required: false }),
+  btnLink: Validation("string", "Button Link", { required: false }),
+  isActive: Yup.boolean().nullable(),
+});
+
+//TestimonialDescription
+export const TestimonialDescriptionSchema = Yup.object({
+  title: Validation("string", "Title"),
+  subTitle: Validation("string", "Sub Title", { required: false }),
+  rating: Validation("number", "Rating"),
 });

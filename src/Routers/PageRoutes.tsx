@@ -20,6 +20,10 @@ import ClientLogo from "../Pages/ClientLogo";
 import WorkExperience from "../Pages/WorkExperience";
 import Skill from "../Pages/Skill";
 import Awards from "../Pages/Awards";
+import Testimonial from "../Pages/Testimonial";
+import ContactUs from "../Pages/ContactUs";
+import MyAchievement from "../Pages/MyAchievement";
+import TestimonialDescription from "../Pages/TestimonialDescription";
 
 export const PageRoutes = [
   { path: ROUTES.HOME, name: PAGE_TITLE.DASHBOARD, element: <Navigate to={ROUTES.DASHBOARD} replace /> },
@@ -52,6 +56,14 @@ export const PageRoutes = [
   { path: ROUTES.SKILL.BASE, name: PAGE_TITLE.SKILL.BASE, element: <Skill /> },
 
   { path: ROUTES.AWARDS.BASE, name: PAGE_TITLE.AWARDS.BASE, element: <Awards /> },
+
+  { path: ROUTES.TESTIMONIAL.BASE, name: PAGE_TITLE.TESTIMONIAL.BASE, element: <Testimonial /> },
+
+  { path: ROUTES.CONTACT_US.BASE, name: PAGE_TITLE.CONTACT_US.BASE, element: <ContactUs /> },
+
+  { path: ROUTES.MY_ACHIEVEMENT.BASE, name: PAGE_TITLE.MY_ACHIEVEMENT.BASE, element: <MyAchievement /> },
+
+  { path: ROUTES.TESTIMONIAL_DESCRIPTION.BASE, name: PAGE_TITLE.TESTIMONIAL_DESCRIPTION.BASE, element: <TestimonialDescription /> },
 ];
 
 export const AuthRoutes = [

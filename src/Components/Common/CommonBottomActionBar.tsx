@@ -9,13 +9,14 @@ interface CommonBottomActionBarProps {
   isLoading?: boolean;
   save?: boolean;
   clear?: boolean;
+  submit?: boolean;
   disabled?: boolean;
   onClear?: () => void;
   onSave?: () => void;
   onSaveAndNew?: () => void;
 }
 
-const CommonBottomActionBar: FC<CommonBottomActionBarProps> = ({ children, isLoading,disabled, save, clear, onClear, onSave, onSaveAndNew }) => {
+const CommonBottomActionBar: FC<CommonBottomActionBarProps> = ({ children, isLoading, disabled, save, submit, clear, onClear, onSave, onSaveAndNew }) => {
   const { isExpanded, isHovered } = useAppSelector((state) => state.layout);
   const navigate = useNavigate();
 
@@ -36,8 +37,13 @@ const CommonBottomActionBar: FC<CommonBottomActionBarProps> = ({ children, isLoa
           </>
         )}
         {save && (
-          <Grid sx={{ display: "flex", gap: 2 ,ml:"auto"}} >
+          <Grid sx={{ display: "flex", gap: 2, ml: "auto" }}>
             <CommonButton variant="outlined" onClick={() => navigate(-1)} title="Back" />
+            <CommonButton type="submit" variant="contained" title="Save" onClick={onSave} loading={isLoading} disabled={disabled} />
+          </Grid>
+        )}
+        {submit && (
+          <Grid sx={{ display: "flex", gap: 2, ml: "auto" }}>
             <CommonButton type="submit" variant="contained" title="Save" onClick={onSave} loading={isLoading} disabled={disabled} />
           </Grid>
         )}

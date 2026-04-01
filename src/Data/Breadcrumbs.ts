@@ -47,4 +47,16 @@ export const BREADCRUMBS = {
   AWARDS: {
     BASE: [{ label: PAGE_TITLE.AWARDS.BASE }],
   },
+  TESTIMONIAL: {
+    BASE: [{ label: PAGE_TITLE.TESTIMONIAL.BASE }],
+  },
+  TESTIMONIAL_DESCRIPTION: {
+    BASE: [{ label: PAGE_TITLE.TESTIMONIAL_DESCRIPTION.BASE }],
+  },
+  CONTACT_US: {
+    BASE: [{ label: PAGE_TITLE.CONTACT_US.BASE }],
+  },
+  MY_ACHIEVEMENT: {
+    BASE: [{ label: PAGE_TITLE.MY_ACHIEVEMENT.BASE }],
+  },
 };

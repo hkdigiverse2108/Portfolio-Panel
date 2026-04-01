@@ -55,4 +55,22 @@ export const PAGE_TITLE = {
     ADD: "Add Awards",
     EDIT: "Edit Awards",
   },
+  TESTIMONIAL: {
+    BASE: "Testimonial",
+    ADD: "Add Testimonial",
+    EDIT: "Edit Testimonial",
+  },
+  TESTIMONIAL_DESCRIPTION: {
+    BASE: "Testimonial Description",
+  },
+  CONTACT_US: {
+    BASE: "Contact Us",
+    ADD: "Add Contact Us",
+    EDIT: "Edit Contact Us",
+  },
+  MY_ACHIEVEMENT: {
+    BASE: "My Achievement",
+    ADD: "Add My Achievement",
+    EDIT: "Edit My Achievement",
+  },
 } as const;

@@ -15,4 +15,8 @@ export const NavItems: NavItem[] = [
   { icon: <Home />, name: PAGE_TITLE.WORK_EXPERIENCE.BASE, path: ROUTES.WORK_EXPERIENCE.BASE },
   { icon: <Home />, name: PAGE_TITLE.SKILL.BASE, path: ROUTES.SKILL.BASE },
   { icon: <Home />, name: PAGE_TITLE.AWARDS.BASE, path: ROUTES.AWARDS.BASE },
+  { icon: <Home />, name: PAGE_TITLE.TESTIMONIAL.BASE, path: ROUTES.TESTIMONIAL.BASE },
+  { icon: <Home />, name: PAGE_TITLE.TESTIMONIAL_DESCRIPTION.BASE, path: ROUTES.TESTIMONIAL_DESCRIPTION.BASE },
+  { icon: <Home />, name: PAGE_TITLE.CONTACT_US.BASE, path: ROUTES.CONTACT_US.BASE },
+  { icon: <Home />, name: PAGE_TITLE.MY_ACHIEVEMENT.BASE, path: ROUTES.MY_ACHIEVEMENT.BASE },
 ];

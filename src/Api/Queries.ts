@@ -1,5 +1,6 @@
 import { KEYS, URL_KEYS } from "../Constants";
-import type { AppQueryOptions, AwardsApiResponse, BlogApiResponse, ClientLogoApiResponse, HeroSectionApiResponse, OurServiceApiResponse, Params, PortfolioApiResponse, ServiceApiResponse, SkillApiResponse, UploadResponse, UserApiResponse, WorkCountApiResponse, WorkExperienceApiResponse } from "../Types";
+import type { AppQueryOptions, AwardsApiResponse, BlogApiResponse, ClientLogoApiResponse, ContactUsApiResponse, HeroSectionApiResponse, MyAchievementApiResponse, OurServiceApiResponse, Params, PortfolioApiResponse, ServiceApiResponse, SkillApiResponse, TestimonialApiResponse, UploadResponse, UserApiResponse, WorkCountApiResponse, WorkExperienceApiResponse } from "../Types";
+import type { TestimonialDescriptionApiResponse } from "../Types/TestimonialDescription";
 import { Get } from "./Methods";
 import { useQueries } from "./ReactQuery";
 
@@ -40,4 +41,16 @@ export const Queries = {
 
   //*************** Awards *********
   useGetAwards: (params?: Params) => useQueries<AwardsApiResponse>([KEYS.AWARDS.BASE, params], () => Get(URL_KEYS.AWARDS.ALL, params)),
+
+  //*************** Testimonial *********
+  useGetTestimonial: (params?: Params) => useQueries<TestimonialApiResponse>([KEYS.TESTIMONIAL.BASE, params], () => Get(URL_KEYS.TESTIMONIAL.ALL, params)),
+
+  //*************** Contact Us *********
+  useGetContactUs: (params?: Params) => useQueries<ContactUsApiResponse>([KEYS.CONTACT_US.BASE, params], () => Get(URL_KEYS.CONTACT_US.ALL, params)),
+
+  //*************** My Achievement *********
+  useGetMyAchievement: (params?: Params) => useQueries<MyAchievementApiResponse>([KEYS.MY_ACHIEVEMENT.BASE, params], () => Get(URL_KEYS.MY_ACHIEVEMENT.ALL, params)),
+
+  //*************** Testimonial Description *********
+  useGetTestimonialDescription: (params?: Params) => useQueries<TestimonialDescriptionApiResponse>([KEYS.TESTIMONIAL_DESCRIPTION.BASE, params], () => Get(URL_KEYS.TESTIMONIAL_DESCRIPTION.GET, params)),
 };

@@ -81,5 +81,27 @@ export const KEYS = {
     ADD: "add-awards",
     EDIT: "edit-awards",
     DELETE: "delete-awards",
+  },
+  TESTIMONIAL:{
+    BASE: "testimonial",
+    ADD: "add-testimonial",
+    EDIT: "edit-testimonial",
+    DELETE: "delete-testimonial",
+  },
+  TESTIMONIAL_DESCRIPTION:{
+    BASE: "testimonial-description",
+    UPDATE: "update-testimonial-description",
+  },
+  CONTACT_US:{
+    BASE: "contact-us",
+    ADD: "add-contact-us",
+    EDIT: "edit-contact-us",
+    DELETE: "delete-contact-us",
+  },
+  MY_ACHIEVEMENT:{
+    BASE: "my-achievement",
+    ADD: "add-my-achievement",
+    EDIT: "edit-my-achievement",
+    DELETE: "delete-my-achievement",
   }
 };

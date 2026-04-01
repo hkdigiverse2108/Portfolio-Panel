@@ -1,5 +1,6 @@
 import { KEYS, URL_KEYS } from "../Constants";
-import type { AddAwardsPayload, AddBlogPayload, AddClientLogoPayload, AddOurServicePayload, AddPortfolioPayload, AddServicePayload, AddSkillPayload, AddWorkCountPayload, AddWorkExperiencePayload, EditAwardsPayload, EditBlogPayload, EditClientLogoPayload, EditHeroSectionPayload, EditOurServicePayload, EditPortfolioPayload, EditServicePayload, EditSkillPayload, EditWorkCountPayload, EditWorkExperiencePayload, ForgotPasswordPayload, LoginPayload, LoginResponse, MessageStatus, ResendOtpPayload, ResetPasswordPayload, UpdatePasswordPayload, UpdateUserPayload, UploadResponse, UserApiResponse, VerifyOtpPayload } from "../Types";
+import type { AddAwardsPayload, AddBlogPayload, AddClientLogoPayload, AddContactUsPayload, AddMyAchievementPayload, AddOurServicePayload, AddPortfolioPayload, AddServicePayload, AddSkillPayload, AddTestimonialPayload, AddWorkCountPayload, AddWorkExperiencePayload, EditAwardsPayload, EditBlogPayload, EditClientLogoPayload, EditContactUsPayload, EditHeroSectionPayload, EditMyAchievementPayload, EditOurServicePayload, EditPortfolioPayload, EditServicePayload, EditSkillPayload, EditTestimonialPayload, EditWorkCountPayload, EditWorkExperiencePayload, ForgotPasswordPayload, LoginPayload, LoginResponse, MessageStatus, ResendOtpPayload, ResetPasswordPayload, UpdatePasswordPayload, UpdateUserPayload, UploadResponse, UserApiResponse, VerifyOtpPayload } from "../Types";
+import type { UpdateTestimonialDescriptionPayload } from "../Types/TestimonialDescription";
 import { Delete, Post, Put } from "./Methods";
 import { useMutations } from "./ReactQuery";
 
@@ -75,4 +76,22 @@ export const Mutations = {
   useAddAwards: () => useMutations<AddAwardsPayload, void>([KEYS.AWARDS.ADD, KEYS.AWARDS.BASE], (input) => Post(URL_KEYS.AWARDS.ADD, input)),
   useEditAwards: () => useMutations<EditAwardsPayload, void>([KEYS.AWARDS.EDIT, KEYS.AWARDS.BASE], (input) => Put(URL_KEYS.AWARDS.EDIT, input)),
   useDeleteAwards: () => useMutations<string, void>([KEYS.AWARDS.DELETE, KEYS.AWARDS.BASE], (id) => Delete(`${URL_KEYS.AWARDS.BASE}/${id}`)),
+
+  //*************** Testimonial *********
+  useAddTestimonial: () => useMutations<AddTestimonialPayload, void>([KEYS.TESTIMONIAL.ADD, KEYS.TESTIMONIAL.BASE], (input) => Post(URL_KEYS.TESTIMONIAL.ADD, input)),
+  useEditTestimonial: () => useMutations<EditTestimonialPayload, void>([KEYS.TESTIMONIAL.EDIT, KEYS.TESTIMONIAL.BASE], (input) => Put(URL_KEYS.TESTIMONIAL.EDIT, input)),
+  useDeleteTestimonial: () => useMutations<string, void>([KEYS.TESTIMONIAL.DELETE, KEYS.TESTIMONIAL.BASE], (id) => Delete(`${URL_KEYS.TESTIMONIAL.BASE}/${id}`)),
+
+  //*************** Contact Us *********
+  useAddContactUs: () => useMutations<AddContactUsPayload, void>([KEYS.CONTACT_US.ADD, KEYS.CONTACT_US.BASE], (input) => Post(URL_KEYS.CONTACT_US.ADD, input)),
+  useEditContactUs: () => useMutations<EditContactUsPayload, void>([KEYS.CONTACT_US.EDIT, KEYS.CONTACT_US.BASE], (input) => Put(URL_KEYS.CONTACT_US.EDIT, input)),
+  useDeleteContactUs: () => useMutations<string, void>([KEYS.CONTACT_US.DELETE, KEYS.CONTACT_US.BASE], (id) => Delete(`${URL_KEYS.CONTACT_US.BASE}/${id}`)),
+
+  //*************** My Achievement *********
+  useAddMyAchievement: () => useMutations<AddMyAchievementPayload, void>([KEYS.MY_ACHIEVEMENT.ADD, KEYS.MY_ACHIEVEMENT.BASE], (input) => Post(URL_KEYS.MY_ACHIEVEMENT.ADD, input)),
+  useEditMyAchievement: () => useMutations<EditMyAchievementPayload, void>([KEYS.MY_ACHIEVEMENT.EDIT, KEYS.MY_ACHIEVEMENT.BASE], (input) => Put(URL_KEYS.MY_ACHIEVEMENT.EDIT, input)),
+  useDeleteMyAchievement: () => useMutations<string, void>([KEYS.MY_ACHIEVEMENT.DELETE, KEYS.MY_ACHIEVEMENT.BASE], (id) => Delete(`${URL_KEYS.MY_ACHIEVEMENT.BASE}/${id}`)),
+
+  //*************** Testimonial Description *********
+  useUpdateTestimonialDescription: () => useMutations<UpdateTestimonialDescriptionPayload, void>([KEYS.TESTIMONIAL_DESCRIPTION.UPDATE, KEYS.TESTIMONIAL_DESCRIPTION.BASE], (input) => Put(URL_KEYS.TESTIMONIAL_DESCRIPTION.UPDATE, input)),
 };

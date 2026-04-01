@@ -91,4 +91,30 @@ export const URL_KEYS = {
     EDIT: "/awards/edit",
     DELETE: "/awards/delete",
   },
+  TESTIMONIAL: {
+    BASE: "/testimonial",
+    ALL: "/testimonial/all",
+    ADD: "/testimonial/add",
+    EDIT: "/testimonial/edit",
+    DELETE: "/testimonial/delete",
+  },
+  TESTIMONIAL_DESCRIPTION: {
+    BASE: "/testimonial-description",
+    GET: "/testimonial-description/get",
+    UPDATE: "/testimonial-description/update",
+  },
+  CONTACT_US: {
+    BASE: "/contact-us",
+    ALL: "/contact-us/all",
+    ADD: "/contact-us/add",
+    EDIT: "/contact-us/edit",
+    DELETE: "/contact-us/delete",
+  },
+  MY_ACHIEVEMENT: {
+    BASE: "/my-achievement",
+    ALL: "/my-achievement/all",
+    ADD: "/my-achievement/add",
+    EDIT: "/my-achievement/edit",
+    DELETE: "/my-achievement/delete",
+  },
 } as const;

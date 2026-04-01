@@ -14,3 +14,6 @@ export * from "./ClientLogo";
 export * from "./WorkExperience";
 export * from "./Skill";
 export * from "./Awards";
+export * from "./Testimonial";
+export * from "./ContactUs";
+export * from "./MyAchievement";

@@ -1,12 +1,12 @@
 import { Box, Grid } from "@mui/material";
 import { Form, Formik, type FormikHelpers } from "formik";
-import type { HeroSectionFormValues } from "../../Types";
 import { Mutations, Queries } from "../../Api";
+import { CommonValidationTextField } from "../../Attribute";
+import { CommonValidationCreatableSelect } from "../../Attribute/FormFields/CommonSelectTab";
 import { CommonBottomActionBar, CommonBreadcrumbs, CommonCard } from "../../Components/Common";
 import { PAGE_TITLE } from "../../Constants";
 import { BREADCRUMBS } from "../../Data/Breadcrumbs";
-import { CommonValidationSwitch, CommonValidationTextField } from "../../Attribute";
-import { CommonValidationCreatableSelect } from "../../Attribute/FormFields/CommonSelectTab";
+import type { HeroSectionFormValues } from "../../Types";
 import { HeroSectionSchema } from "../../Utils/ValidationSchemas";
 
 const HeroSection = () => {
@@ -19,7 +19,6 @@ const HeroSection = () => {
     linkTitle: data?.data?.linkTitle || "",
     link: data?.data?.link || "",
     description: data?.data?.description || "",
-    isActive: data?.data?.isActive ?? true,
   };
 
   const handleSubmit = async (values: HeroSectionFormValues, { resetForm }: FormikHelpers<HeroSectionFormValues>) => {
@@ -49,8 +48,6 @@ const HeroSection = () => {
                     <CommonValidationTextField name="linkTitle" label="Link Title" required grid={{ xs: 12, md: 6 }} />
                     <CommonValidationTextField name="link" label="Link" required grid={{ xs: 12, md: 6 }} />
                     <CommonValidationTextField name="description" label="Description" grid={{ xs: 12 }} multiline />
-
-                    <CommonValidationSwitch name="isActive" label="Is Active" grid={{ xs: 12 }} />
                   </Grid>
                 </CommonCard>
                 <CommonBottomActionBar save disabled={!dirty} isLoading={isEditLoading} />

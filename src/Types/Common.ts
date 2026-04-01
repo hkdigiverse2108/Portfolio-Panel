@@ -12,6 +12,9 @@ import type { ClientLogoBase } from "./ClientLogo";
 import type { WorkExperienceBase } from "./WorkExperience";
 import type { SkillBase } from "./Skill";
 import type { AwardsBase } from "./Awards";
+import type { TestimonialBase } from "./Testimonial";
+import type { ContactUsBase } from "./ContactUs";
+import type { MyAchievementBase } from "./MyAchievement";
 
 export interface CommonProfileAvatarProps {
   fullName?: string;
@@ -509,6 +512,9 @@ export interface ModalStateSlice {
   isWorkExperienceModal: { open: boolean; data: WorkExperienceBase | null };
   isSkillModal: { open: boolean; data: SkillBase | null };
   isAwardsModal: { open: boolean; data: AwardsBase | null };
+  isTestimonialModal: { open: boolean; data: TestimonialBase | null };
+  isContactUsModal: { open: boolean; data: ContactUsBase | null };
+  isMyAchievementModal: { open: boolean; data: MyAchievementBase | null };
 }
 
 // ************ Modal End ***********

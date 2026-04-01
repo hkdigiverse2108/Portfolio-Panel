@@ -57,4 +57,19 @@ export const ROUTES = {
     BASE: "/awards",
     ADD_EDIT: "/awards/add-edit",
   },
+  TESTIMONIAL: {
+    BASE: "/testimonial",
+    ADD_EDIT: "/testimonial/add-edit",
+  },
+  TESTIMONIAL_DESCRIPTION: {
+    BASE: "/testimonial-description",
+  },
+  CONTACT_US: {
+    BASE: "/contact-us",
+    ADD_EDIT: "/contact-us/add-edit",
+  },
+  MY_ACHIEVEMENT: {
+    BASE: "/my-achievement",
+    ADD_EDIT: "/my-achievement/add-edit",
+  },
 } as const;
