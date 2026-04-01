@@ -19,8 +19,7 @@ const TestimonialDescription = () => {
   };
 
   const handleSubmit = async (values: TestimonialDescriptionFormValues, { resetForm }: FormikHelpers<TestimonialDescriptionFormValues>) => {
-    const payload = { ...values };
-    await updateTestimonialDescription(payload, { onSuccess: () => resetForm() });
+    await updateTestimonialDescription(values, { onSuccess: () => resetForm() });
   };
 
   return (
