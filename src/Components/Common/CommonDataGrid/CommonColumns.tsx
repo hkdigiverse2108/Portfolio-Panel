@@ -30,6 +30,13 @@ const formatValues = (values: (string | number)[], type?: ColumnFormatType): str
     case "status":
       return value ? FormatPayment(value.toString()) : "-";
 
+    case "image": {
+      const img = Array.isArray(value) ? value[0] : value;
+      console.log("img", img);
+
+      return typeof img === "string" ? img : "-";
+    }
+
     default:
       return values.join(" ");
   }
@@ -41,23 +48,36 @@ export const CommonObjectPropertyColumn = <T extends GridValidRowModel>(field: s
   width: options?.width,
   flex: options?.flex,
   minWidth: options?.minWidth,
-
-  valueGetter: (_value, row: any): string => {
+  
+  valueGetter: (_value, row: any): any => {
     const obj = getNestedValue(row, sourceField);
 
-    // ✅ HANDLE direct value (string/date)
+    // ✅ STRING / NUMBER (date, thumbnail, etc.)
     if (typeof obj === "string" || typeof obj === "number") {
-      return formatValues([obj], options?.type);
+      return formatValues([obj], options?.type); // 👈 FIX
     }
 
-    if (typeof obj !== "object" || obj === null) return "-";
+    // ✅ ARRAY (images)
+    if (Array.isArray(obj)) {
+      return obj.length > 0 ? obj[0] : null;
+    }
 
-    const values = properties.map((prop) => obj?.[prop]).filter((val) => typeof val === "string" || typeof val === "number");
+    // ✅ OBJECT
+    if (typeof obj === "object" && obj !== null) {
+      if (!properties.length) return obj;
 
-    return formatValues(values, options?.type);
+      const values = properties.map((prop) => obj?.[prop]).filter((val) => typeof val === "string" || typeof val === "number");
+
+      return formatValues(values, options?.type);
+    }
+
+    return null;
   },
 
   renderCell: ({ value }) => {
+    if (options?.type === "image") {
+      return value ? <img src={value} alt="img" style={{ width: 50, height: 50, objectFit: "cover", borderRadius: 4 }} /> : "-";
+    }
     if (options?.type === "status") {
       const formatted = value?.toString().toLowerCase().replace(/\s/g, "_") || "";
       return <span className={`status-${formatted}`}>{value}</span>;

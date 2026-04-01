@@ -8,3 +8,4 @@ export * from "./HeroSection";
 export * from "./WorkCount";
 export * from "./Blog";
 export * from "./Service";
+export * from "./Portfolio";

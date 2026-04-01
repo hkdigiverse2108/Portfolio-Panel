@@ -1,5 +1,5 @@
 import { KEYS, URL_KEYS } from "../Constants";
-import type { AddBlogPayload, AddServicePayload, AddWorkCountPayload, EditBlogPayload, EditHeroSectionPayload, EditServicePayload, EditWorkCountPayload, ForgotPasswordPayload, LoginPayload, LoginResponse, MessageStatus, ResendOtpPayload, ResetPasswordPayload, UpdatePasswordPayload, UpdateUserPayload, UploadResponse, UserApiResponse, VerifyOtpPayload } from "../Types";
+import type { AddBlogPayload, AddPortfolioPayload, AddServicePayload, AddWorkCountPayload, EditBlogPayload, EditHeroSectionPayload, EditPortfolioPayload, EditServicePayload, EditWorkCountPayload, ForgotPasswordPayload, LoginPayload, LoginResponse, MessageStatus, ResendOtpPayload, ResetPasswordPayload, UpdatePasswordPayload, UpdateUserPayload, UploadResponse, UserApiResponse, VerifyOtpPayload } from "../Types";
 import { Delete, Post, Put } from "./Methods";
 import { useMutations } from "./ReactQuery";
 
@@ -45,4 +45,9 @@ export const Mutations = {
   useAddService: () => useMutations<AddServicePayload, void>([KEYS.SERVICE.ADD, KEYS.SERVICE.BASE], (input) => Post(URL_KEYS.SERVICE.ADD, input)),
   useEditService: () => useMutations<EditServicePayload, void>([KEYS.SERVICE.EDIT, KEYS.SERVICE.BASE], (input) => Put(URL_KEYS.SERVICE.EDIT, input)),
   useDeleteService: () => useMutations<string, void>([KEYS.SERVICE.DELETE, KEYS.SERVICE.BASE], (id) => Delete(`${URL_KEYS.SERVICE.BASE}/${id}`)),
+
+  //*************** Portfolio *********
+  useAddPortfolio: () => useMutations<AddPortfolioPayload, void>([KEYS.PORTFOLIO.ADD, KEYS.PORTFOLIO.BASE], (input) => Post(URL_KEYS.PORTFOLIO.ADD, input)),
+  useEditPortfolio: () => useMutations<EditPortfolioPayload, void>([KEYS.PORTFOLIO.EDIT, KEYS.PORTFOLIO.BASE], (input) => Put(URL_KEYS.PORTFOLIO.EDIT, input)),
+  useDeletePortfolio: () => useMutations<string, void>([KEYS.PORTFOLIO.DELETE, KEYS.PORTFOLIO.BASE], (id) => Delete(`${URL_KEYS.PORTFOLIO.BASE}/${id}`)),
 };

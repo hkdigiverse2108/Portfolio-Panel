@@ -33,4 +33,8 @@ export const ROUTES = {
     BASE: "/service",
     ADD_EDIT: "/service/add-edit",
   },
+  PORTFOLIO: {
+    BASE: "/portfolio",
+    ADD_EDIT: "/portfolio/add-edit",
+  },
 } as const;

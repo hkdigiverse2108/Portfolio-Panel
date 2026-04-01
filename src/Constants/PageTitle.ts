@@ -25,4 +25,9 @@ export const PAGE_TITLE = {
     ADD: "Add Service",
     EDIT: "Edit Service",
   },
+  PORTFOLIO: {
+    BASE: "Portfolio",
+    ADD: "Add Portfolio",
+    EDIT: "Edit Portfolio",
+  },
 } as const;

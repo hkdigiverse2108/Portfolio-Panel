@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Mutations, Queries } from "../../Api";
 import { CommonValidationCreatableSelect, CommonValidationDatePicker, CommonValidationQuillInput, CommonValidationSelect, CommonValidationSwitch, CommonValidationTextField } from "../../Attribute";
-import { CommonBottomActionBar, CommonBreadcrumbs, CommonCard } from "../../Components/Common";
+import { CommonBottomActionBar, CommonBreadcrumbs } from "../../Components/Common";
 import { CommonFormImageBox } from "../../Components/Common/CommonUploadImage/CommonImageBox";
 import { PAGE_TITLE } from "../../Constants";
 import { BREADCRUMBS } from "../../Data";
@@ -95,23 +95,17 @@ const BlogForm = () => {
               <Form noValidate>
                 <FormikImageSync activeKey={activeImageKey} clearActiveKey={() => setActiveImageKey(null)} />
                 <Grid container spacing={2}>
-                  {/* ---------- GENERAL DETAILS ---------- */}
-                  <CommonCard title="General Details" grid={{ xs: 12 }}>
-                    <Grid container spacing={2} sx={{ p: 2 }}>
-                      <CommonValidationSelect name="serviceId" label="Service" isLoading={serviceDataLoading} options={GenerateOptions(serviceData?.data?.service_data)} grid={{ xs: 12, sm: 6 }} />
-                      <CommonValidationTextField name="title" label="Title" grid={{ xs: 12, sm: 6 }} required />
-                      <CommonValidationTextField name="tagLine" label="Tag Line" grid={{ xs: 12, sm: 6 }} />
-                      <CommonValidationDatePicker name="date" label="Date" grid={{ xs: 12, sm: 6 }} />
-                      <CommonValidationCreatableSelect name="tags" label="Tags" options={[]} grid={{ xs: 12 }} />
-                      <CommonValidationQuillInput name="description" label="Description" grid={{ xs: 12 }} />
-                      <CommonFormImageBox name="thumbnailImage" label="Thumbnail Image" type="image" grid={"auto"} onUpload={() => handleUpload("thumbnailImage")} />
-                      <CommonFormImageBox name="images" label="Images" type="image" grid={"grow"} multiple onUpload={() => handleUpload("images")} />
-                      {!isEditing && <CommonValidationSwitch name="isActive" label="Is Active" grid={{ xs: 12 }} />}
-                    </Grid>
-                  </CommonCard>
-                  {/* ---------- ACTION BAR ---------- */}
-                  <CommonBottomActionBar save={isEditing} clear={!isEditing} disabled={!dirty} isLoading={isAddLoading || isEditLoading} onClear={() => resetForm({ values: initialValues })} onSave={() => setFieldValue("_submitAction", "save")} onSaveAndNew={() => setFieldValue("_submitAction", "saveAndNew")} />
+                  <CommonValidationSelect name="serviceId" label="Service" isLoading={serviceDataLoading} options={GenerateOptions(serviceData?.data?.service_data)} grid={{ xs: 12, sm: 6 }} />
+                  <CommonValidationTextField name="title" label="Title" grid={{ xs: 12, sm: 6 }} required />
+                  <CommonValidationTextField name="tagLine" label="Tag Line" grid={{ xs: 12, sm: 6 }} />
+                  <CommonValidationDatePicker name="date" label="Date" grid={{ xs: 12, sm: 6 }} />
+                  <CommonValidationCreatableSelect name="tags" label="Tags" options={[]} grid={{ xs: 12 }} />
+                  <CommonValidationQuillInput name="description" label="Description" grid={{ xs: 12 }} />
+                  <CommonFormImageBox name="thumbnailImage" label="Thumbnail Image" type="image" grid={"auto"} onUpload={() => handleUpload("thumbnailImage")} />
+                  <CommonFormImageBox name="images" label="Images" type="image" grid={"grow"} multiple onUpload={() => handleUpload("images")} />
+                  {!isEditing && <CommonValidationSwitch name="isActive" label="Is Active" grid={{ xs: 12 }} />}
                 </Grid>
+                <CommonBottomActionBar save={isEditing} clear={!isEditing} disabled={!dirty} isLoading={isAddLoading || isEditLoading} onClear={() => resetForm({ values: initialValues })} onSave={() => setFieldValue("_submitAction", "save")} onSaveAndNew={() => setFieldValue("_submitAction", "saveAndNew")} />
               </Form>
             );
           }}

@@ -6,49 +6,50 @@ import { AdvancedSearch, CommonActionColumn, CommonBreadcrumbs, CommonDataGrid, 
 import { CommonObjectPropertyColumn } from "../../Components/Common/CommonDataGrid/CommonColumns";
 import { PAGE_TITLE, ROUTES } from "../../Constants";
 import { BREADCRUMBS } from "../../Data";
-import type { AppGridColDef, BlogBase } from "../../Types";
+import type { AppGridColDef, PortfolioBase } from "../../Types";
 import { CreateFilter, GenerateOptions } from "../../Utils";
 import { useDataGrid } from "../../Utils/Hooks";
 
-const Blog = () => {
+const Portfolio = () => {
   const { paginationModel, setPaginationModel, sortModel, setSortModel, filterModel, setFilterModel, rowToDelete, setRowToDelete, isActive, setActive, advancedFilter, updateAdvancedFilter, params } = useDataGrid();
   const navigate = useNavigate();
 
-  const { data: blogData, isLoading: blogDataLoading, isFetching: blogDataFetching } = Queries.useGetBlog(params);
+  const { data: portfolioData, isLoading: portfolioDataLoading, isFetching: portfolioDataFetching } = Queries.useGetPortfolio(params);
   const { data: serviceData, isLoading: serviceDataLoading } = Queries.useGetService({ activeFilter: true });
 
-  const { mutate: editBlog, isPending: isEditLoading } = Mutations.useEditBlog();
-  const { mutate: deleteBlogMutate, isPending: isDeleteLoading } = Mutations.useDeleteBlog();
+  const { mutate: editPortfolio, isPending: isEditLoading } = Mutations.useEditPortfolio();
+  const { mutate: deletePortfolioMutate, isPending: isDeleteLoading } = Mutations.useDeletePortfolio();
 
-  const allBlog = useMemo(() => blogData?.data?.blog_data.map((emp) => ({ ...emp, id: emp?._id, removeQty: null })) || [], [blogData]);
-  const totalRows = blogData?.data?.totalData || 0;
+  const allPortfolio = useMemo(() => portfolioData?.data?.portfolio_data.map((emp) => ({ ...emp, id: emp?._id, removeQty: null })) || [], [portfolioData]);
+  const totalRows = portfolioData?.data?.totalData || 0;
 
-  const handleAdd = () => navigate(ROUTES.BLOG.ADD_EDIT);
+  const handleAdd = () => navigate(ROUTES.PORTFOLIO.ADD_EDIT);
 
   const handleDeleteBtn = () => {
     if (!rowToDelete) return;
-    deleteBlogMutate(rowToDelete?._id as string, { onSuccess: () => setRowToDelete(null) });
+    deletePortfolioMutate(rowToDelete?._id as string, { onSuccess: () => setRowToDelete(null) });
   };
 
-  const columns: AppGridColDef<BlogBase>[] = [
-    CommonObjectPropertyColumn<BlogBase>("thumbnailImage", "thumbnailImage", [], { headerName: "Thumbnail Image", width: 150, type: "image" }),
-    CommonObjectPropertyColumn<BlogBase>("images", "images", [], { headerName: "Images", width: 100, type: "image" }),
-    CommonObjectPropertyColumn<BlogBase>("service", "serviceId", ["name"], { headerName: "Service", flex: 1, minWidth: 150 }),
+  const columns: AppGridColDef<PortfolioBase>[] = [
+    CommonObjectPropertyColumn<PortfolioBase>("thumbnailImage", "thumbnailImage", [], { headerName: "Thumbnail Image", width: 150, type: "image" }),
     { field: "title", headerName: "title", flex: 1, minWidth: 200 },
-    { field: "tagLine", headerName: "tagLine", flex: 1, minWidth: 150 },
-    CommonObjectPropertyColumn<BlogBase>("date", "date", [], { headerName: "Date", flex: 1, minWidth: 150, type: "date" }),
-    CommonActionColumn<BlogBase>({
-      active: (row) => editBlog({ blogId: row?._id, isActive: !row.isActive }),
-      editRoute: ROUTES.BLOG.ADD_EDIT,
+    { field: "subTitle", headerName: "Sub Title", flex: 1, minWidth: 200 },
+    { field: "projectName", headerName: "Project Name", flex: 1, minWidth: 150 },
+    { field: "client", headerName: "Client", flex: 1, minWidth: 150 },
+    { field: "technology", headerName: "Technology", flex: 1, minWidth: 150 },
+    CommonObjectPropertyColumn<PortfolioBase>("date", "date", [], { headerName: "Date", flex: 1, minWidth: 150, type: "date" }),
+    CommonActionColumn<PortfolioBase>({
+      active: (row) => editPortfolio({ portfolioId: row?._id, isActive: !row.isActive }),
+      editRoute: ROUTES.PORTFOLIO.ADD_EDIT,
       onDelete: (row) => setRowToDelete({ _id: row?._id, title: row?.title }),
     }),
   ];
 
   const CommonDataGridOption = {
     columns,
-    rows: allBlog,
+    rows: allPortfolio,
     rowCount: totalRows,
-    loading: blogDataLoading || blogDataFetching || isEditLoading,
+    loading: portfolioDataLoading || portfolioDataFetching || isEditLoading,
     isActive,
     setActive,
     handleAdd,
@@ -58,7 +59,7 @@ const Blog = () => {
     onSortModelChange: setSortModel,
     filterModel,
     onFilterModelChange: setFilterModel,
-    fileName: PAGE_TITLE.BLOG.BASE,
+    fileName: PAGE_TITLE.PORTFOLIO.BASE,
     isExport: false,
   };
 
@@ -68,7 +69,7 @@ const Blog = () => {
 
   return (
     <>
-      <CommonBreadcrumbs title={PAGE_TITLE.BLOG.BASE} maxItems={1} breadcrumbs={BREADCRUMBS.BLOG.BASE} />
+      <CommonBreadcrumbs title={PAGE_TITLE.PORTFOLIO.BASE} maxItems={1} breadcrumbs={BREADCRUMBS.PORTFOLIO.BASE} />
       <Box sx={{ p: { xs: 2, md: 3 }, display: "grid", gap: 2 }}>
         <AdvancedSearch filter={filter} />
         <CommonDataGrid {...CommonDataGridOption} />
@@ -78,4 +79,4 @@ const Blog = () => {
   );
 };
 
-export default Blog;
+export default Portfolio;

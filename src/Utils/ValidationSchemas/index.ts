@@ -143,3 +143,15 @@ export const BlogSchema = Yup.object({
   description: Validation("string", "Description", { required: false }),
   isActive: Yup.boolean().nullable(),
 });
+
+//Portfolio
+export const PortfolioSchema = Yup.object({
+  title: Validation("string", "Title"),
+  subTitle: Validation("string", "Sub Title"),
+  projectName: Validation("string", "Project Name"),
+  client: Validation("string", "Client"),
+  technology: Validation("string", "Technology"),
+  date: Validation("string", "Date", { required: false }),
+  description: Validation("string", "Description", { required: false }),
+  isActive: Yup.boolean().nullable(),
+});

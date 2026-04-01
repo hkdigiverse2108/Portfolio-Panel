@@ -46,4 +46,10 @@ export const KEYS = {
     EDIT: "edit-service",
     DELETE: "delete-service",
   },
+  PORTFOLIO: {
+    BASE: "portfolio",
+    ADD: "add-portfolio",
+    EDIT: "edit-portfolio",
+    DELETE: "delete-portfolio",
+  },
 };
