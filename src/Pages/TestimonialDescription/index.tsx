@@ -2,7 +2,7 @@ import { Box, Grid } from "@mui/material";
 import { Form, Formik, type FormikHelpers } from "formik";
 import { Mutations, Queries } from "../../Api";
 import { CommonValidationTextField } from "../../Attribute";
-import { CommonBottomActionBar, CommonBreadcrumbs, CommonCard } from "../../Components/Common";
+import { CommonBottomActionBar, CommonBreadcrumbs } from "../../Components/Common";
 import { PAGE_TITLE } from "../../Constants";
 import { BREADCRUMBS } from "../../Data/Breadcrumbs";
 import type { TestimonialDescriptionFormValues } from "../../Types/TestimonialDescription";
