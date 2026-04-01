@@ -1,6 +1,6 @@
 import HeaderBrand from "./HeaderBrand";
-import HeaderSearch from "./HeaderSearch";
 import HeaderActions from "./HeaderActions";
+
 import { useAppSelector } from "../../Store/hooks";
 
 const Header = () => {
@@ -10,9 +10,6 @@ const Header = () => {
       <div className="flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16 w-full">
         {/* Left: Brand */}
         <HeaderBrand />
-
-        {/* Center: Search Bar */}
-        <HeaderSearch />
 
         {/* Right: Actions */}
         <HeaderActions />

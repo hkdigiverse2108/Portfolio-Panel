@@ -1,14 +1,18 @@
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Link, useLocation } from "react-router";
 import KeyboardArrowDownRoundedIcon from "@mui/icons-material/KeyboardArrowDownRounded";
 import MoreHorizRoundedIcon from "@mui/icons-material/MoreHorizRounded";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { Link, useLocation } from "react-router";
-import { ThemeTitle } from "../../Constants";
 import { NavItems } from "../../Data";
 import { useAppDispatch, useAppSelector } from "../../Store/hooks";
 import { setIsHovered, setToggleMobileSidebar, setToggleSidebar } from "../../Store/Slices/LayoutSlice";
 import type { NavItem } from "../../Types";
-import { useWindowWidth } from "../../Utils/Hooks";
 import SidebarWidget from "./SidebarWidget";
+import { ThemeTitle } from "../../Constants";
+import { useWindowWidth } from "../../Utils/Hooks";
+
+const filterNavItems = (navItems: NavItem[]): NavItem[] => {
+  return navItems;
+};
 
 const Sidebar = () => {
   const { isExpanded, isMobileOpen, isHovered } = useAppSelector((state) => state.layout);
@@ -20,16 +24,20 @@ const Sidebar = () => {
   const [openSubmenu, setOpenSubmenu] = useState<{ type: "main" | "others"; index: number } | null>(null);
   const [subMenuHeight, setSubMenuHeight] = useState<Record<string, number>>({});
   const subMenuRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const allowedNavItems = useMemo(() => {
+    const items = filterNavItems(NavItems);
 
+    return items.sort((a, b) => (a.number || 0) - (b.number || 0));
+  }, []);
   const isActive = useCallback((path: string) => location.pathname === path || location.pathname.startsWith(path + "/"), [location.pathname]);
 
   useEffect(() => {
-    NavItems.forEach((menu, index) => {
+    allowedNavItems.forEach((menu, index) => {
       if (menu.children?.some((sub) => location.pathname === sub.path || location.pathname.startsWith(sub.path + "/"))) {
         setOpenSubmenu({ type: "main", index });
       }
     });
-  }, [location.pathname]);
+  }, [location.pathname, allowedNavItems]);
 
   const handleToggle = () => {
     if (window.innerWidth >= 1024) {
@@ -61,14 +69,14 @@ const Sidebar = () => {
   };
 
   const renderMenuItems = (items: NavItem[], menuType: "main" | "others") => (
-    <ul className="flex flex-col gap-2 relative z-10">
+    <ul className="flex flex-col gap-2">
       {items.map((nav, index) => (
         <li key={nav.name}>
           {nav.children ? (
             <button onClick={() => handleSubmenuToggle(index, menuType)} className={`menu-item w-full group ${openSubmenu?.type === menuType && openSubmenu?.index === index ? "menu-item-active" : "menu-item-inactive"} cursor-pointer ${!isExpanded && !isHovered ? "lg:justify-center" : "lg:justify-start"}`}>
               <span className={`menu-item-icon-size  ${openSubmenu?.type === menuType && openSubmenu?.index === index ? "menu-item-icon-active" : "menu-item-icon-inactive"}`}>{nav.icon}</span>
               {(isExpanded || isHovered || isMobileOpen) && <span className="menu-item-text">{nav.name}</span>}
-              {(isExpanded || isHovered || isMobileOpen) && <KeyboardArrowDownRoundedIcon className={`ml-auto w-5 h-5 transition-transform duration-200 ${openSubmenu?.type === menuType && openSubmenu?.index === index ? "rotate-180 text-gray-900 dark:text-brand-400" : ""}`} />}
+              {(isExpanded || isHovered || isMobileOpen) && <KeyboardArrowDownRoundedIcon className={`ml-auto w-5 h-5 transition-transform duration-200 ${openSubmenu?.type === menuType && openSubmenu?.index === index ? "rotate-180 text-brand-500" : ""}`} />}
             </button>
           ) : (
             nav.path && (
@@ -110,22 +118,19 @@ const Sidebar = () => {
 
   return (
     <aside
-      className={`fixed mt-16 flex flex-col lg:mt-0 top-0 px-5 left-0 bg-gray-50 dark:bg-gray-dark dark:border-gray-800 text-gray-900 h-screen transition-all duration-300 ease-in-out z-50 border-r border-gray-200 
+      className={`fixed mt-16 flex flex-col lg:mt-0 top-0 px-5 left-0 bg-white dark:bg-gray-900 dark:border-gray-800 text-gray-900 h-screen transition-all duration-300 ease-in-out z-50 border-r border-gray-200 
         ${isExpanded || isMobileOpen ? "w-[290px]" : isHovered ? "w-[290px]" : "w-[90px]"}
         ${isMobileOpen ? "translate-x-0" : "-translate-x-full"}
-        lg:translate-x-0 overflow-hidden`}
+        lg:translate-x-0`}
       onMouseEnter={() => !isExpanded && dispatch(setIsHovered(true))}
       onMouseLeave={() => dispatch(setIsHovered(false))}
     >
-      {/* Background with common effects to match page */}
-      {/* <CommonBgEffect /> */}
-
-      <div className={`relative z-10 py-4 flex ${!isExpanded && !isHovered ? "lg:justify-center" : "justify-between"}`}>
-        <Link to="/" className="text-xl font-bold text-gray-800 dark:text-gray-100 flex items-center gap-2 ml-1">
+      <div className={`py-4 flex ${!isExpanded && !isHovered ? "lg:justify-center" : "justify-between"}`}>
+        <Link to="/" className="flex items-center">
           {isExpanded || isHovered || isMobileOpen ? (
             <>
               <div className="w-8 h-8 rounded-lg bg-gray-800 dark:bg-brand-500 flex items-center justify-center text-white font-bold text-sm">PA</div>
-              <span className="hidden sm:block">{ThemeTitle}</span>
+              <span className="hidden sm:block text-gray-900 dark:text-white">{ThemeTitle}</span>
             </>
           ) : (
             <div className="w-8 h-8 rounded-lg bg-gray-800 dark:bg-brand-500 flex items-center justify-center text-white font-bold text-sm">PA</div>
@@ -139,12 +144,12 @@ const Sidebar = () => {
           </button>
         )}
       </div>
-      <div className="relative z-10 flex flex-col overflow-y-auto duration-300 ease-linear no-scrollbar">
+      <div className="flex flex-col overflow-y-auto duration-300 ease-linear no-scrollbar">
         <nav className="mb-6">
           <div className="flex flex-col gap-4">
             <div>
               <h2 className={`mb-4 text-xs uppercase flex text-gray-400 ${!isExpanded && !isHovered ? "lg:justify-center" : "justify-start"}`}>{isExpanded || isHovered || isMobileOpen ? "Menu" : <MoreHorizRoundedIcon className="size-6" />}</h2>
-              {renderMenuItems(NavItems, "main")}
+              {renderMenuItems(allowedNavItems, "main")}
             </div>
           </div>
         </nav>
