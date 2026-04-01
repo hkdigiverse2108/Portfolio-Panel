@@ -1,3 +1,4 @@
+import { Star } from "@mui/icons-material";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
@@ -11,20 +12,28 @@ import type { GridColDef } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
 import type { CommonActionColumnProps } from "../../Types";
 
-const CommonActionColumn = <T extends { _id?: string; isActive?: boolean; creditsRemaining?: number }>({ onSalesInvoice, onPrint, active, editRoute, onDelete, onEdit, onRefund, permissionRoute }: CommonActionColumnProps<T>): GridColDef<T> => ({
+const CommonActionColumn = <T extends { _id?: string; isActive?: boolean; isFeatured?: boolean; creditsRemaining?: number }>({ onFeatured, onSalesInvoice, onPrint, active, editRoute, onDelete, onEdit, onRefund, permissionRoute }: CommonActionColumnProps<T>): GridColDef<T> => ({
   field: "actions",
   headerName: "Actions",
   headerAlign: "center",
   align: "center",
-  width: permissionRoute ? 240 : 180,
+  width: onFeatured ? 240 : 180,
   minWidth: 100,
   sortable: false,
   filterable: false,
   disableExport: true,
   renderCell: (params) => {
     const isActive = params.row.isActive;
+    const isFeatured = params.row.isFeatured;
     return (
       <Grid container spacing={1} className="flex items-center justify-center w-full">
+        {onFeatured?.handleFeatured && !onFeatured?.isPermission?.(params.row) && (
+          <Grid size="auto">
+            <IconButton className="iconButtonStyle" size="small" onClick={() => onFeatured.handleFeatured(params.row)}>
+              <Star fontSize="small" color={isFeatured ? "primary" : "disabled"} />
+            </IconButton>
+          </Grid>
+        )}
         {active && (
           <Grid size="auto">
             <IconButton className="iconButtonStyle" size="small" color={isActive ? "success" : "error"} onClick={() => active(params.row)}>

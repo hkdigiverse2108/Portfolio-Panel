@@ -8,6 +8,7 @@ import * as Yup from "yup";
 import type { MuiTelInputProps } from "mui-tel-input";
 import type { WorkCountBase } from "./WorkCount";
 import type { ServiceBase } from "./Service";
+import type { ClientLogoBase } from "./ClientLogo";
 
 export interface CommonProfileAvatarProps {
   fullName?: string;
@@ -258,6 +259,10 @@ export interface CommonActionColumnProps<T> {
     handleSalesInvoice: (row: T) => void;
     isPermission?: (row: T) => boolean;
   };
+  onFeatured?: {
+    handleFeatured: (row: T) => void;
+    isPermission?: (row: T) => boolean;
+  };
 }
 
 export interface CommonTableColumn<T> {
@@ -497,6 +502,7 @@ export interface ModalStateSlice {
   selectedFiles: string[];
   isWorkCountModal: { open: boolean; data: WorkCountBase | null };
   isServiceModal: { open: boolean; data: ServiceBase | null };
+  isClientLogoModal: { open: boolean; data: ClientLogoBase | null };
 }
 
 // ************ Modal End ***********

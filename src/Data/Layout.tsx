@@ -10,4 +10,6 @@ export const NavItems: NavItem[] = [
   { icon: <Home />, name: PAGE_TITLE.SERVICE.BASE, path: ROUTES.SERVICE.BASE },
   { icon: <Home />, name: PAGE_TITLE.BLOG.BASE, path: ROUTES.BLOG.BASE },
   { icon: <Home />, name: PAGE_TITLE.PORTFOLIO.BASE, path: ROUTES.PORTFOLIO.BASE },
+  { icon: <Home />, name: PAGE_TITLE.OUR_SERVICE.BASE, path: ROUTES.OUR_SERVICE.BASE },
+  { icon: <Home />, name: PAGE_TITLE.CLIENT_LOGO.BASE, path: ROUTES.CLIENT_LOGO.BASE },
 ];

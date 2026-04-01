@@ -56,4 +56,18 @@ export const URL_KEYS = {
     EDIT: "/portfolio/edit",
     DELETE: "/portfolio/delete",
   },
+  OUR_SERVICE: {
+    BASE: "/our-service",
+    ALL: "/our-service/all",
+    ADD: "/our-service/add",
+    EDIT: "/our-service/edit",
+    DELETE: "/our-service/delete",
+  },
+  CLIENT_LOGO: {
+    BASE: "/client-logo",
+    ALL: "/client-logo/all",
+    ADD: "/client-logo/add",
+    EDIT: "/client-logo/edit",
+    DELETE: "/client-logo/delete",
+  },
 } as const;

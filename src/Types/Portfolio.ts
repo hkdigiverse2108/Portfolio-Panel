@@ -30,8 +30,9 @@ export type AddPortfolioPayload = PortfolioFormValues;
 
 export type EditPortfolioPayload = AddPortfolioPayload & { portfolioId?: string };
 
-export type PortfolioBase = Omit<PortfolioFormValues, "serviceIds"> & CommonDataType & {
-  serviceIds: ServiceBase[];
+export interface PortfolioBase extends Omit<PortfolioFormValues, "serviceIds">, CommonDataType {
+  serviceIds: ServiceBase;
+  isFeatured: boolean;
 }
 
 export interface PortfolioDataResponse extends PageStatus {

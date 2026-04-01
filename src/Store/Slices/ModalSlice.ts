@@ -6,6 +6,7 @@ const initialState: ModalStateSlice = {
   selectedFiles: [],
   isWorkCountModal: { open: false, data: null },
   isServiceModal: { open: false, data: null },
+  isClientLogoModal: { open: false, data: null },
 };
 
 const ModalSlice = createSlice({
@@ -26,9 +27,12 @@ const ModalSlice = createSlice({
     setServiceModal: (state, action) => {
       state.isServiceModal = action.payload;
     },
+    setClientLogoModal: (state, action) => {
+      state.isClientLogoModal = action.payload;
+    },
   },
 });
 
-export const { setSelectedFiles, setUploadModal, setWorkCountModal, setServiceModal } = ModalSlice.actions;
+export const { setSelectedFiles, setUploadModal, setWorkCountModal, setServiceModal, setClientLogoModal } = ModalSlice.actions;
 
 export default ModalSlice.reducer;

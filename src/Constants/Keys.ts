@@ -52,4 +52,16 @@ export const KEYS = {
     EDIT: "edit-portfolio",
     DELETE: "delete-portfolio",
   },
+  OUR_SERVICE:{
+    BASE: "our-service",
+    ADD: "add-our-service",
+    EDIT: "edit-our-service",
+    DELETE: "delete-our-service",
+  },
+  CLIENT_LOGO:{
+    BASE: "client-logo",
+    ADD: "add-client-logo",
+    EDIT: "edit-client-logo",
+    DELETE: "delete-client-logo",
+  }
 };

@@ -76,7 +76,7 @@ export const CommonObjectPropertyColumn = <T extends GridValidRowModel>(field: s
 
   renderCell: ({ value }) => {
     if (options?.type === "image") {
-      return value ? <img src={value} alt="img" style={{ width: 50, height: 50, objectFit: "cover", borderRadius: 4 }} /> : "-";
+      return value ? <img src={value} alt="img" style={{ width: 50, height: 50, objectFit: "contain", borderRadius: 4 }} /> : "-";
     }
     if (options?.type === "status") {
       const formatted = value?.toString().toLowerCase().replace(/\s/g, "_") || "";

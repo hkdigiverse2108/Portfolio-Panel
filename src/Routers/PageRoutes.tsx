@@ -14,6 +14,9 @@ import Blog from "../Pages/Blog";
 import BlogForm from "../Pages/Blog/BlogForm";
 import Portfolio from "../Pages/Portfolio";
 import PortfolioForm from "../Pages/Portfolio/PortfolioForm";
+import OurService from "../Pages/OurService";
+import OurServiceForm from "../Pages/OurService/OurServiceForm";
+import ClientLogo from "../Pages/ClientLogo";
 
 export const PageRoutes = [
   { path: ROUTES.HOME, name: PAGE_TITLE.DASHBOARD, element: <Navigate to={ROUTES.DASHBOARD} replace /> },
@@ -35,6 +38,11 @@ export const PageRoutes = [
 
   { path: ROUTES.PORTFOLIO.BASE, name: PAGE_TITLE.PORTFOLIO.BASE, element: <Portfolio /> },
   { path: ROUTES.PORTFOLIO.ADD_EDIT, name: PAGE_TITLE.PORTFOLIO.BASE, element: <PortfolioForm /> },
+
+  { path: ROUTES.OUR_SERVICE.BASE, name: PAGE_TITLE.OUR_SERVICE.BASE, element: <OurService /> },
+  { path: ROUTES.OUR_SERVICE.ADD_EDIT, name: PAGE_TITLE.OUR_SERVICE.BASE, element: <OurServiceForm /> },
+
+  { path: ROUTES.CLIENT_LOGO.BASE, name: PAGE_TITLE.CLIENT_LOGO.BASE, element: <ClientLogo /> },
 ];
 
 export const AuthRoutes = [

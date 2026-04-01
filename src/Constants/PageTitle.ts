@@ -30,4 +30,14 @@ export const PAGE_TITLE = {
     ADD: "Add Portfolio",
     EDIT: "Edit Portfolio",
   },
+  OUR_SERVICE: {
+    BASE: "Our Service",
+    ADD: "Add Our Service",
+    EDIT: "Edit Our Service",
+  },
+  CLIENT_LOGO: {
+    BASE: "Client Logo",
+    ADD: "Add Client Logo",
+    EDIT: "Edit Client Logo",
+  },
 } as const;

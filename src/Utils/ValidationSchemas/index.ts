@@ -147,11 +147,39 @@ export const BlogSchema = Yup.object({
 //Portfolio
 export const PortfolioSchema = Yup.object({
   title: Validation("string", "Title"),
-  subTitle: Validation("string", "Sub Title"),
-  projectName: Validation("string", "Project Name"),
-  client: Validation("string", "Client"),
-  technology: Validation("string", "Technology"),
-  date: Validation("string", "Date", { required: false }),
+  subTitle: Validation("string", "Sub Title", { required: false }),
+  link: Validation("string", "Link", { required: false }),
   description: Validation("string", "Description", { required: false }),
+  projectName: Validation("string", "Project Name", { required: false }),
+  client: Validation("string", "Client", { required: false }),
+  technology: Validation("string", "Technology", { required: false }),
+  date: Validation("string", "Date", { required: false }),
+  socialLinks: Yup.array()
+    .of(
+      Yup.object({
+        title: Validation("string", "Title", { required: false }),
+        link: Validation("string", "Link", { required: false }),
+        icon: Validation("string", "Icon", { required: false }),
+        isActive: Yup.boolean().nullable(),
+      }),
+    )
+    .nullable(),
+  isActive: Yup.boolean().nullable(),
+});
+
+//OurService
+export const OurServiceSchema = Yup.object({
+  title: Validation("string", "Title"),
+  tagLine: Validation("string", "Tag Line", { required: false }),
+  date: Validation("string", "Date", { required: false }),
+  tags: Validation("array", "Tags", { required: false }),
+  description: Validation("string", "Description", { required: false }),
+  isActive: Yup.boolean().nullable(),
+});
+
+//ClientLogo
+export const ClientLogoSchema = Yup.object({
+  name: Validation("string", "Name"),
+  image: Validation("string", "Image", { required: false }),
   isActive: Yup.boolean().nullable(),
 });

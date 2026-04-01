@@ -122,9 +122,9 @@ const PortfolioForm = () => {
                   </CommonCard>
                   <CommonCard title="Project Information" grid={{ xs: 12 }}>
                     <Grid container spacing={2} sx={{ p: 2 }}>
-                      <CommonValidationTextField name="projectName" label="Project Name" grid={{ xs: 12, sm: 6 }} required />
-                      <CommonValidationTextField name="client" label="Client" grid={{ xs: 12, sm: 6 }} required />
-                      <CommonValidationTextField name="technology" label="Technology" grid={{ xs: 12, sm: 6 }} required />
+                      <CommonValidationTextField name="projectName" label="Project Name" grid={{ xs: 12, sm: 6 }} />
+                      <CommonValidationTextField name="client" label="Client" grid={{ xs: 12, sm: 6 }} />
+                      <CommonValidationTextField name="technology" label="Technology" grid={{ xs: 12, sm: 6 }} />
                       <CommonValidationDatePicker name="date" label="Date" grid={{ xs: 12, sm: 6 }} />
                     </Grid>
                   </CommonCard>
@@ -137,7 +137,7 @@ const PortfolioForm = () => {
                               {values?.socialLinks?.map((_, index) => (
                                 <Grid container spacing={2} key={index} sx={{ mb: 2, alignItems: "center" }}>
                                   <CommonValidationSelect name={`socialLinks.${index}.title`} label="title" options={SOCIAL_MEDIA_TYPE} grid={{ xs: 12, md: 6, xl: 3 }} />
-                                  <CommonValidationTextField name={`socialLinks.${index}.link`} label="link" required grid={{ xs: 12, md: 6, xl: 4 }} />
+                                  <CommonValidationTextField name={`socialLinks.${index}.link`} label="link" grid={{ xs: 12, md: 6, xl: 4 }} />
                                   <CommonValidationTextField name={`socialLinks.${index}.icon`} label="icon" grid={{ xs: 12, sm: 6, xl: 2 }} />
                                   <CommonValidationSwitch name={`socialLinks.${index}.isActive`} label="Active" grid={{ xs: "grow" }} />
                                   {(values?.socialLinks?.length || 0) > 1 && (

@@ -1,5 +1,5 @@
 import { KEYS, URL_KEYS } from "../Constants";
-import type { AppQueryOptions, BlogApiResponse, HeroSectionApiResponse, Params, PortfolioApiResponse, ServiceApiResponse, UploadResponse, UserApiResponse, WorkCountApiResponse } from "../Types";
+import type { AppQueryOptions, BlogApiResponse, ClientLogoApiResponse, HeroSectionApiResponse, OurServiceApiResponse, Params, PortfolioApiResponse, ServiceApiResponse, UploadResponse, UserApiResponse, WorkCountApiResponse } from "../Types";
 import { Get } from "./Methods";
 import { useQueries } from "./ReactQuery";
 
@@ -25,4 +25,10 @@ export const Queries = {
 
   //*************** Portfolio *********
   useGetPortfolio: (params?: Params) => useQueries<PortfolioApiResponse>([KEYS.PORTFOLIO.BASE, params], () => Get(URL_KEYS.PORTFOLIO.ALL, params)),
+
+  //*************** Our Service *********
+  useGetOurService: (params?: Params) => useQueries<OurServiceApiResponse>([KEYS.OUR_SERVICE.BASE, params], () => Get(URL_KEYS.OUR_SERVICE.ALL, params)),
+
+  //*************** Client Logo *********
+  useGetClientLogo: (params?: Params) => useQueries<ClientLogoApiResponse>([KEYS.CLIENT_LOGO.BASE, params], () => Get(URL_KEYS.CLIENT_LOGO.ALL, params)),
 };

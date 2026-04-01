@@ -37,4 +37,12 @@ export const ROUTES = {
     BASE: "/portfolio",
     ADD_EDIT: "/portfolio/add-edit",
   },
+  OUR_SERVICE: {
+    BASE: "/our-service",
+    ADD_EDIT: "/our-service/add-edit",
+  },
+  CLIENT_LOGO: {
+    BASE: "/client-logo",
+    ADD_EDIT: "/client-logo/add-edit",
+  },
 } as const;

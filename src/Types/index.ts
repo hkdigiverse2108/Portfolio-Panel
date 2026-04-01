@@ -9,3 +9,5 @@ export * from "./WorkCount";
 export * from "./Blog";
 export * from "./Service";
 export * from "./Portfolio";
+export * from "./OurService";
+export * from "./ClientLogo";

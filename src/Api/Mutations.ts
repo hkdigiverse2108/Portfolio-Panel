@@ -1,5 +1,5 @@
 import { KEYS, URL_KEYS } from "../Constants";
-import type { AddBlogPayload, AddPortfolioPayload, AddServicePayload, AddWorkCountPayload, EditBlogPayload, EditHeroSectionPayload, EditPortfolioPayload, EditServicePayload, EditWorkCountPayload, ForgotPasswordPayload, LoginPayload, LoginResponse, MessageStatus, ResendOtpPayload, ResetPasswordPayload, UpdatePasswordPayload, UpdateUserPayload, UploadResponse, UserApiResponse, VerifyOtpPayload } from "../Types";
+import type { AddBlogPayload, AddClientLogoPayload, AddOurServicePayload, AddPortfolioPayload, AddServicePayload, AddWorkCountPayload, EditBlogPayload, EditClientLogoPayload, EditHeroSectionPayload, EditOurServicePayload, EditPortfolioPayload, EditServicePayload, EditWorkCountPayload, ForgotPasswordPayload, LoginPayload, LoginResponse, MessageStatus, ResendOtpPayload, ResetPasswordPayload, UpdatePasswordPayload, UpdateUserPayload, UploadResponse, UserApiResponse, VerifyOtpPayload } from "../Types";
 import { Delete, Post, Put } from "./Methods";
 import { useMutations } from "./ReactQuery";
 
@@ -50,4 +50,14 @@ export const Mutations = {
   useAddPortfolio: () => useMutations<AddPortfolioPayload, void>([KEYS.PORTFOLIO.ADD, KEYS.PORTFOLIO.BASE], (input) => Post(URL_KEYS.PORTFOLIO.ADD, input)),
   useEditPortfolio: () => useMutations<EditPortfolioPayload, void>([KEYS.PORTFOLIO.EDIT, KEYS.PORTFOLIO.BASE], (input) => Put(URL_KEYS.PORTFOLIO.EDIT, input)),
   useDeletePortfolio: () => useMutations<string, void>([KEYS.PORTFOLIO.DELETE, KEYS.PORTFOLIO.BASE], (id) => Delete(`${URL_KEYS.PORTFOLIO.BASE}/${id}`)),
+
+  //*************** Our Service *********
+  useAddOurService: () => useMutations<AddOurServicePayload, void>([KEYS.OUR_SERVICE.ADD, KEYS.OUR_SERVICE.BASE], (input) => Post(URL_KEYS.OUR_SERVICE.ADD, input)),
+  useEditOurService: () => useMutations<EditOurServicePayload, void>([KEYS.OUR_SERVICE.EDIT, KEYS.OUR_SERVICE.BASE], (input) => Put(URL_KEYS.OUR_SERVICE.EDIT, input)),
+  useDeleteOurService: () => useMutations<string, void>([KEYS.OUR_SERVICE.DELETE, KEYS.OUR_SERVICE.BASE], (id) => Delete(`${URL_KEYS.OUR_SERVICE.BASE}/${id}`)),
+
+  //*************** Client Logo *********
+  useAddClientLogo: () => useMutations<AddClientLogoPayload, void>([KEYS.CLIENT_LOGO.ADD, KEYS.CLIENT_LOGO.BASE], (input) => Post(URL_KEYS.CLIENT_LOGO.ADD, input)),
+  useEditClientLogo: () => useMutations<EditClientLogoPayload, void>([KEYS.CLIENT_LOGO.EDIT, KEYS.CLIENT_LOGO.BASE], (input) => Put(URL_KEYS.CLIENT_LOGO.EDIT, input)),
+  useDeleteClientLogo: () => useMutations<string, void>([KEYS.CLIENT_LOGO.DELETE, KEYS.CLIENT_LOGO.BASE], (id) => Delete(`${URL_KEYS.CLIENT_LOGO.BASE}/${id}`)),
 };
