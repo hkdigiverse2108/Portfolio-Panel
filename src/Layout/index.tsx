@@ -32,7 +32,7 @@ const Layout = () => {
         <Sidebar />
 
         {/* Main Content Area */}
-        <main className={`flex-grow transition-all duration-300 relative z-10 w-full ${isExpanded || isHovered ? "lg:pl-[290px]" : "lg:pl-[90px]"}`}>
+        <main className={`flex-grow transition-all duration-300 relative w-full ${isExpanded || isHovered ? "lg:pl-[290px]" : "lg:pl-[90px]"}`}>
           <Outlet />
         </main>
       </div>

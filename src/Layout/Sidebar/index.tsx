@@ -126,7 +126,7 @@ const Sidebar = () => {
       onMouseLeave={() => dispatch(setIsHovered(false))}
     >
       <div className={`py-4 flex ${!isExpanded && !isHovered ? "lg:justify-center" : "justify-between"}`}>
-        <Link to="/" className="flex items-center">
+        <Link to="/" className="flex items-center gap-3">
           {isExpanded || isHovered || isMobileOpen ? (
             <>
               <div className="w-8 h-8 rounded-lg bg-gray-800 dark:bg-brand-500 flex items-center justify-center text-white font-bold text-sm">PA</div>
