@@ -1,26 +1,25 @@
-import { Grid, Box, Typography } from "@mui/material";
+import { Add, Delete } from "@mui/icons-material";
+import { Box, Grid, Typography } from "@mui/material";
+import { GridCloseIcon } from "@mui/x-data-grid";
 import { FieldArray, Form, Formik, useFormikContext, type FormikHelpers, type FormikValues } from "formik";
-import { CommonBottomActionBar, CommonBreadcrumbs, CommonCard, CommonProfileAvatar } from "../../Components/Common";
-import { Mutations, Queries } from "../../Api";
+import { useEffect, useState } from "react";
+import { Mutations } from "../../Api";
 import { CommonButton, CommonValidationSwitch, CommonValidationTextField } from "../../Attribute";
-import type { ImageSyncProps, UserFormValues } from "../../Types";
+import { CommonPhoneNumber } from "../../Attribute/FormFields/CommonPhoneNumber";
+import { CommonValidationSelect } from "../../Attribute/FormFields/CommonSelect";
+import { CommonValidationCreatableSelect } from "../../Attribute/FormFields/CommonSelectTab";
+import { CommonBottomActionBar, CommonBreadcrumbs, CommonCard, CommonProfileAvatar } from "../../Components/Common";
+import { CommonFormImageBox } from "../../Components/Common/CommonUploadImage/CommonImageBox";
 import { PAGE_TITLE } from "../../Constants";
 import { BREADCRUMBS } from "../../Data/Breadcrumbs";
-import { CommonPhoneNumber } from "../../Attribute/FormFields/CommonPhoneNumber";
-import { useEffect, useState } from "react";
+import { SOCIAL_MEDIA_TYPE } from "../../Data/Enum";
 import { useAppDispatch, useAppSelector } from "../../Store/hooks";
 import { setSelectedFiles, setUploadModal } from "../../Store/Slices/ModalSlice";
-import { CommonFormImageBox } from "../../Components/Common/CommonUploadImage/CommonImageBox";
-import { GridCloseIcon } from "@mui/x-data-grid";
-import { Add, Delete } from "@mui/icons-material";
+import type { ImageSyncProps, UserFormValues } from "../../Types";
 import { UserSchema } from "../../Utils/ValidationSchemas";
-import { CommonValidationCreatableSelect } from "../../Attribute/FormFields/CommonSelectTab";
-import { CommonValidationSelect } from "../../Attribute/FormFields/CommonSelect";
-import { SOCIAL_MEDIA_TYPE } from "../../Data/Enum";
 
 const Profile = () => {
-  const { data } = Queries.useGetUser();
-  const user = data?.data;
+  const { user } = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
 
   const { mutate: editUser, isPending: isEditLoading } = Mutations.useUpdateUser();
@@ -38,7 +37,7 @@ const Profile = () => {
     socialMediaLinks: user?.socialMediaLinks || [],
     offers: user?.offers || [],
   };
-  console.log(user?.profileImage);
+  
   const FormikImageSync = <T extends FormikValues>({ activeKey, clearActiveKey }: ImageSyncProps) => {
     const { selectedFiles } = useAppSelector((state) => state.modal);
     const { setFieldValue } = useFormikContext<T>();
@@ -158,7 +157,7 @@ const Profile = () => {
                   </Grid>
                 </Grid>
               </CommonCard>
-              <CommonBottomActionBar save disabled={!dirty} isLoading={isEditLoading} />
+              <CommonBottomActionBar submit disabled={!dirty} isLoading={isEditLoading} />
             </Form>
           )}
         </Formik>

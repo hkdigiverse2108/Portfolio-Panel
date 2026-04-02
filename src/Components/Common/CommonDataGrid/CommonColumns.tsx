@@ -32,7 +32,6 @@ const formatValues = (values: (string | number)[], type?: ColumnFormatType): str
 
     case "image": {
       const img = Array.isArray(value) ? value[0] : value;
-      console.log("img", img);
 
       return typeof img === "string" ? img : "-";
     }
