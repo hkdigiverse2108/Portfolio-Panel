@@ -10,7 +10,7 @@ export interface UserFormValues {
   offers?: string[];
   socialMediaLinks?: string[];
   isActive?: boolean;
-  _submitAction?: string;
+  logoTitle?: string;
 }
 
 export type AddUserPayload = UserFormValues;

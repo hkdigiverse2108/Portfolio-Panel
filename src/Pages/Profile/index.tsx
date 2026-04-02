@@ -36,8 +36,9 @@ const Profile = () => {
     profileImage: user?.profileImage || null,
     socialMediaLinks: user?.socialMediaLinks || [],
     offers: user?.offers || [],
+    logoTitle: user?.logoTitle || "",
   };
-  
+
   const FormikImageSync = <T extends FormikValues>({ activeKey, clearActiveKey }: ImageSyncProps) => {
     const { selectedFiles } = useAppSelector((state) => state.modal);
     const { setFieldValue } = useFormikContext<T>();
@@ -123,7 +124,8 @@ const Profile = () => {
                   <CommonValidationTextField name="lastName" label="Last Name" required grid={{ xs: 12, md: 6 }} />
                   <CommonPhoneNumber label="Phone No." countryCodeName="phoneNo.countryCode" numberName="phoneNo.number" grid={{ xs: 12, md: 6 }} />
                   <CommonValidationTextField name="email" label="Email" required grid={{ xs: 12, md: 6 }} />
-                  <CommonValidationCreatableSelect name="offers" label="Offers" options={[]} grid={{ xs: 12 }} />
+                  <CommonValidationTextField name="logoTitle" label="Logo Title" grid={{ xs: 12, md: 6 }} />
+                  <CommonValidationCreatableSelect name="offers" label="Offers" options={[]} grid={{ xs: 12, md: 6 }} />
                   <Grid size={12}>
                     <Typography component="div">Social Media Links</Typography>
                   </Grid>
