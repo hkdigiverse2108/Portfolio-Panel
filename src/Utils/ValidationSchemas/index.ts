@@ -179,7 +179,8 @@ export const OurServiceSchema = Yup.object({
 //ClientLogo
 export const ClientLogoSchema = Yup.object({
   name: Validation("string", "Name"),
-  image: Validation("string", "Image", { required: false }),
+  image: Validation("string", "Image"),
+  link: Validation("string", "Link", { required: false }),
   isActive: Yup.boolean().nullable(),
 });
 

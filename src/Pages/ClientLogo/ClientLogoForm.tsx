@@ -82,7 +82,7 @@ const ClientLogoForm = () => {
             <Grid container spacing={2} sx={{ p: 1 }}>
               <CommonValidationTextField name="name" label="Name" required grid={{ xs: 12 }} />
               <CommonValidationTextField name="link" label="Link" grid={{ xs: 12 }} />
-              <CommonFormImageBox name="image" label="Image" type="image" grid={{ xs: 12 }} onUpload={handleUpload} onDelete={() => setFieldValue("image", null)} />
+              <CommonFormImageBox name="image" label="Image" type="image" grid={{ xs: 12 }} onUpload={handleUpload} onDelete={() => setFieldValue("image", null)} required />
 
               {!isEditing && <CommonValidationSwitch name="isActive" label="Is Active" grid={{ xs: 12 }} />}
               <Grid sx={{ display: "flex", gap: 2, ml: "auto" }}>

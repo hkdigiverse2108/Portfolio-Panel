@@ -105,8 +105,8 @@ const OurServiceForm = () => {
                   <CommonValidationTextField name="tagLine" label="Tag Line" grid={{ xs: 12, sm: 6 }} />
                   <CommonValidationTextField name="shortDescription" label="Short Description" grid={{ xs: 12 }} multiline />
                   <CommonValidationQuillInput name="description" label="Description" grid={{ xs: 12 }} />
-                  <CommonValidationTextField name="whyChoose.title" label="Why Choose Title" grid={{ xs: 12, sm: 6 }} />
-                  <CommonValidationTextField name="whyChoose.description" label="Why Choose Description" grid={{ xs: 12, sm: 6 }} />
+                  <CommonValidationTextField name="whyChoose.title" label="Why Choose Title" grid={{ xs: 12 }} />
+                  <CommonValidationQuillInput name="whyChoose.description" label="Why Choose Description" grid={{ xs: 12 }} />
                   <CommonFormImageBox name="thumbnailImage" label="Thumbnail Image" type="image" grid={"auto"} onUpload={() => handleUpload("thumbnailImage")} />
                   <CommonFormImageBox name="images" label="Images" type="image" grid={"grow"} multiple onUpload={() => handleUpload("images")} />
                   {!isEditing && <CommonValidationSwitch name="isActive" label="Is Active" grid={{ xs: 12 }} />}
