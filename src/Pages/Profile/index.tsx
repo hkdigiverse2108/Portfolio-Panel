@@ -1,6 +1,5 @@
-import { Add, Delete } from "@mui/icons-material";
+import { Add, Close, Delete } from "@mui/icons-material";
 import { Box, Grid, Typography } from "@mui/material";
-import { GridCloseIcon } from "@mui/x-data-grid";
 import { FieldArray, Form, Formik, useFormikContext, type FormikHelpers, type FormikValues } from "formik";
 import { useEffect, useState } from "react";
 import { Mutations } from "../../Api";
@@ -129,20 +128,21 @@ const Profile = () => {
                   <Grid size={12}>
                     <Typography component="div">Social Media Links</Typography>
                   </Grid>
+
                   <Grid size={12}>
                     <FieldArray name="socialMediaLinks">
                       {({ push, remove }) => (
                         <>
                           {values?.socialMediaLinks?.map((_, index) => (
                             <Grid container spacing={2} key={index} sx={{ mb: 2, alignItems: "center" }}>
-                              <CommonValidationSelect name={`socialMediaLinks.${index}.title`} label="title" options={SOCIAL_MEDIA_TYPE} grid={{ xs: 12, md: 3 }} />
-                              <CommonValidationTextField name={`socialMediaLinks.${index}.link`} label="link" required grid={{ xs: 12, md: 3 }} />
-                              <CommonValidationTextField name={`socialMediaLinks.${index}.icon`} label="icon" grid={{ xs: 12, md: 2 }} />
-                              <CommonValidationSwitch name={`socialMediaLinks.${index}.isActive`} label="Active" grid={{ xs: 12, md: 2 }} />
+                              <CommonValidationTextField name={`socialMediaLinks.${index}.title`} label="title" required grid={{ xs: 12, md: 6, xl: 3 }} />
+                              <CommonValidationTextField name={`socialMediaLinks.${index}.link`} label="link" required grid={{ xs: 12, md: 6, xl: 4 }} />
+                              <CommonValidationSelect name={`socialMediaLinks.${index}.icon`} label="icon" required options={SOCIAL_MEDIA_TYPE} grid={{ xs: 12, sm: 6, xl: 2 }} />
+                              <CommonValidationSwitch name={`socialMediaLinks.${index}.isActive`} label="Active" grid={{ xs: "grow" }} />
                               {(values?.socialMediaLinks?.length || 0) > 1 && (
                                 <Grid size={"auto"}>
                                   <CommonButton variant="outlined" size="small" color="error" sx={{ minWidth: 20 }} onClick={() => remove(index)}>
-                                    <GridCloseIcon />
+                                    <Close />
                                   </CommonButton>
                                 </Grid>
                               )}

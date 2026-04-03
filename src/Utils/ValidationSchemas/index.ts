@@ -101,9 +101,9 @@ export const UserSchema = Yup.object({
   socialMediaLinks: Yup.array()
     .of(
       Yup.object({
-        title: Validation("string", "Title", { required: false }),
-        link: Validation("string", "Link", { required: false }),
-        icon: Validation("string", "Icon", { required: false }),
+        title: Validation("string", "Title"),
+        link: Validation("string", "Link"),
+        icon: Validation("string", "Icon"),
         isActive: Yup.boolean().nullable(),
       }),
     )
@@ -156,9 +156,9 @@ export const PortfolioSchema = Yup.object({
   socialLinks: Yup.array()
     .of(
       Yup.object({
-        title: Validation("string", "Title", { required: false }),
-        link: Validation("string", "Link", { required: false }),
-        icon: Validation("string", "Icon", { required: false }),
+        title: Validation("string", "Title"),
+        link: Validation("string", "Link"),
+        icon: Validation("string", "Icon"),
         isActive: Yup.boolean().nullable(),
       }),
     )

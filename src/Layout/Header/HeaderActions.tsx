@@ -17,7 +17,7 @@ const HeaderActions = () => {
       <DashboardThemeToggle />
       <Box className="relative group">
       <CommonProfileAvatar fullName={`${user?.firstName || ""} ${user?.lastName || ""}`}  profileImage={user?.profileImage} className="max-xsm:text-sm h-11 w-11 max-xsm:h-9 max-xsm:w-9" />
-      <div className="fixed lg:absolute max-lg:left-1 max-lg:right-1 lg:right-0 mt-3 flex min-w-[285px] max-w-[330px] flex-col rounded-xl border border-gray-50 bg-white shadow-tooltip dark:border-gray-800 dark:bg-gray-dark z-50 opacity-0 invisible scale-95 translate-y-2 transition-all duration-200 ease-out group-hover:opacity-100 group-hover:visible group-hover:scale-100 group-hover:translate-y-0 ">
+      <div className="absolute right-0 mt-3 flex min-w-[285px] max-w-[330px] flex-col rounded-xl border border-gray-50 bg-white shadow-tooltip dark:border-gray-800 dark:bg-gray-dark z-50 opacity-0 invisible scale-95 translate-y-2 transition-all duration-200 ease-out group-hover:opacity-100 group-hover:visible group-hover:scale-100 group-hover:translate-y-0 ">
         <div className="p-3">
           <div className="flex items-center gap-3">
             <CommonProfileAvatar fullName={`${user?.firstName || ""} ${user?.lastName || ""}`} profileImage={user?.profileImage} className="h-11 w-11" />

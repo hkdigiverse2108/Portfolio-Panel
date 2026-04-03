@@ -136,9 +136,9 @@ const PortfolioForm = () => {
                             <>
                               {values?.socialLinks?.map((_, index) => (
                                 <Grid container spacing={2} key={index} sx={{ mb: 2, alignItems: "center" }}>
-                                  <CommonValidationSelect name={`socialLinks.${index}.title`} label="title" options={SOCIAL_MEDIA_TYPE} grid={{ xs: 12, md: 6, xl: 3 }} />
-                                  <CommonValidationTextField name={`socialLinks.${index}.link`} label="link" grid={{ xs: 12, md: 6, xl: 4 }} />
-                                  <CommonValidationTextField name={`socialLinks.${index}.icon`} label="icon" grid={{ xs: 12, sm: 6, xl: 2 }} />
+                                  <CommonValidationTextField name={`socialLinks.${index}.title`} label="title" required grid={{ xs: 12, md: 6, xl: 3 }} />
+                                  <CommonValidationTextField name={`socialLinks.${index}.link`} label="link" required grid={{ xs: 12, md: 6, xl: 4 }} />
+                                  <CommonValidationSelect name={`socialLinks.${index}.icon`} label="icon" required options={SOCIAL_MEDIA_TYPE} grid={{ xs: 12, sm: 6, xl: 2 }} />
                                   <CommonValidationSwitch name={`socialLinks.${index}.isActive`} label="Active" grid={{ xs: "grow" }} />
                                   {(values?.socialLinks?.length || 0) > 1 && (
                                     <Grid size={"auto"}>
