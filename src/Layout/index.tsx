@@ -29,6 +29,17 @@ const Layout = () => {
   useEffect(() => {
     if (userData) {
       dispatch(setUser(userData?.data));
+
+      // Update Favicon dynamic from profile image
+      if (userData?.data?.profileImage) {
+        const link = document.querySelector("link[rel~='icon']") as HTMLLinkElement;
+        if (link) {
+          link.href = userData.data.profileImage;
+        }
+      }
+      // Update Document Title dynamic from logoTitle or name
+      // const title = userData?.data?.logoTitle || `${userData?.data?.firstName} ${userData?.data?.lastName}` || "Portfolio Panel";
+      // document.title = title;
     }
   }, [dispatch, userData]);
 
