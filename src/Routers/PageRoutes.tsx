@@ -27,6 +27,7 @@ import TestimonialDescription from "../Pages/TestimonialDescription";
 import PrivacyPolicy from "../Pages/PrivacyPolicy";
 import TermsConditions from "../Pages/TermsConditions";
 import Setting from "../Pages/Setting";
+import BusinessCategory from "../Pages/BusinessCategory";
 
 export const PageRoutes = [
   { path: ROUTES.HOME, name: PAGE_TITLE.PORTFOLIO.BASE, element: <Navigate to={ROUTES.PORTFOLIO.BASE} replace /> },
@@ -42,6 +43,8 @@ export const PageRoutes = [
   { path: ROUTES.WORK_COUNT.BASE, name: PAGE_TITLE.WORK_COUNT.BASE, element: <WorkCount /> },
 
   { path: ROUTES.SERVICE.BASE, name: PAGE_TITLE.SERVICE.BASE, element: <Service /> },
+
+  { path: ROUTES.BUSINESS_CATEGORY.BASE, name: PAGE_TITLE.BUSINESS_CATEGORY.BASE, element: <BusinessCategory /> },
 
   { path: ROUTES.BLOG.BASE, name: PAGE_TITLE.BLOG.BASE, element: <Blog /> },
   { path: ROUTES.BLOG.ADD_EDIT, name: PAGE_TITLE.BLOG.BASE, element: <BlogForm /> },

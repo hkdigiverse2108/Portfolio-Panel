@@ -1,3 +1,4 @@
+import type { BusinessCategoryBase } from "./BusinessCategory";
 import type { CommonDataType, MessageStatus, PageStatus } from "./Common";
 import type { ServiceBase } from "./Service";
 
@@ -13,6 +14,7 @@ export interface PortfolioFormValues {
   title?: string;
   subTitle?: string;
   serviceIds?: string[];
+  businessCategoryIds?: string[];
   isFeatured?: boolean;
   link?: string;
   description?: string;
@@ -30,8 +32,9 @@ export type AddPortfolioPayload = PortfolioFormValues;
 
 export type EditPortfolioPayload = AddPortfolioPayload & { portfolioId?: string };
 
-export interface PortfolioBase extends Omit<PortfolioFormValues, "serviceIds">, CommonDataType {
+export interface PortfolioBase extends Omit<PortfolioFormValues, "serviceIds" | "businessCategoryIds">, CommonDataType {
   serviceIds: ServiceBase;
+  businessCategoryIds: BusinessCategoryBase;
   isFeatured: boolean;
 }
 

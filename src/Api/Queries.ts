@@ -1,5 +1,5 @@
 import { KEYS, URL_KEYS } from "../Constants";
-import type { AppQueryOptions, AwardsApiResponse, BlogApiResponse, ClientLogoApiResponse, ContactUsApiResponse, HeroSectionApiResponse, MyAchievementApiResponse, OurServiceApiResponse, Params, PortfolioApiResponse, PrivacyPolicyApiResponse, ServiceApiResponse, SettingApiResponse, SkillApiResponse, TermsConditionsApiResponse, TestimonialApiResponse, TestimonialDescriptionApiResponse, UploadResponse, UserApiResponse, WorkCountApiResponse, WorkExperienceApiResponse } from "../Types";
+import type { AppQueryOptions, AwardsApiResponse, BlogApiResponse, BusinessCategoryApiResponse, ClientLogoApiResponse, ContactUsApiResponse, HeroSectionApiResponse, MyAchievementApiResponse, OurServiceApiResponse, Params, PortfolioApiResponse, PrivacyPolicyApiResponse, ServiceApiResponse, SettingApiResponse, SkillApiResponse, TermsConditionsApiResponse, TestimonialApiResponse, TestimonialDescriptionApiResponse, UploadResponse, UserApiResponse, WorkCountApiResponse, WorkExperienceApiResponse } from "../Types";
 import { Get } from "./Methods";
 import { useQueries } from "./ReactQuery";
 
@@ -22,6 +22,9 @@ export const Queries = {
 
   //*************** Service *********
   useGetService: (params?: Params) => useQueries<ServiceApiResponse>([KEYS.SERVICE.BASE, params], () => Get(URL_KEYS.SERVICE.ALL, params)),
+
+  //*************** Business Category *********
+  useGetBusinessCategory: (params?: Params) => useQueries<BusinessCategoryApiResponse>([KEYS.BUSINESS_CATEGORY.BASE, params], () => Get(URL_KEYS.BUSINESS_CATEGORY.ALL, params)),
 
   //*************** Portfolio *********
   useGetPortfolio: (params?: Params) => useQueries<PortfolioApiResponse>([KEYS.PORTFOLIO.BASE, params], () => Get(URL_KEYS.PORTFOLIO.ALL, params)),

@@ -10,7 +10,7 @@ import { PAGE_TITLE } from "../../Constants";
 import { BREADCRUMBS, SOCIAL_MEDIA_TYPE } from "../../Data";
 import { useAppDispatch, useAppSelector } from "../../Store/hooks";
 import { setSelectedFiles, setUploadModal } from "../../Store/Slices/ModalSlice";
-import type { ImageSyncProps, PortfolioFormValues, PortfolioSocialLink, ServiceBase } from "../../Types";
+import type { BusinessCategoryBase, ImageSyncProps, PortfolioFormValues, PortfolioSocialLink, ServiceBase } from "../../Types";
 import { GenerateOptions, GetChangedFields, RemoveEmptyFields } from "../../Utils";
 import { PortfolioSchema } from "../../Utils/ValidationSchemas";
 import { Close, Add } from "@mui/icons-material";
@@ -23,6 +23,7 @@ const PortfolioForm = () => {
 
   const { data } = location.state || {};
   const { data: serviceData, isLoading: serviceDataLoading } = Queries.useGetService({ activeFilter: true });
+  const { data: businessCategoryData, isLoading: businessCategoryDataLoading } = Queries.useGetBusinessCategory({ activeFilter: true });
 
   const { mutate: addPortfolio, isPending: isAddLoading } = Mutations.useAddPortfolio();
   const { mutate: editPortfolio, isPending: isEditLoading } = Mutations.useEditPortfolio();
@@ -35,7 +36,8 @@ const PortfolioForm = () => {
       thumbnailImage: data?.thumbnailImage || "",
       title: data?.title || "",
       subTitle: data?.subTitle || "",
-      serviceIds: data?.serviceIds.map((item: ServiceBase) => item._id) || "",
+      serviceIds: data?.serviceIds?.map((item: ServiceBase) => item._id) || "",
+      businessCategoryIds: data?.businessCategoryIds?.map((item: BusinessCategoryBase) => item._id) || "",
       isFeatured: data?.isFeatured ?? false,
       link: data?.link || "",
       description: data?.description || "",
@@ -111,6 +113,7 @@ const PortfolioForm = () => {
                   <CommonCard title="Portfolio Details" grid={{ xs: 12 }}>
                     <Grid container spacing={2} sx={{ p: 2 }}>
                       <CommonValidationSelect name="serviceIds" label="Service" isLoading={serviceDataLoading} options={GenerateOptions(serviceData?.data?.service_data)} grid={{ xs: 12, sm: 6 }} multiple />
+                      <CommonValidationSelect name="businessCategoryIds" label="Business Category" isLoading={businessCategoryDataLoading} options={GenerateOptions(businessCategoryData?.data?.businessCategory_data)} grid={{ xs: 12, sm: 6 }} multiple />
                       <CommonValidationTextField name="title" label="Title" grid={{ xs: 12, sm: 6 }} required />
                       <CommonValidationTextField name="subTitle" label="Sub Title" grid={{ xs: 12, sm: 6 }} />
                       <CommonValidationTextField name="link" label="Link" grid={{ xs: 12, sm: 6 }} />

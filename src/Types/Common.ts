@@ -15,6 +15,7 @@ import type { AwardsBase } from "./Awards";
 import type { TestimonialBase } from "./Testimonial";
 import type { ContactUsBase } from "./ContactUs";
 import type { MyAchievementBase } from "./MyAchievement";
+import type { BusinessCategoryBase } from "./BusinessCategory";
 
 export interface CommonProfileAvatarProps {
   fullName?: string;
@@ -515,6 +516,7 @@ export interface ModalStateSlice {
   isTestimonialModal: { open: boolean; data: TestimonialBase | null };
   isContactUsModal: { open: boolean; data: ContactUsBase | null };
   isMyAchievementModal: { open: boolean; data: MyAchievementBase | null };
+  isBusinessCategoryModal: { open: boolean; data: BusinessCategoryBase | null };
 }
 
 // ************ Modal End ***********

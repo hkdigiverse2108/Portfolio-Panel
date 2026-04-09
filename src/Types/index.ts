@@ -21,4 +21,5 @@ export * from "./PrivacyPolicy";
 export * from "./TermsConditions";
 export * from "./TestimonialDescription";
 export * from "./Setting";
+export * from "./BusinessCategory";
 

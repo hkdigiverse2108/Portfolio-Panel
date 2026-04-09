@@ -1,4 +1,4 @@
-import { BarChart, ContactMail, Description, DesignServices, EditNote, EmojiEvents, Gavel, Group, Home, MiscellaneousServices, Psychology, Reviews, Security, Settings, Source, Work, WorkspacePremium } from "@mui/icons-material";
+import { Category, BarChart, ContactMail, Description, DesignServices, EditNote, EmojiEvents, Gavel, Group, Home, MiscellaneousServices, Psychology, Reviews, Security, Settings, Source, Work, WorkspacePremium } from "@mui/icons-material";
 import { PAGE_TITLE, ROUTES } from "../Constants";
 import type { NavItem } from "../Types";
 
@@ -9,6 +9,7 @@ export const NavItems: NavItem[] = [
   { icon: <Home />, name: PAGE_TITLE.HERO_SECTION.BASE, path: ROUTES.HERO_SECTION.BASE },
   { icon: <BarChart />, name: PAGE_TITLE.WORK_COUNT.BASE, path: ROUTES.WORK_COUNT.BASE },
   { icon: <DesignServices />, name: PAGE_TITLE.SERVICE.BASE, path: ROUTES.SERVICE.BASE },
+  { icon: <Category />, name: PAGE_TITLE.BUSINESS_CATEGORY.BASE, path: ROUTES.BUSINESS_CATEGORY.BASE },
   { icon: <EditNote />, name: PAGE_TITLE.BLOG.BASE, path: ROUTES.BLOG.BASE },
   { icon: <MiscellaneousServices />, name: PAGE_TITLE.OUR_SERVICE.BASE, path: ROUTES.OUR_SERVICE.BASE },
   { icon: <Group />, name: PAGE_TITLE.CLIENT_LOGO.BASE, path: ROUTES.CLIENT_LOGO.BASE },

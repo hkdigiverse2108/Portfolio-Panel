@@ -1,5 +1,5 @@
 import { KEYS, URL_KEYS } from "../Constants";
-import type { AddAwardsPayload, AddBlogPayload, AddClientLogoPayload, AddContactUsPayload, AddMyAchievementPayload, AddOurServicePayload, AddPortfolioPayload, AddServicePayload, AddSkillPayload, AddTestimonialPayload, AddWorkCountPayload, AddWorkExperiencePayload, EditAwardsPayload, EditBlogPayload, EditClientLogoPayload, EditContactUsPayload, EditMyAchievementPayload, EditOurServicePayload, EditPortfolioPayload, EditServicePayload, EditSkillPayload, EditTestimonialPayload, EditWorkCountPayload, EditWorkExperiencePayload, ForgotPasswordPayload, LoginPayload, LoginResponse, MessageStatus, ResendOtpPayload, ResetPasswordPayload, UpdateHeroSectionPayload, UpdatePasswordPayload, UpdatePrivacyPolicyPayload, UpdateSettingPayload, UpdateTermsConditionsPayload, UpdateTestimonialDescriptionPayload, UpdateUserPayload, UploadResponse, UserApiResponse, VerifyOtpPayload } from "../Types";
+import type { AddAwardsPayload, AddBlogPayload, AddBusinessCategoryPayload, AddClientLogoPayload, AddContactUsPayload, AddMyAchievementPayload, AddOurServicePayload, AddPortfolioPayload, AddServicePayload, AddSkillPayload, AddTestimonialPayload, AddWorkCountPayload, AddWorkExperiencePayload, EditAwardsPayload, EditBlogPayload, EditBusinessCategoryPayload, EditClientLogoPayload, EditContactUsPayload, EditMyAchievementPayload, EditOurServicePayload, EditPortfolioPayload, EditServicePayload, EditSkillPayload, EditTestimonialPayload, EditWorkCountPayload, EditWorkExperiencePayload, ForgotPasswordPayload, LoginPayload, LoginResponse, MessageStatus, ResendOtpPayload, ResetPasswordPayload, UpdateHeroSectionPayload, UpdatePasswordPayload, UpdatePrivacyPolicyPayload, UpdateSettingPayload, UpdateTermsConditionsPayload, UpdateTestimonialDescriptionPayload, UpdateUserPayload, UploadResponse, UserApiResponse, VerifyOtpPayload } from "../Types";
 import { Delete, Post, Put } from "./Methods";
 import { useMutations } from "./ReactQuery";
 
@@ -45,6 +45,11 @@ export const Mutations = {
   useAddService: () => useMutations<AddServicePayload, void>([KEYS.SERVICE.ADD, KEYS.SERVICE.BASE], (input) => Post(URL_KEYS.SERVICE.ADD, input)),
   useEditService: () => useMutations<EditServicePayload, void>([KEYS.SERVICE.EDIT, KEYS.SERVICE.BASE], (input) => Put(URL_KEYS.SERVICE.EDIT, input)),
   useDeleteService: () => useMutations<string, void>([KEYS.SERVICE.DELETE, KEYS.SERVICE.BASE], (id) => Delete(`${URL_KEYS.SERVICE.BASE}/${id}`)),
+
+  //*************** Business Category *********
+  useAddBusinessCategory: () => useMutations<AddBusinessCategoryPayload, void>([KEYS.BUSINESS_CATEGORY.ADD, KEYS.BUSINESS_CATEGORY.BASE], (input) => Post(URL_KEYS.BUSINESS_CATEGORY.ADD, input)),
+  useEditBusinessCategory: () => useMutations<EditBusinessCategoryPayload, void>([KEYS.BUSINESS_CATEGORY.EDIT, KEYS.BUSINESS_CATEGORY.BASE], (input) => Put(URL_KEYS.BUSINESS_CATEGORY.EDIT, input)),
+  useDeleteBusinessCategory: () => useMutations<string, void>([KEYS.BUSINESS_CATEGORY.DELETE, KEYS.BUSINESS_CATEGORY.BASE], (id) => Delete(`${URL_KEYS.BUSINESS_CATEGORY.BASE}/${id}`)),
 
   //*************** Portfolio *********
   useAddPortfolio: () => useMutations<AddPortfolioPayload, void>([KEYS.PORTFOLIO.ADD, KEYS.PORTFOLIO.BASE], (input) => Post(URL_KEYS.PORTFOLIO.ADD, input)),

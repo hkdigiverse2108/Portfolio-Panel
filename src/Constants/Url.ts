@@ -49,6 +49,13 @@ export const URL_KEYS = {
     EDIT: "/service/edit",
     DELETE: "/service/delete",
   },
+  BUSINESS_CATEGORY: {
+    BASE: "/business-category",
+    ALL: "/business-category/all",
+    ADD: "/business-category/add",
+    EDIT: "/business-category/edit",
+    DELETE: "/business-category/delete",
+  },
   PORTFOLIO: {
     BASE: "/portfolio",
     ALL: "/portfolio/all",

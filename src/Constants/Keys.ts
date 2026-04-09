@@ -46,6 +46,12 @@ export const KEYS = {
     EDIT: "edit-service",
     DELETE: "delete-service",
   },
+  BUSINESS_CATEGORY:{
+    BASE: "business-category",
+    ADD: "add-business-category",
+    EDIT: "edit-business-category",
+    DELETE: "delete-business-category",
+  },
   PORTFOLIO: {
     BASE: "portfolio",
     ADD: "add-portfolio",

@@ -33,6 +33,10 @@ export const ROUTES = {
     BASE: "/service",
     ADD_EDIT: "/service/add-edit",
   },
+  BUSINESS_CATEGORY: {
+    BASE: "/business-category",
+    ADD_EDIT: "/business-category/add-edit",
+  },
   PORTFOLIO: {
     BASE: "/portfolio",
     ADD_EDIT: "/portfolio/add-edit",

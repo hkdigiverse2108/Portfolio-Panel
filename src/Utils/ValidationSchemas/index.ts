@@ -132,6 +132,12 @@ export const ServiceSchema = Yup.object({
   isActive: Yup.boolean().nullable(),
 });
 
+//BusinessCategory
+export const BusinessCategorySchema = Yup.object({
+  name: Validation("string", "Name"),
+  isActive: Yup.boolean().nullable(),
+});
+
 //Blog
 export const BlogSchema = Yup.object({
   serviceId: Validation("string", "Service", { required: false }),
